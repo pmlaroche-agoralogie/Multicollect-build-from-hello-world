@@ -27,6 +27,8 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+         var el = document.getElementById("chargement"); 
+        el.addEventListener('touchstart', this.getlssfile, false);
     },
     // deviceready Event Handler
     //
@@ -45,5 +47,19 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-    }
+    },
+    
+    getlssfile: function() {
+        //navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    
+        var xhReq = new XMLHttpRequest();
+      
+       // var urldata = "http://openrad.agoralogie.fr/post.php?mesure=123"+123.innerHTML+"&lat="+lastlat+"&long="+lastlong;
+        var urldata = "http://mcp.ocd-dbs-france.org/lss/lss_934317";
+        
+        xhReq.open("GET", urldata, false);
+        xhReq.send(null);
+        var serverResponse = xhReq.responseText; 
+        console.log(serverResponse);
+    },
 };
