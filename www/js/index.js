@@ -28,7 +28,7 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
          var el = document.getElementById("chargement"); 
-        el.addEventListener('touchstart', this.getlssfile, false);
+        el.addEventListener('clic', this.getlssfile, false);
     },
     // deviceready Event Handler
     //
@@ -36,6 +36,7 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        hide('blocinit');
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -51,7 +52,7 @@ var app = {
     
     getlssfile: function() {
         //navigator.geolocation.getCurrentPosition(onSuccess, onError);
-    
+    console.log('x');
         var xhReq = new XMLHttpRequest();
       
        // var urldata = "http://openrad.agoralogie.fr/post.php?mesure=123"+123.innerHTML+"&lat="+lastlat+"&long="+lastlong;
@@ -61,5 +62,5 @@ var app = {
         xhReq.send(null);
         var serverResponse = xhReq.responseText; 
         console.log(serverResponse);
-    },
+    }
 };
