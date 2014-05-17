@@ -34,10 +34,50 @@ var app = {
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-        hide('blocinit');
-    },
+onDeviceReady: function() {
+    app.receivedEvent('deviceready');
+    hide('blocinit');
+    
+    var onSuccess = function(position) {
+        alert('Latitude: '        + position.coords.latitude          + '\n' +
+              'Longitude: '         + position.coords.longitude         + '\n' +
+              'Altitude: '          + position.coords.altitude          + '\n' +
+              'Accuracy: '          + position.coords.accuracy          + '\n' +
+              'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+              'Heading: '           + position.coords.heading           + '\n' +
+              'Speed: '             + position.coords.speed             + '\n' +
+              'Timestamp: '         + position.timestamp                + '\n');
+    };
+    
+    var onError = function(error) {
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+    };
+    
+    //navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    
+    // https://github.com/brodysoft/Cordova-SQLitePlugin
+    this.db = window.sqlitePlugin.openDatabase("Database", "1.0", "Demo", -1);
+    
+    this.db.transaction(function(tx) {
+                        tx.executeSql('DROP TABLE IF EXISTS test_table');
+                        tx.executeSql('CREATE TABLE IF NOT EXISTS test_table (id integer primary key, data text, data_num integer)');
+                        
+                        tx.executeSql("INSERT INTO test_table (data, data_num) VALUES (?,?)", ["test", 100], function(tx, res) {
+                                      alert("insertId: " + res.insertId + " -- probably 1");
+                                    alert("rowsAffected: " + res.rowsAffected + " -- should be 1");
+                                      
+                                      tx.executeSql("select count(id) as cnt from test_table;", [], function(tx, res) {
+                                                    alert("res.rows.length: " + res.rows.length + " -- should be 1");
+                                                    alert("res.rows.item(0).cnt: " + res.rows.item(0).cnt + " -- should be 1");
+                                                    });
+                                      
+                                      }, function(e) {
+                                      alert("ERROR: " + e.message);
+                                      });
+                        });
+    
+},
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
