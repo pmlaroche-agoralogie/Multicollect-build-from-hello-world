@@ -38,7 +38,7 @@ onDeviceReady: function() {
     app.receivedEvent('deviceready');
     hide('blocinit');
     
-    var onSuccess = function(position) {
+    var onSuccessGPS = function(position) {
         alert('Latitude: '        + position.coords.latitude          + '\n' +
               'Longitude: '         + position.coords.longitude         + '\n' +
               'Altitude: '          + position.coords.altitude          + '\n' +
@@ -49,12 +49,12 @@ onDeviceReady: function() {
               'Timestamp: '         + position.timestamp                + '\n');
     };
     
-    var onError = function(error) {
+    var onErrorGPS = function(error) {
         alert('code: '    + error.code    + '\n' +
               'message: ' + error.message + '\n');
     };
     
-    //navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    navigator.geolocation.getCurrentPosition(onSuccessGPS, onErrorGPS);
     
     // https://github.com/brodysoft/Cordova-SQLitePlugin
     this.db = window.sqlitePlugin.openDatabase("Database", "1.0", "Demo", -1);
@@ -63,11 +63,15 @@ onDeviceReady: function() {
                         tx.executeSql('DROP TABLE IF EXISTS test_table');
                         tx.executeSql('CREATE TABLE IF NOT EXISTS test_table (id integer primary key, data text, data_num integer)');
                         
+                        tx.executeSql('CREATE TABLE IF NOT EXISTS  "question" ("qid" INTEGER DEFAULT (0) ,"parent_qid" INTEGER DEFAULT (0) ,"gid" INTEGER DEFAULT (0) ,"sid" INTEGER DEFAULT (0) ,"kind" VARCHAR,"title" VARCHAR, "answers" TEXT, "order" INTEGER DEFAULT 0);');
+                        tx.executeSql("INSERT INTO 'question' VALUES(10,0,4,934317,'L','where','Où etes vous',0);");
+                        
+                        
                         tx.executeSql("INSERT INTO test_table (data, data_num) VALUES (?,?)", ["test", 100], function(tx, res) {
                                       alert("insertId: " + res.insertId + " -- probably 1");
                                     alert("rowsAffected: " + res.rowsAffected + " -- should be 1");
                                       
-                                      tx.executeSql("select count(id) as cnt from test_table;", [], function(tx, res) {
+                                      tx.executeSql("select count(qid) as cnt from question;", [], function(tx, res) {
                                                     alert("res.rows.length: " + res.rows.length + " -- should be 1");
                                                     alert("res.rows.item(0).cnt: " + res.rows.item(0).cnt + " -- should be 1");
                                                     });
