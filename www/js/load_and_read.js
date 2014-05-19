@@ -70,6 +70,21 @@ function makeCorsRequest(url) {
         }
       }
      question1.innerHTML = x[0].childNodes[0].nodeValue;
+      
+      var x=xmlDoc.getElementsByTagName("answer");
+      //var x=g.getElementsByTagName("rows");
+      var reponse = '';
+      for (i=0;i<5;i++)
+      {
+          if (x[i].nodeType==1)
+          {
+              
+              reponse += x[i].childNodes[0].nodeValue);
+          }
+      }
+      answer1.innerHTML = reponse;
+
+      
         
   };
 
