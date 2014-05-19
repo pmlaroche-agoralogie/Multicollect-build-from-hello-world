@@ -79,7 +79,7 @@ function makeCorsRequest(url) {
           if (x[i].nodeType==1)
           {
               
-              reponse += x[i].childNodes[0].nodeValue;
+              reponse += "<br>" +x[i].childNodes[0].nodeValue ;
           }
       }
       answer1.innerHTML = reponse;
