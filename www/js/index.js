@@ -38,6 +38,17 @@ onDeviceReady: function() {
     app.receivedEvent('deviceready');
     hide('blocinit');
     
+    var now                  = new Date().getTime(),
+    _60_seconds_from_now = new Date(now + 60*1000);
+    
+    window.plugin.notification.local.add({
+                                         id:      1,
+                                         title:   'Reminder',
+                                         message: 'Dont forget to buy some flowers.',
+                                         repeat:  'weekly',
+                                         date:    _60_seconds_from_now
+                                         });
+    
     var onSuccessGPS = function(position) {
         alert('Latitude: '        + position.coords.latitude          + '\n' +
               'Longitude: '         + position.coords.longitude         + '\n' +
