@@ -36,7 +36,7 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
 onDeviceReady: function() {
     app.receivedEvent('deviceready');
-    hide('blocinit');
+    hide_div('blocinit');
     
     var now                  = new Date().getTime(),
     _60_seconds_from_now = new Date(now + 60*1000);
@@ -75,7 +75,7 @@ onDeviceReady: function() {
                         tx.executeSql('CREATE TABLE IF NOT EXISTS test_table (id integer primary key, data text, data_num integer)');
                         
                         tx.executeSql('CREATE TABLE IF NOT EXISTS  "question" ("qid" INTEGER DEFAULT (0) ,"parent_qid" INTEGER DEFAULT (0) ,"gid" INTEGER DEFAULT (0) ,"sid" INTEGER DEFAULT (0) ,"kind" VARCHAR,"title" VARCHAR, "answers" TEXT, "order" INTEGER DEFAULT 0);');
-                        tx.executeSql("INSERT INTO 'question' VALUES(10,0,4,934317,'L','where','Où etes vous',0);");
+                        tx.executeSql("INSERT INTO 'question' VALUES(10,0,4,934317,'L','where','OÔøΩ etes vous',0);");
                         
                         
                         tx.executeSql("INSERT INTO test_table (data, data_num) VALUES (?,?)", ["test", 100], function(tx, res) {

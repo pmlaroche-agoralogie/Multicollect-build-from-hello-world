@@ -1,7 +1,28 @@
 function show_settings()
 {
-    hide('home');
-    show('settings');
+    hide_div('home');
+    show_div('settings');
+}
+
+function begin_acquisition()
+{
+    hide_div('home');
+    show_div('acquisition');
+}
+
+
+function go_home()
+{
+    //add an alert
+    hide_div('acquisition');
+    hide_div('settings');
+    show_div('home');
+}
+
+
+function testNewStudy (form) {
+    var studyNumber = form.inputbox.value;
+    alert ("The study number is: " + studyNumber);
 }
 
 
@@ -102,7 +123,7 @@ function makeCorsRequest(url) {
   xhr.send();
 }
 
-function hide(divID) {
+function hide_div(divID) {
    var item = document.getElementById(divID);
    if (item) {
       document.getElementById(divID).style.display = 'none';
