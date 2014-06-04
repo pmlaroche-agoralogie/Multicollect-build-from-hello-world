@@ -1,3 +1,10 @@
+function show_settings()
+{
+    hide('home');
+    show('settings');
+}
+
+
 //From http://stackoverflow.com/questions/649614/xml-parsing-of-a-variable-string-in-javascript
 function LoadXMLString(xmlString)
 {
@@ -100,4 +107,11 @@ function hide(divID) {
    if (item) {
       document.getElementById(divID).style.display = 'none';
   }
-}  
+}
+
+function show_div(divID) {
+    var item = document.getElementById(divID);
+    if (item) {
+        document.getElementById(divID).style.display = 'block';
+    }
+}
