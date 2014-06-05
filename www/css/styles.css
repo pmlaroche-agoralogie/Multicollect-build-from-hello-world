@@ -1,0 +1,71 @@
+@charset "utf-8";
+/* CSS Document */
+
+html{font-family:sans-serif;height:100%;}
+body{width:300px;height:480px;padding:8px;font-size:13px;position: relative;}
+div.texte{margin-bottom:20px;margin-top:20px;font-weight:bold;font-size:16px;}
+.left {float:left;}
+.right {float:right;}
+.clear {clear:both;}
+.left.avecmarge{margin-left:50px;}
+.right.avecmarge{margin-right:50px;}
+
+.radioaucentre{text-align:left;margin-left:50px;}
+.radioaucentre input{margin-bottom:30px;}
+
+form{text-align:center}
+
+input[type='range'] {
+    -webkit-appearance: none !important;
+    background:red;
+    height:27px;
+}
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    background:blue;
+    height:10px;
+    width:10px;
+}
+
+#emotion .input_hidden {
+    position: absolute;
+    left: -9999px;
+}
+
+#emotion .selected {
+    background-color: #ccc;
+}
+
+#emotion label {
+    display: inline-block;
+    cursor: pointer;
+}
+
+#emotion label img {
+    padding: 3px;
+}
+
+
+#slider-range{
+margin-top:8px;
+background: -webkit-linear-gradient(left, red , yellow, green); /* For Safari 5.1 to 6.0 */
+background: -o-linear-gradient(right, red , yellow, green); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(right, red , yellow, green); /* For Firefox 3.6 to 15 */
+background: linear-gradient(to right, red , yellow, green); /* Standard syntax */
+}
+#slider-range.inverse{
+margin-top:8px;
+background: -webkit-linear-gradient(left, green , yellow, red); /* For Safari 5.1 to 6.0 */
+background: -o-linear-gradient(right, green , yellow, red); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(right, green , yellow, red); /* For Firefox 3.6 to 15 */
+background: linear-gradient(to right, green , yellow, red); /* Standard syntax */
+}
+.bottomline{border-bottom:solid 1px grey;margin:20px 10px;}
+.bottom{margin:20px 10px;}
+
+.multi_radio{font-size:15px;}
+.multi_radio p{margin-top:15px;margin-bottom:10px;}
+#sous_stim input,#sans_stim input{margin-bottom:20px;}
+#sans_titre,#sous_titre{font-isze:13px;font-weight:bold;}
+
+div.suite{position:absolute;bottom:0;left:130px;padding-bottom:20px;}

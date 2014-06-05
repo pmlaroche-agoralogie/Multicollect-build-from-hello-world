@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>OCD Multi Page 4</title>
+<meta name="viewport" content="width=device-width">
+<link href="css/ui-lightness/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/styles.css" media="all" />
+
+<script src='js/toc.js' type='text/javascript'></script>
+<script src='js/jquery-2.1.1.min.js' type='text/javascript'></script>
+<script src='js/jquery-ui-1.10.4.custom.min.js' type='text/javascript'></script>
+<script src='js/jquery.ui.touch-punch.min.js' type='text/javascript'></script>
+
+<script>
+$( document ).ready(function() {
+	$('#emotion input:radio').addClass('input_hidden');
+	$('#emotion label').click(function(){
+	    $(this).addClass('selected').siblings().removeClass('selected');
+	});
+	
+	
+	 $( "#slider-range" ).slider({
+		 min: 0,
+		 max: 100,
+		 values: [ 50 ],
+		change: function(event, ui) 
+		{
+	 		$('input#slidervalue').val(ui.value);
+		}
+	});
+	 $('input#slidervalue').val(50);
+	 
+	 $( "#slider-range" ).draggable();
+
+	
+	
+});
+</script>
+</head>
+<body>
+<form action="testmulti5.html">
+	<div class="texte">Pendant combien de temps avez-vous été occupé(e) par le TOC (obsessions et/ou compulsions) au cours des dernières 24h ? </div> 
+
+	 <select name="select" id="select">
+    <option selected="selected">0</option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+    <option>6</option>
+    <option>7</option>
+    <option>8</option>
+    <option>9</option>
+    <option>10</option> 
+  </select> heures et
+ 	 <select name="select" id="select">
+    <option selected="selected">0</option>
+    <option>10</option>
+    <option>15</option>
+    <option>20</option>
+    <option>25</option>
+    <option>30</option>
+    <option>35</option>
+    <option>40</option>
+    <option>45</option>
+    <option>50</option>
+    <option>55</option>
+  </select> minutes
+  
+  
+  
+  <br /><br />
+        
+     <div class="suite"><input type="submit" value="Suite &gt;&gt;"></div>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>OCD Multi Page 8</title>
+<meta name="viewport" content="width=device-width">
+<link href="css/ui-lightness/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/styles.css" media="all" />
+
+<script src='js/toc.js' type='text/javascript'></script>
+<script src='js/jquery-2.1.1.min.js' type='text/javascript'></script>
+<script src='js/jquery-ui-1.10.4.custom.min.js' type='text/javascript'></script>
+<script src='js/jquery.ui.touch-punch.min.js' type='text/javascript'></script>
+
+<script>
+$( document ).ready(function() {
+	$('#emotion input:radio').addClass('input_hidden');
+	$('#emotion label').click(function(){
+	    $(this).addClass('selected').siblings().removeClass('selected');
+	});
+	
+	
+	 $( "#slider-range" ).slider({
+		 min: 0,
+		 max: 100,
+		 values: [ 50 ],
+		change: function(event, ui) 
+		{
+	 		$('input#slidervalue').val(ui.value);
+		}
+	});
+	 $('input#slidervalue').val(50);
+	 
+	 $( "#slider-range" ).draggable();
+
+	
+	
+});
+</script>
+</head>
+<body>
+<form action="testmulti9.html">
+	<div class="texte">Votre journée s'est-elle déroulée mieux ou moins bien que prévu ?</div> 
+
+	<div class="left">Moins bien</div><div class="right">Mieux</div>
+	<div class="clear"></div>
+	<input type="hidden" id="slidervalue" name="slidervalue"/>
+	<div id="slider-range"></div>
+
+    <div class="bottom"></div>
+        
+     <div class="suite"><input type="submit" value="Suite &gt;&gt;"></div>
+
+</form>
+</body>
+</html>
