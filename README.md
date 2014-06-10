@@ -1,6 +1,7 @@
 # Apache Cordova Hello World Application
 
-Simple Hello World application. This is used as the default app template
+Simple Hello World application. 
+This is used as the default app template
 when creating new projects.
 
 ## Versions and Tags
