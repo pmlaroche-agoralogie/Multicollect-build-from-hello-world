@@ -616,8 +616,8 @@ button.ui-button::-moz-focus-inner {
 .ui-slider .ui-slider-handle {
 	position: absolute;
 	z-index: 2;
-	width: 1.2em;
-	height: 1.2em;
+	width: 1.7em;
+	height: 1.7em;
 	cursor: default;
 }
 .ui-slider .ui-slider-range {
@@ -639,8 +639,8 @@ button.ui-button::-moz-focus-inner {
 	height: .8em;
 }
 .ui-slider-horizontal .ui-slider-handle {
-	top: -.3em;
-	margin-left: -.6em;
+	top: -0.5em;
+	margin-left: -0.9em;
 }
 .ui-slider-horizontal .ui-slider-range {
 	top: 0;
@@ -784,7 +784,7 @@ body .ui-tooltip {
 ----------------------------------*/
 .ui-widget {
 	font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
-	font-size: 1.1em;
+	font-size: 2em;
 }
 .ui-widget .ui-widget {
 	font-size: 1em;

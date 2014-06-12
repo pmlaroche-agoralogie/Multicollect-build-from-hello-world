@@ -2,18 +2,17 @@
 /* CSS Document */
 
 html{font-family:sans-serif;height:100%;}
-body{width:300px;height:480px;padding:8px;font-size:13px;position: relative;}
-div.texte{margin-bottom:20px;margin-top:20px;font-weight:bold;font-size:16px;}
+body{width:100%;height:100%;font-size:13px;margin:0;padding:0;position:relative;}
+div.texte{margin-bottom:40px;margin-top:20px;font-weight:bold;font-size:16px;}
 .left {float:left;}
 .right {float:right;}
 .clear {clear:both;}
-.left.avecmarge{margin-left:50px;}
-.right.avecmarge{margin-right:50px;}
 
-.radioaucentre{text-align:left;margin-left:50px;}
+.btnouinon span{padding-right:100px;}
+.radioaucentre{text-align:left;margin-left:30%;}
 .radioaucentre input{margin-bottom:30px;}
 
-form{text-align:center}
+form{text-align:center; margin-left:5%;margin-right:5%;}
 
 input[type='range'] {
     -webkit-appearance: none !important;
@@ -47,7 +46,7 @@ input[type='range']::-webkit-slider-thumb {
 
 
 #slider-range{
-margin-top:8px;
+margin-top:30px;
 background: -webkit-linear-gradient(left, red , yellow, green); /* For Safari 5.1 to 6.0 */
 background: -o-linear-gradient(right, red , yellow, green); /* For Opera 11.1 to 12.0 */
 background: -moz-linear-gradient(right, red , yellow, green); /* For Firefox 3.6 to 15 */
@@ -68,4 +67,5 @@ background: linear-gradient(to right, green , yellow, red); /* Standard syntax *
 #sous_stim input,#sans_stim input{margin-bottom:20px;}
 #sans_titre,#sous_titre{font-isze:13px;font-weight:bold;}
 
-div.suite{position:absolute;bottom:0;left:130px;padding-bottom:20px;}
+div.suite{bottom:10%;width:100%;position: absolute;left:0;}
+div.suite input{width:100px;height:50px;}
