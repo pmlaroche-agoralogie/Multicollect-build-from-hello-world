@@ -43,21 +43,21 @@ onDeviceReady: function() {
     
     window.plugin.notification.local.add({
                                          id:      1,
-                                         title:   'Reminder',
-                                         message: 'Dont forget to buy some flowers.',
+                                         title:   'Application de Suivi',
+                                         message: 'Merci de répondre au questionnaire de l application de suivi.',
                                          repeat:  'weekly',
                                          date:    _60_seconds_from_now
                                          });
     
     var onSuccessGPS = function(position) {
-        alert('Latitude: '        + position.coords.latitude          + '\n' +
+       /* alert('Latitude: '        + position.coords.latitude          + '\n' +
               'Longitude: '         + position.coords.longitude         + '\n' +
               'Altitude: '          + position.coords.altitude          + '\n' +
               'Accuracy: '          + position.coords.accuracy          + '\n' +
               'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
               'Heading: '           + position.coords.heading           + '\n' +
               'Speed: '             + position.coords.speed             + '\n' +
-              'Timestamp: '         + position.timestamp                + '\n');
+              'Timestamp: '         + position.timestamp                + '\n');*/
     };
     
     var onErrorGPS = function(error) {
@@ -79,8 +79,8 @@ onDeviceReady: function() {
                         
                         
                         tx.executeSql("INSERT INTO test_table (data, data_num) VALUES (?,?)", ["test", 100], function(tx, res) {
-                                      alert("insertId: " + res.insertId + " -- probably 1");
-                                    alert("rowsAffected: " + res.rowsAffected + " -- should be 1");
+                                 //   alert("insertId: " + res.insertId + " -- probably 1");
+                                 //   alert("rowsAffected: " + res.rowsAffected + " -- should be 1");
                                       
                                       tx.executeSql("select count(qid) as cnt from question;", [], function(tx, res) {
                                                     alert("res.rows.length: " + res.rows.length + " -- should be 1");
