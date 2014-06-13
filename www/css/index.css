@@ -72,7 +72,7 @@ body {
 
 div.question{margin-bottom:40px;margin-top:50px;font-weight:bold;font-size:16px;}
 div.titre_journal {
-    font-size:30px;
+    font-size:25px;
     font-weight:normal;
     margin:0px;
     padding:0px;
@@ -82,7 +82,7 @@ div.titre_journal {
 	border-radius:25px;
 	display:inline-block;
 	margin-top:30px;
-	padding:10px 20px 10px 20px;
+	padding:10px 10px 10px 10px;
 }
 div.suite{bottom:10%;width:100%;position: absolute;left:0;}
 div.suite input{width:200px;height:80px;font-weight:bold;font-size:16px;}
