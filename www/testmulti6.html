@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
 <meta charset="UTF-8">
 <title>OCD Multi Page 6</title>
@@ -39,14 +39,14 @@ $( document ).ready(function() {
 </script>
 </head>
 <body>
-<form action="testmulti7.html">
-    <div class="texte">Par rapport à hier, est-ce que vous allez moins bien / pareil / mieux ? </div>
+<form action="" id="multi_form" name="multi_form">
+    <div class="question">Par rapport à hier, est-ce que vous allez moins bien / pareil / mieux ? </div>
     <div id="emotion">
- <input type="radio" name="emotion" id="moins_bien" />
+ <input type="radio" name="emotion" id="moins_bien" onClick="document.multi_form.action ='testmulti7.html';" />
         <label for="moins_bien"><img src="img/moins.png" alt="moins bien" /><br />Moins bien</label>
-    <input type="radio" name="emotion" id="pareil" />
+    <input type="radio" name="emotion" id="pareil" onClick="document.multi_form.action ='testmulti7.html';" />
         <label for="pareil"><img src="img/egale.png" alt="pareil" /><br />Pareil</label>
-    <input type="radio" name="emotion" id="mieux" />
+    <input type="radio" name="emotion" id="mieux" onClick="document.multi_form.action ='testmulti7.html';" />
         <label for="mieux"><img src="img/plus.png" alt="mieux"  /><br />Mieux</label>
     	</div>
     <div class="bottom"></div>

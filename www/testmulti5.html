@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
 <meta charset="UTF-8">
 <title>OCD Multi Page 5</title>
@@ -39,10 +39,10 @@ $( document ).ready(function() {
 </script>
 </head>
 <body>
-<form action="testmulti6.html">
-	<div class="texte">A quel point avez-vous été géné(e) par le TOC (obsessions et/ou compulsions) au cours des dernières 24h ? </div> 
+<form id="multi_form" name="multi_form" action="" onsubmit="valide_slider('testmulti6.html','testmulti5.html');">
+	<div class="question">A quel point avez-vous été géné(e) par le TOC (obsessions et/ou compulsions) au cours des dernières 24h ? </div> 
 
-	<div class="left">Enormément</div><div class="right">Pas du tout</div>
+	<div class="left bulle une_ligne">Enormément</div><div class="right bulle une_ligne">Pas du tout</div>
 	<div class="clear"></div>
 	<input type="hidden" id="slidervalue" name="slidervalue"/>
 	<div id="slider-range"></div>

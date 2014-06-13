@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
 <meta charset="UTF-8">
 <title>OCD Multi Page 10</title>
@@ -39,12 +39,12 @@ $( document ).ready(function() {
 </script>
 </head>
 <body>
-<form action="testmulti0.html">
-	<div class="texte">Je pense qu'avec la stimulation,<br />mon TOC :</div> 
-    <div class="radioaucentre"><input type="radio" name="sous" id="sous" />S'améliore<br />
-    <input type="radio" name="sous" id="sous" />Est identique<br />
-    <input type="radio" name="sous" id="sous" />S'aggrave<br />
-	<input type="radio" name="sous" id="sous" />Je ne sais pas
+<form action="" class="multi_radio" id="multi_form" name="multi_form">
+	<div class="question">Je pense qu'avec la stimulation,<br />mon TOC :</div> 
+    <div class="radioaucentre"><input type="radio" name="sous" id="sous" onClick="document.multi_form.action ='resultat.html';" />S'améliore<br />
+    <input type="radio" name="sous" id="sous" onClick="document.multi_form.action ='resultat.html';"/>Est identique<br />
+    <input type="radio" name="sous" id="sous" onClick="document.multi_form.action ='resultat.html';" />S'aggrave<br />
+	<input type="radio" name="sous" id="sous" onClick="document.multi_form.action ='resultat.html';" />Je ne sais pas
     </div>
     <div class="clear"></div>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
 <meta charset="UTF-8">
 <title>OCD Multi Page 3</title>
@@ -39,10 +39,10 @@ $( document ).ready(function() {
 </script>
 </head>
 <body>
-<form action="testmulti4.html">
-	<div class="texte">Vous sentez-vous angoissé(e)/anxieux(se) ou calme maintenant ? </div> 
+<form id="multi_form" name="multi_form" action="" onsubmit="valide_slider('testmulti4.html','testmulti3.html');">
+	<div class="question">Vous sentez-vous angoissé(e)/anxieux(se) ou calme maintenant ? </div> 
 
-	<div class="left">Extrêmement angoissé</div><div class="right">Tout à fait calme</div>
+	<div class="left bulle">Extrêmement<br />angoissé</div><div class="right bulle">Tout à fait<br />calme</div>
 	<div class="clear"></div>
 	<input type="hidden" id="slidervalue" name="slidervalue"/>
 	<div id="slider-range"></div>

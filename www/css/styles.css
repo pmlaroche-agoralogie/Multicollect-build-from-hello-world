@@ -3,9 +3,13 @@
 
 html{font-family:sans-serif;height:480px;}
 body{width:100%;height:480px;font-size:13px;margin:0;padding:0;}
-div.texte{margin-bottom:40px;margin-top:20px;font-weight:bold;font-size:16px;}
+div.question{margin-bottom:50px;margin-top:50px;font-weight:bold;font-size:16px;}
 .left {float:left;}
+.left.bulle {background-image:url(../img/bulle_gauche.jpg);background-repeat:no-repeat;width:141px;height:70px;text-align:center;padding-top:35px;}
+.left.bulle.une_ligne{height:75px;padding-top:40px;}
 .right {float:right;}
+.right.bulle {background-image:url(../img/bulle_droit.jpg);background-repeat:no-repeat;width:141px;height:70px;text-align:center;padding-top:35px;}
+.right.bulle.une_ligne{height:75px;padding-top:40px;}
 .clear {clear:both;}
 
 .btnouinon span{padding-right:100px;}
@@ -41,24 +45,18 @@ input[type='range']::-webkit-slider-thumb {
 }
 
 #emotion label img {
-    padding: 3px;
+    padding: 20px;
 }
 
 
 #slider-range{
-margin-top:30px;
-background: -webkit-linear-gradient(left, red , yellow, green); /* For Safari 5.1 to 6.0 */
-background: -o-linear-gradient(right, red , yellow, green); /* For Opera 11.1 to 12.0 */
-background: -moz-linear-gradient(right, red , yellow, green); /* For Firefox 3.6 to 15 */
-background: linear-gradient(to right, red , yellow, green); /* Standard syntax */
+	margin-top:30px;
+	background: -webkit-linear-gradient(left, red , yellow, green); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(right, red , yellow, green); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(right, red , yellow, green); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to right, red , yellow, green); /* Standard syntax */
 }
-#slider-range.inverse{
-margin-top:8px;
-background: -webkit-linear-gradient(left, green , yellow, red); /* For Safari 5.1 to 6.0 */
-background: -o-linear-gradient(right, green , yellow, red); /* For Opera 11.1 to 12.0 */
-background: -moz-linear-gradient(right, green , yellow, red); /* For Firefox 3.6 to 15 */
-background: linear-gradient(to right, green , yellow, red); /* Standard syntax */
-}
+
 .bottomline{border-bottom:solid 1px grey;margin:20px 10px;}
 .bottom{margin:20px 10px;}
 
@@ -68,4 +66,4 @@ background: linear-gradient(to right, green , yellow, red); /* Standard syntax *
 #sans_titre,#sous_titre{font-isze:13px;font-weight:bold;}
 
 div.suite{bottom:10%;width:100%;position: absolute;left:0;}
-div.suite input{width:100px;height:50px;}
+div.suite input{width:200px;height:80px;font-weight:bold;font-size:16px;}

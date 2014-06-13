@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
 <meta charset="UTF-8">
 <title>OCD Multi Page 8</title>
@@ -39,10 +39,10 @@ $( document ).ready(function() {
 </script>
 </head>
 <body>
-<form action="testmulti9.html">
-	<div class="texte">Votre journée s'est-elle déroulée mieux ou moins bien que prévu ?</div> 
+<form id="multi_form" name="multi_form" action="" onsubmit="valide_slider('testmulti9.html','testmulti8.html');">
+	<div class="question">Votre journée s'est-elle déroulée mieux ou moins bien que prévu ?</div> 
 
-	<div class="left">Moins bien</div><div class="right">Mieux</div>
+	<div class="left bulle une_ligne">Moins bien</div><div class="right bulle une_ligne">Mieux</div>
 	<div class="clear"></div>
 	<input type="hidden" id="slidervalue" name="slidervalue"/>
 	<div id="slider-range"></div>

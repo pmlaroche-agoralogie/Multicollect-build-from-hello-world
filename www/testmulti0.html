@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
 <meta charset="UTF-8">
 <title>OCD Multi Page 0</title>
@@ -39,14 +39,14 @@ $( document ).ready(function() {
 </script>
 </head>
 <body>
-<form action="testmulti1.html">
-	<div class="texte">Où êtes-vous ?</div> 
-
-	 <select name="select" id="select">
-    <option selected="selected">Je suis chez moi</option>
-    <option>Je suis au travail</option>
-    <option>Je suis dans les transports</option>
-    <option>Autres</option>
+<form action="" id="multi_form" name="multi_form">
+	<div class="question">Où êtes-vous ?</div> 
+	 <select name="select_choix_endroit" id="select_choix_endroit" onChange="valide_select('select_choix_endroit','testmulti1.html','testmulti0.html');">
+        <option> </option>
+        <option>Je suis chez moi</option>
+        <option>Je suis au travail</option>
+        <option>Je suis dans les transports</option>
+        <option>Autres</option>
   </select><br /><br />
         
     <div class="suite"><input type="submit" value="Suite &gt;&gt;"></div>

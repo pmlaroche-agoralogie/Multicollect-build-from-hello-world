@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
 <meta charset="UTF-8">
 <title>OCD Multi Page 1</title>
@@ -39,10 +39,10 @@ $( document ).ready(function() {
 </script>
 </head>
 <body>
-<form action="testmulti2.html">
-	<div class="texte">Comment allez-vous aujourd'hui ? </div> 
+<form id="multi_form" name="multi_form" action="" onsubmit="valide_slider('testmulti2.html','testmulti1.html');">
+	<div class="question">Comment allez-vous aujourd'hui ? </div> 
 
-	<div class="left">Pas bien du tout</div><div class="right">Parfaitement bien</div>
+	<div class="left bulle">Pas bien<br />du tout</div><div class="right bulle">Parfaitement<br />bien</div>
 	<div class="clear"></div>
 	<input type="hidden" id="slidervalue" name="slidervalue"/>
 	<div id="slider-range"></div>

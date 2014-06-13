@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
 <meta charset="UTF-8">
 <title>OCD Multi Page 2</title>
@@ -39,8 +39,8 @@ $( document ).ready(function() {
 </script>
 </head>
 <body>
-<form action="testmulti3.html">
-    <div class="texte">Quelle est votre humeur/moral<br />maintenant ?</div>
+<form id="multi_form" name="multi_form" action="" onsubmit="valide_slider('testmulti3.html','testmulti2.html');">
+    <div class="question">Quelle est votre humeur/moral<br />maintenant ?</div>
     <div class="left"><img src="img/humeur_2.png" alt="mal" /><br />Extrêmement triste</div><div class="right"><img src="img/humeur_4.png" alt="bien" /><br />Extrêmement gaie</div>
    <div class="clear"></div>
 	<input type="hidden" id="slidervalue" name="slidervalue"/>
