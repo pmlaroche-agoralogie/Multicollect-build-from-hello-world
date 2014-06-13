@@ -28,7 +28,7 @@
         <title>Collecting</title>
     </head>
     <body>
-        <div id='home'>
+       
        
         <div id='blocinit' class="app">
             <h1>Apache Cordova</h1>
@@ -57,16 +57,17 @@
         <script type="text/javascript">
             app.initialize();
         </script>
-        
-        <div class="titre_journal">Journal de bord<a href=""><img src="img/reglages.png" /></a></div>
-        <div class="question">Vous avez un questionnaire à remplir</div>
-        
-        <!--<a href="javascript:;" onClick="begin_acquisition();">Il y a un questionnaire disponible</a>
-        </br>
-        <a href="javascript:;" onClick="show_settings();">Reglage</a>-->
-        
-        <div class="suite"><input type="button" value="Je remplis&#13;&#10;le questionnaire" onClick="window.location='testmulti0.html'"></div>
-        
+            <!--<a href="javascript:;" onClick="begin_acquisition();">Il y a un questionnaire disponible</a>
+            </br>
+            <a href="javascript:;" onClick="show_settings();">Reglage</a>-->
+            
+		<div class="btn_reglages"><a href="javascript:;" onClick="show_settings();"><img src="img/reglages.png" /></a></div>
+ 		<div class="titre_journal">Journal de bord</div>
+        <div id='home'>
+           
+            <div class="question">Vous avez un questionnaire à remplir</div>
+            
+            <div class="suite"><input type="button" value="Je remplis&#13;&#10;le questionnaire" onClick="window.location='testmulti0.html'"></div>        
         </div>
         
         <div id='acquisition' style='display: none;'>
@@ -77,15 +78,13 @@
         </div>
         
         <div id='settings' style='display: none;'>
-            Vous participez au suivi : 156984
+             <div class="question">Vous participez au suivi : 156984<br />Nouveaux suivi : </div>
             
-            <form NAME="myform" ACTION="" METHOD="GET">Nouveaux suivi : </br>
+            <form NAME="myform" ACTION="" METHOD="GET">
             <INPUT TYPE="text" NAME="inputbox" VALUE=""></br>
             <INPUT TYPE="button" NAME="button" Value="Charger" onClick="testNewStudy(this.form)">
             </form>
-
-            </br>
-            <a href="javascript:;" onClick="go_home();">Reglage</a>
+		   <div class="suite"><input type="button" value="Retour Accueil" onClick="go_home();"></div>        
         </div>
         
         
