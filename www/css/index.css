@@ -45,8 +45,7 @@ body {
 	text-align:center;
     width:100%;
 }
-html{height:480px;}
-body{height:480px;}
+
 /* Portrait layout (default) */
 .app {
     background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
@@ -84,8 +83,8 @@ div.titre_journal {
 	display:inline-block;
 	padding:10px 10px 10px 10px;
 }
-div.suite{bottom:10%;width:100%;position: absolute;left:0;}
-div.suite input{width:200px;height:80px;font-weight:bold;font-size:16px;}
+div.suite{width:100%;}
+div.suite input{width:200px;height:80px;font-weight:bold;font-size:16px;margin-top:50px;}
 div.btn_reglages{text-align:right;width:98%;margin: 10px 0 0 0;}
 .event {
     border-radius:4px;
