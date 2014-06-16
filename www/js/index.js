@@ -38,16 +38,7 @@ onDeviceReady: function() {
     app.receivedEvent('deviceready');
     hide_div('blocinit');
     
-    var now                  = new Date().getTime(),
-    _60_seconds_from_now = new Date(now + 60*1000);
     
-    window.plugin.notification.local.add({
-                                         id:      1,
-                                         title:   'Application de Suivi',
-                                         message: 'Merci de répondre au questionnaire de l application de suivi.',
-                                         repeat:  'weekly',
-                                         date:    _60_seconds_from_now
-                                         });
     
     var onSuccessGPS = function(position) {
        /* alert('Latitude: '        + position.coords.latitude          + '\n' +
@@ -67,6 +58,16 @@ onDeviceReady: function() {
     
     navigator.geolocation.getCurrentPosition(onSuccessGPS, onErrorGPS);
     
+    var now                  = new Date().getTime(),
+    _60_seconds_from_now = new Date(now + 60*1000);
+    
+    window.plugin.notification.local.add({
+                                         id:      1,
+                                         title:   'Application de Suivi',
+                                         message: 'Merci de répondre au questionnaire de l application de suivi.',
+                                         repeat:  'weekly',
+                                         date:    _60_seconds_from_now
+                                         });
     // https://github.com/brodysoft/Cordova-SQLitePlugin
     this.db = window.sqlitePlugin.openDatabase("Database", "1.0", "Demo", -1);
     
