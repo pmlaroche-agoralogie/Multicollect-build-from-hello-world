@@ -45,7 +45,8 @@ body {
 	text-align:center;
     width:100%;
 }
-
+html{height:480px;}
+body{height:480px;}
 /* Portrait layout (default) */
 .app {
     background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
