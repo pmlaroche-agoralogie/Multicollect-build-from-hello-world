@@ -27,10 +27,10 @@ var isMobile = true;
 		alert('mob');*/})
 (navigator.userAgent||navigator.vendor||window.opera)
 
-if(isMobile)
+/*if(isMobile)
 	alert('mob');
 else
-	alert('nomob');
+	alert('nomob');*/
 //fin test si different de  mobile
 
 var app = {
