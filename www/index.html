@@ -25,6 +25,7 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <meta name="msapplication-tap-highlight" content="no" />
+        <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
         <title>Collecting</title>
     </head>
     <body>
@@ -47,15 +48,23 @@
         <script type="text/javascript"> 
         var questionText = "nondef";
         var button1 = document.getElementById('chargement');  
-      console.log('cc');
-        button1.onclick = makeCorsRequest('http://mcp.ocd-dbs-france.org/lss/lss_934317');
+      	//console.log('cc');
+        //button1.onclick = makeCorsRequest('http://mcp.ocd-dbs-france.org/lss/lss_934317'); 
+        $( document ).ready(function() {
+        	$('#chargement').click(function() {
+        		makeCorsRequest('http://mcp.ocd-dbs-france.org/lss/lss_934317'); 
+        	});
+        	});
         </script>  
         
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         
         <script type="text/javascript">
-            app.initialize();
+        if(isMobile)
+        	 app.initialize();
+        else
+        	app.onDeviceReady();
         </script>
             <!--<a href="javascript:;" onClick="begin_acquisition();">Il y a un questionnaire disponible</a>
             </br>
