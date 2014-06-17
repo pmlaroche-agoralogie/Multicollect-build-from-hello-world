@@ -3,19 +3,21 @@
 
 html{font-family:sans-serif;height:480px;}
 body{width:100%;height:480px;font-size:13px;margin:0;padding:0;}
-div.question{margin-bottom:40px;margin-top:50px;font-weight:bold;font-size:16px;}
+div.question{margin-bottom:40px;margin-top:50px;font-weight:bold;font-size:16px;background-image:url(../img/fond_question.jpg);width:100%;height:100%;display:block;background-repeat: no-repeat;}
 div.question.sans_bottom{margin-bottom:10px;}
-.left {float:left;}
-.left.bulle {background-image:url(../img/bulle_gauche.jpg);background-repeat:no-repeat;width:141px;height:70px;text-align:center;padding-top:35px;}
-.left.bulle.une_ligne{height:75px;padding-top:40px;}
-.right {float:right;}
-.right.bulle {background-image:url(../img/bulle_droit.jpg);background-repeat:no-repeat;width:141px;height:70px;text-align:center;padding-top:35px;}
-.right.bulle.une_ligne{height:75px;padding-top:40px;}
+.left {float:left;font-size:20px;}
+.left.bulle {background-image:url(../img/bulle_gauche.jpg);background-repeat:no-repeat;width:141px;height:77px;text-align:center;padding-top:28px;font-size:20px;}
+.left.bulle.une_ligne{height:67px;padding-top:38px;}
+.right {float:right;font-size:20px;}
+.right.bulle {background-image:url(../img/bulle_droit.jpg);background-repeat:no-repeat;width:141px;height:77px;text-align:center;padding-top:28px;font-size:20px;}
+.right.bulle.une_ligne{height:67px;padding-top:38px;}
 .clear {clear:both;}
 
+.btnouinon{font-size:20px;}
 .btnouinon span{padding-right:100px;}
-.radioaucentre{text-align:left;margin-left:30%;}
-.radioaucentre input{margin-bottom:30px;}
+.btnouinon input{width:20px;height:20px;padding-top:0;margin-top:0;margin-right:10px;}
+.radioaucentre{text-align:left;margin-left:30%;font-size:20px;}
+.radioaucentre input{width:20px;height:20px;padding-top:0;margin:0 10px 32px 0;}
 
 form{text-align:center; margin-left:5%;margin-right:5%;}
 
@@ -51,7 +53,7 @@ input[type='range']::-webkit-slider-thumb {
 
 
 #slider-range{
-	margin-top:30px;
+	margin-top:20px;
 	background: -webkit-linear-gradient(left, red , yellow, green); /* For Safari 5.1 to 6.0 */
 	background: -o-linear-gradient(right, red , yellow, green); /* For Opera 11.1 to 12.0 */
 	background: -moz-linear-gradient(right, red , yellow, green); /* For Firefox 3.6 to 15 */
@@ -67,4 +69,4 @@ input[type='range']::-webkit-slider-thumb {
 #sans_titre,#sous_titre{font-isze:13px;font-weight:bold;}
 
 div.suite{bottom:10%;width:100%;position: absolute;left:0;}
-div.suite input{width:200px;height:80px;font-weight:bold;font-size:16px;}
+div.suite input{width:200px;height:80px;font-weight:bold;font-size:25px;}

@@ -4,10 +4,11 @@ function valide_select(nom_select,action_vrai,action_faux){
 
 	if (valeur != ''){
 		document.multi_form.action = action_vrai;
+		document.multi_form.btn_submit.disabled=false;
 	}else{
 		document.multi_form.action = action_faux;
+		document.multi_form.btn_submit.disabled=true;
 	}
-
 
 }
 function valide_slider(action_vrai,action_faux){

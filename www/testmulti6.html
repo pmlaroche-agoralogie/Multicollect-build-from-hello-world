@@ -39,19 +39,19 @@ $( document ).ready(function() {
 </script>
 </head>
 <body>
-<form action="" id="multi_form" name="multi_form">
+<form action="testmulti7.html" id="multi_form" name="multi_form">
     <div class="question">Par rapport à hier, est-ce que vous allez moins bien / pareil / mieux ? </div>
     <div id="emotion">
- <input type="radio" name="emotion" id="moins_bien" onClick="document.multi_form.action ='testmulti7.html';" />
+ <input type="radio" name="emotion" id="moins_bien" onClick="document.multi_form.btn_submit.disabled=false;" />
         <label for="moins_bien"><img src="img/moins.png" alt="moins bien" /><br />Moins bien</label>
-    <input type="radio" name="emotion" id="pareil" onClick="document.multi_form.action ='testmulti7.html';" />
+    <input type="radio" name="emotion" id="pareil" onClick="document.multi_form.btn_submit.disabled=false;" />
         <label for="pareil"><img src="img/egale.png" alt="pareil" /><br />Pareil</label>
-    <input type="radio" name="emotion" id="mieux" onClick="document.multi_form.action ='testmulti7.html';" />
+    <input type="radio" name="emotion" id="mieux" onClick="document.multi_form.btn_submit.disabled=false;" />
         <label for="mieux"><img src="img/plus.png" alt="mieux"  /><br />Mieux</label>
     	</div>
     <div class="bottom"></div>
         
-     <div class="suite"><input type="submit" value="Suite &gt;&gt;"></div>
+     <div class="suite"><input type="submit" value="Suite &gt;&gt;" disabled="disabled" id="btn_submit" name="btn_submit"></div>
 
 </form>
 </body>
