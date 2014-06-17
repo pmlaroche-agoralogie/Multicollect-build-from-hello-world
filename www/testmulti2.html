@@ -39,14 +39,13 @@ $( document ).ready(function() {
 </script>
 </head>
 <body>
-<form id="multi_form" name="multi_form" action="" onSubmit="valide_slider('testmulti3.html','testmulti2.html');">
+<form id="multi_form" name="multi_form" action="testmulti3.html" onSubmit="return valide_slider();">
     <div class="question">Quelle est votre humeur/moral<br />maintenant ?</div>
     <div class="left"><img src="img/humeur_2.png" alt="mal" /><br />Extrêmement<br />triste</div><div class="right"><img src="img/humeur_4.png" alt="bien" /><br />Extrêmement<br />gaie</div>
    <div class="clear"></div>
 	<input type="hidden" id="slidervalue" name="slidervalue"/>
 	<div id="slider-range"></div>
 
-    <div class="bottom"></div>
      <div class="suite"><input type="submit" value="Suite &gt;&gt;"></div>
 </form>
 </body>

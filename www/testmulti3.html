@@ -39,16 +39,13 @@ $( document ).ready(function() {
 </script>
 </head>
 <body>
-<form id="multi_form" name="multi_form" action="" onsubmit="valide_slider('testmulti4.html','testmulti3.html');">
+<form id="multi_form" name="multi_form" action="testmulti4.html" onSubmit="return valide_slider();">
 	<div class="question">Vous sentez-vous angoissé(e)/anxieux(se) ou calme maintenant ? </div> 
 
 	<div class="left bulle">Extrêmement<br />angoissé</div><div class="right bulle">Tout à fait<br />calme</div>
 	<div class="clear"></div>
 	<input type="hidden" id="slidervalue" name="slidervalue"/>
 	<div id="slider-range"></div>
-
-    <div class="bottom"></div>
-        
      <div class="suite"><input type="submit" value="Suite &gt;&gt;"></div>
 </form>
 </body>

@@ -39,10 +39,10 @@ $( document ).ready(function() {
 </script>
 </head>
 <body>
-<form action="" id="multi_form" name="multi_form">
+<form action="testmulti5.html" id="multi_form" name="multi_form">
 	<div class="question">Pendant combien de temps avez-vous été occupé(e) par le TOC (obsessions et/ou compulsions) au cours des dernières 24h ? </div> 
 
-	<select name="select_choix_heures" id="select_choix_heures" onChange="valide_select('select_choix_heures','testmulti5.html','testmulti4.html');">
+	<select name="select_choix_heures" id="select_choix_heures" onChange="valide_un_select(this);">
     <option></option>
     <option>0</option>
     <option>1</option>
@@ -56,7 +56,7 @@ $( document ).ready(function() {
     <option>9</option>
     <option>10</option> 
   </select> heures et
-	<select name="select_choix_minutes" id="select_choix_minutes" onChange="valide_select('select_choix_minutes','testmulti5.html','testmulti4.html');">
+	<select name="select_choix_minutes" id="select_choix_minutes" onChange="valide_un_select(this);">
     <option></option>
     <option>10</option>
     <option>15</option>
@@ -69,10 +69,7 @@ $( document ).ready(function() {
     <option>50</option>
     <option>55</option>
   </select> minutes
-  
-  
-  
-  <br /><br />
+
         
      <div class="suite"><input type="submit" value="Suite &gt;&gt;" disabled="disabled" id="btn_submit" name="btn_submit"></div>
 

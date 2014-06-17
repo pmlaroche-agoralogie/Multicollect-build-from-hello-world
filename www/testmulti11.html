@@ -41,14 +41,11 @@ $( document ).ready(function() {
 <body>
 <form action="resultat.html" class="multi_radio" id="multi_form" name="multi_form">
 	<div class="question">Je pense qu'avec la stimulation,<br />mon TOC :</div> 
-	<div class="radioaucentre"><input type="radio" name="sans" id="sans" onClick="document.multi_form.btn_submit.disabled=false;" />S'améliorerait<br />
-    <input type="radio" name="sans" id="sans" onClick="document.multi_form.btn_submit.disabled=false;" />Serait identique<br />
-    <input type="radio" name="sans" id="sans" onClick="document.multi_form.btn_submit.disabled=false;" />S'aggraverait<br />
-	<input type="radio" name="sans" id="sans" onClick="document.multi_form.btn_submit.disabled=false;" />Je ne sais pas</div>
-    <div class="clear"></div>
-
-    <div class="bottom"></div>
-        
+	<div class="radioaucentre"><input type="radio" name="sans" id="sans" onClick="valide_un_radio();" />S'améliorerait<br />
+    <input type="radio" name="sans" id="sans" onClick="valide_un_radio();" />Serait identique<br />
+    <input type="radio" name="sans" id="sans" onClick="valide_un_radio();;" />S'aggraverait<br />
+	<input type="radio" name="sans" id="sans" onClick="valide_un_radio();" />Je ne sais pas</div>
+       
      <div class="suite"><input type="submit" value="Suite &gt;&gt;"  disabled="disabled" id="btn_submit" name="btn_submit"></div>
 
 </form>

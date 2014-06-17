@@ -14,8 +14,9 @@ div.question.sans_bottom{margin-bottom:10px;}
 .clear {clear:both;}
 
 .btnouinon{font-size:20px;}
-.btnouinon span{padding-right:100px;}
+.btnouinon span.btnagauche{padding-right:100px;}
 .btnouinon input{width:20px;height:20px;padding-top:0;margin-top:0;margin-right:10px;}
+
 .radioaucentre{text-align:left;margin-left:30%;font-size:20px;}
 .radioaucentre input{width:20px;height:20px;padding-top:0;margin:0 10px 32px 0;}
 
@@ -61,7 +62,6 @@ input[type='range']::-webkit-slider-thumb {
 }
 
 .bottomline{border-bottom:solid 1px grey;margin:20px 10px;}
-.bottom{margin:20px 10px;}
 
 .multi_radio{font-size:15px;}
 .multi_radio p{margin-top:15px;margin-bottom:10px;}

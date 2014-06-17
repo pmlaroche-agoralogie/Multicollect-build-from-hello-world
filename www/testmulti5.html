@@ -39,7 +39,7 @@ $( document ).ready(function() {
 </script>
 </head>
 <body>
-<form id="multi_form" name="multi_form" action="" onsubmit="valide_slider('testmulti6.html','testmulti5.html');">
+<form id="multi_form" name="multi_form" action="testmulti6.html" onSubmit="return valide_slider();">
 	<div class="question sans_bottom">A quel point avez-vous été géné(e) par le TOC (obsessions et/ou compulsions) au cours des dernières 24h ? </div> 
 
 	<div class="left bulle une_ligne">Enormément</div><div class="right bulle une_ligne">Pas du tout</div>
@@ -47,8 +47,6 @@ $( document ).ready(function() {
 	<input type="hidden" id="slidervalue" name="slidervalue"/>
 	<div id="slider-range"></div>
 
-    <div class="bottom"></div>
-        
      <div class="suite"><input type="submit" value="Suite &gt;&gt;"></div>
 
 </form>

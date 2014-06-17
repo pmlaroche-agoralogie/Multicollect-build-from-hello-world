@@ -41,11 +41,8 @@ $( document ).ready(function() {
 <body>
 <form action="testmulti10.html" class="multi_radio" id="multi_form" name="multi_form">
 	<div class="question">Etes-vous actuellement sous stimulation ?</div> 
-	<div class="btnouinon"><span><input type="radio" name="radio" id="radio" value="sous_stim" onClick="document.multi_form.btn_submit.disabled=false;"/>OUI</span><input type="radio" name="radio" id="radio" value="sans_stim" onClick="document.multi_form.btn_submit.disabled=false;" />NON</div>
-    <div class="clear"></div>
-    
-    <div class="bottom"></div>
-        
+	<div class="btnouinon"><span class="btnagauche"><input type="radio" name="radio" id="radio" value="sous_stim" onClick="valide_un_radio();"/>OUI</span><span class="btnadroite"><input type="radio" name="radio" id="radio" value="sans_stim" onClick="valide_un_radio();" />NON</span></div>
+       
      <div class="suite"><input type="submit" value="Suite &gt;&gt;" disabled="disabled" id="btn_submit" name="btn_submit"></div>
 
 </form>

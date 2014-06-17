@@ -42,14 +42,14 @@ $( document ).ready(function() {
 <form action="testmulti7.html" id="multi_form" name="multi_form">
     <div class="question">Par rapport à hier, est-ce que vous allez moins bien / pareil / mieux ? </div>
     <div id="emotion">
- <input type="radio" name="emotion" id="moins_bien" onClick="document.multi_form.btn_submit.disabled=false;" />
+ <input type="radio" name="emotion" id="moins_bien" onClick="valide_un_radio();" />
         <label for="moins_bien"><img src="img/moins.png" alt="moins bien" /><br />Moins bien</label>
-    <input type="radio" name="emotion" id="pareil" onClick="document.multi_form.btn_submit.disabled=false;" />
+    <input type="radio" name="emotion" id="pareil" onClick="valide_un_radio();" />
         <label for="pareil"><img src="img/egale.png" alt="pareil" /><br />Pareil</label>
-    <input type="radio" name="emotion" id="mieux" onClick="document.multi_form.btn_submit.disabled=false;" />
+    <input type="radio" name="emotion" id="mieux" onClick="valide_un_radio();" />
         <label for="mieux"><img src="img/plus.png" alt="mieux"  /><br />Mieux</label>
     	</div>
-    <div class="bottom"></div>
+
         
      <div class="suite"><input type="submit" value="Suite &gt;&gt;" disabled="disabled" id="btn_submit" name="btn_submit"></div>
 

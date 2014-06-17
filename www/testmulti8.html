@@ -39,7 +39,7 @@ $( document ).ready(function() {
 </script>
 </head>
 <body>
-<form id="multi_form" name="multi_form" action="" onsubmit="valide_slider('testmulti9.html','testmulti8.html');">
+<form id="multi_form" name="multi_form" action="testmulti9.html" onSubmit="return valide_slider();">
 	<div class="question">Votre journée s'est-elle déroulée mieux ou moins bien que prévu ?</div> 
 
 	<div class="left bulle une_ligne">Moins bien</div><div class="right bulle une_ligne">Mieux</div>
@@ -47,7 +47,6 @@ $( document ).ready(function() {
 	<input type="hidden" id="slidervalue" name="slidervalue"/>
 	<div id="slider-range"></div>
 
-    <div class="bottom"></div>
         
      <div class="suite"><input type="submit" value="Suite &gt;&gt;"></div>
 
