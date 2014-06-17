@@ -1,16 +1,18 @@
 @charset "utf-8";
 /* CSS Document */
 
-html{font-family:sans-serif;min-height:480px;}
-body{width:100%;min-height:480px;font-size:13px;margin:0;padding:0;}
+html{font-family:sans-serif;height:480px;}
+body{width:100%;height:480px;font-size:13px;margin:0;padding:0;}
 @media screen and (orientation:portrait) {
-body{background-color:#FFFFFF;}
+div.question{margin-bottom:40px;margin-top:50px;font-weight:bold;font-size:16px;}
+div.question.sans_bottom{margin-bottom:10px;}
 }
 @media screen and (orientation:landscape) {
-body{background-color: #00CCFF;}
+div.question{margin-bottom:0px;margin-top:0px;font-weight:bold;font-size:16px;}
+div.question.sans_bottom{margin-bottom:0px;}
 }
-div.question{margin-bottom:40px;margin-top:50px;font-weight:bold;font-size:16px;background-image:url(../img/fond_question.jpg);width:100%;height:100%;display:block;background-repeat: no-repeat;}
-div.question.sans_bottom{margin-bottom:10px;}
+
+
 .left {float:left;font-size:20px;}
 .left.bulle {background-image:url(../img/bulle_gauche.jpg);background-repeat:no-repeat;width:141px;height:77px;text-align:center;padding-top:28px;font-size:20px;}
 .left.bulle.une_ligne{height:67px;padding-top:38px;}
