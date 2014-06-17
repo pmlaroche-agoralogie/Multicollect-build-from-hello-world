@@ -70,3 +70,4 @@ input[type='range']::-webkit-slider-thumb {
 
 div.suite{bottom:10%;width:100%;position: absolute;left:0;}
 div.suite input{width:200px;height:80px;font-weight:bold;font-size:25px;}
+div.suite.retour_accueil input{font-size:20px;}
