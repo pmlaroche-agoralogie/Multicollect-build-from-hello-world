@@ -6,10 +6,14 @@ body{width:100%;height:480px;font-size:13px;margin:0;padding:0;}
 @media screen and (orientation:portrait) {
 div.question{margin-bottom:40px;margin-top:50px;font-weight:bold;font-size:16px;}
 div.question.sans_bottom{margin-bottom:10px;}
+div.suite{bottom:10%;width:100%;position: absolute;left:0;}
+.radioaucentre input{width:20px;height:20px;padding-top:0;margin:0 10px 32px 0;}
 }
 @media screen and (orientation:landscape) {
-div.question{margin-bottom:0px;margin-top:0px;font-weight:bold;font-size:16px;}
-div.question.sans_bottom{margin-bottom:0px;}
+div.question{margin-bottom:10px;margin-top:10px;font-weight:bold;font-size:16px;}
+div.question.sans_bottom{margin-bottom:5px;}
+div.suite{bottom:5%;width:100%;position: absolute;left:0;}
+.radioaucentre input{width:20px;height:20px;padding-top:0;margin:0 10px 15px 0;}
 }
 
 
@@ -26,7 +30,7 @@ div.question.sans_bottom{margin-bottom:0px;}
 .btnouinon input{width:20px;height:20px;padding-top:0;margin-top:0;margin-right:10px;}
 
 .radioaucentre{text-align:left;margin-left:30%;font-size:20px;}
-.radioaucentre input{width:20px;height:20px;padding-top:0;margin:0 10px 32px 0;}
+
 
 form{text-align:center; margin-left:5%;margin-right:5%;}
 
@@ -76,6 +80,6 @@ input[type='range']::-webkit-slider-thumb {
 #sous_stim input,#sans_stim input{margin-bottom:20px;}
 #sans_titre,#sous_titre{font-isze:13px;font-weight:bold;}
 
-div.suite{bottom:10%;width:100%;position: absolute;left:0;}
+
 div.suite input{width:200px;height:80px;font-weight:bold;font-size:25px;}
 div.suite.retour_accueil input{font-size:20px;}
