@@ -29,7 +29,7 @@ $( document ).ready(function() {
 	 		$('input#slidervalue').val(ui.value);
 		}
 	});
-	 $('input#slidervalue').val(50);
+	 $('input#slidervalue').val(50);	
 	 
 	 $( "#slider-range" ).draggable();
 
@@ -39,20 +39,28 @@ $( document ).ready(function() {
 </script>
 </head>
 <body>
+	
+	   
+  
+        <div class="conteneur">
 
-    <form action="testmulti1.html" id="multi_form" name="multi_form">
-        <div class="question">Où êtes-vous ?</div> 
-         <select name="select_choix_lieu" id="select_choix_lieu" onChange="valide_un_select(this);">
-            <option> </option>
-            <option>Je suis chez moi</option>
-            <option>Je suis au travail</option>
-            <option>Je suis dans les transports</option>
-            <option>Autres</option>
-      </select>
-            
-        <div class="suite"><input type="submit" value="Suite &gt;&gt;" disabled="disabled" id="btn_submit" name="btn_submit"></div>
+             <div class="contenu">
+	              <div class="question">Où êtes-vous ?</div> 
+				<form action="testmulti1.html" id="multi_form" name="multi_form">
+                    <select name="select_choix_lieu" id="select_choix_lieu" onChange="valide_un_select(this);">
+                    <option> </option>
+                    <option>Je suis chez moi</option>
+                    <option>Je suis au travail</option>
+                    <option>Je suis dans les transports</option>
+                    <option>Autres</option>
+                    </select>
+                     <div class="suite"><input type="submit" value="Suite &gt;&gt;" disabled="disabled" id="btn_submit" name="btn_submit"></div>
+				</form>
+             </div> 
+        </div> 
+       
     
-    </form>
+
 
 </body>
 </html>

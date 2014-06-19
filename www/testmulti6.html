@@ -39,8 +39,13 @@ $( document ).ready(function() {
 </script>
 </head>
 <body>
+
+  <div class="conteneur">
+
+             <div class="contenu">
+         <div class="question">Par rapport à hier, est-ce que vous allez moins bien / pareil / mieux ? </div>        
 <form action="testmulti7.html" id="multi_form" name="multi_form">
-    <div class="question">Par rapport à hier, est-ce que vous allez moins bien / pareil / mieux ? </div>
+
     <div id="emotion">
  <input type="radio" name="emotion" id="moins_bien" onClick="valide_un_radio();" />
         <label for="moins_bien"><img src="img/moins.png" alt="moins bien" /><br />Moins bien</label>
@@ -54,5 +59,8 @@ $( document ).ready(function() {
      <div class="suite"><input type="submit" value="Suite &gt;&gt;" disabled="disabled" id="btn_submit" name="btn_submit"></div>
 
 </form>
+
+ </div> 
+        </div> 
 </body>
 </html>
