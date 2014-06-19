@@ -6,12 +6,10 @@
 <meta name="viewport" content="width=device-width">
 <link href="css/ui-lightness/jquery-ui-1.10.4.custom.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/styles.css" media="all" />
-
 <script src='js/toc.js' type='text/javascript'></script>
 <script src='js/jquery-2.1.1.min.js' type='text/javascript'></script>
 <script src='js/jquery-ui-1.10.4.custom.min.js' type='text/javascript'></script>
 <script src='js/jquery.ui.touch-punch.min.js' type='text/javascript'></script>
-
 <script>
 $( document ).ready(function() {
 	$('#emotion input:radio').addClass('input_hidden');
@@ -39,28 +37,22 @@ $( document ).ready(function() {
 </script>
 </head>
 <body>
-	
-	   
-  
-        <div class="conteneur">
-
-             <div class="contenu">
-	              <div class="question">Où êtes-vous ?</div> 
-				<form action="testmulti1.html" id="multi_form" name="multi_form">
-                    <select name="select_choix_lieu" id="select_choix_lieu" onChange="valide_un_select(this);">
-                    <option> </option>
-                    <option>Je suis chez moi</option>
-                    <option>Je suis au travail</option>
-                    <option>Je suis dans les transports</option>
-                    <option>Autres</option>
-                    </select>
-                     <div class="suite"><input type="submit" value="Suite &gt;&gt;" disabled="disabled" id="btn_submit" name="btn_submit"></div>
-				</form>
-             </div> 
-        </div> 
-       
-    
-
-
+<div class="conteneur">
+  <div class="contenu">
+    <div class="question">Où êtes-vous ?</div>
+    <form action="testmulti1.html" id="multi_form" name="multi_form">
+      <select name="select_choix_lieu" id="select_choix_lieu" onChange="valide_un_select(this);">
+        <option> </option>
+        <option>Je suis chez moi</option>
+        <option>Je suis au travail</option>
+        <option>Je suis dans les transports</option>
+        <option>Autres</option>
+      </select>
+      <div class="suite">
+        <input type="submit" value="Suite &gt;&gt;" disabled="disabled" id="btn_submit" name="btn_submit">
+      </div>
+    </form>
+  </div>
+</div>
 </body>
 </html>

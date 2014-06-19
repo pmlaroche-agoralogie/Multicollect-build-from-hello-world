@@ -6,12 +6,10 @@
 <meta name="viewport" content="width=device-width">
 <link href="css/ui-lightness/jquery-ui-1.10.4.custom.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/styles.css" media="all" />
-
 <script src='js/toc.js' type='text/javascript'></script>
 <script src='js/jquery-2.1.1.min.js' type='text/javascript'></script>
 <script src='js/jquery-ui-1.10.4.custom.min.js' type='text/javascript'></script>
 <script src='js/jquery.ui.touch-punch.min.js' type='text/javascript'></script>
-
 <script>
 $( document ).ready(function() {
 	$('#emotion input:radio').addClass('input_hidden');
@@ -39,22 +37,24 @@ $( document ).ready(function() {
 </script>
 </head>
 <body>
-  <div class="conteneur">
-
-             <div class="contenu">
-             	<div class="question">Je pense qu'avec la stimulation, mon TOC :</div> 
-<form action="resultat.html" class="multi_radio" id="multi_form" name="multi_form">
-
-	<div class="radioaucentre"><input type="radio" name="sans" id="sans" onClick="valide_un_radio();" />S'améliorerait<br />
-    <input type="radio" name="sans" id="sans" onClick="valide_un_radio();" />Serait identique<br />
-    <input type="radio" name="sans" id="sans" onClick="valide_un_radio();;" />S'aggraverait<br />
-	<input type="radio" name="sans" id="sans" onClick="valide_un_radio();" />Je ne sais pas</div>
-       
-     <div class="suite"><input type="submit" value="Suite &gt;&gt;"  disabled="disabled" id="btn_submit" name="btn_submit"></div>
-
-</form>
-
- </div> 
-        </div> 
+<div class="conteneur">
+  <div class="contenu">
+    <div class="question">Je pense qu'avec la stimulation, mon TOC :</div>
+    <form action="resultat.html" class="multi_radio" id="multi_form" name="multi_form">
+      <div class="radioaucentre">
+        <input type="radio" name="sans" id="sans" onClick="valide_un_radio();" />
+        S'améliorerait<br />
+        <input type="radio" name="sans" id="sans" onClick="valide_un_radio();" />
+        Serait identique<br />
+        <input type="radio" name="sans" id="sans" onClick="valide_un_radio();;" />
+        S'aggraverait<br />
+        <input type="radio" name="sans" id="sans" onClick="valide_un_radio();" />
+        Je ne sais pas</div>
+      <div class="suite">
+        <input type="submit" value="Suite &gt;&gt;"  disabled="disabled" id="btn_submit" name="btn_submit">
+      </div>
+    </form>
+  </div>
+</div>
 </body>
 </html>

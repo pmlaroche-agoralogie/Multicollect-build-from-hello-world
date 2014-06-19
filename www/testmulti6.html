@@ -6,12 +6,10 @@
 <meta name="viewport" content="width=device-width">
 <link href="css/ui-lightness/jquery-ui-1.10.4.custom.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/styles.css" media="all" />
-
 <script src='js/toc.js' type='text/javascript'></script>
 <script src='js/jquery-2.1.1.min.js' type='text/javascript'></script>
 <script src='js/jquery-ui-1.10.4.custom.min.js' type='text/javascript'></script>
 <script src='js/jquery.ui.touch-punch.min.js' type='text/javascript'></script>
-
 <script>
 $( document ).ready(function() {
 	$('#emotion input:radio').addClass('input_hidden');
@@ -39,28 +37,26 @@ $( document ).ready(function() {
 </script>
 </head>
 <body>
-
-  <div class="conteneur">
-
-             <div class="contenu">
-         <div class="question">Par rapport à hier, est-ce que vous allez moins bien / pareil / mieux ? </div>        
-<form action="testmulti7.html" id="multi_form" name="multi_form">
-
-    <div id="emotion">
- <input type="radio" name="emotion" id="moins_bien" onClick="valide_un_radio();" />
-        <label for="moins_bien"><img src="img/moins.png" alt="moins bien" /><br />Moins bien</label>
-    <input type="radio" name="emotion" id="pareil" onClick="valide_un_radio();" />
-        <label for="pareil"><img src="img/egale.png" alt="pareil" /><br />Pareil</label>
-    <input type="radio" name="emotion" id="mieux" onClick="valide_un_radio();" />
-        <label for="mieux"><img src="img/plus.png" alt="mieux"  /><br />Mieux</label>
-    	</div>
-
-        
-     <div class="suite"><input type="submit" value="Suite &gt;&gt;" disabled="disabled" id="btn_submit" name="btn_submit"></div>
-
-</form>
-
- </div> 
-        </div> 
+<div class="conteneur">
+  <div class="contenu">
+    <div class="question">Par rapport à hier, est-ce que vous allez moins bien / pareil / mieux ? </div>
+    <form action="testmulti7.html" id="multi_form" name="multi_form">
+      <div id="emotion">
+        <input type="radio" name="emotion" id="moins_bien" onClick="valide_un_radio();" />
+        <label for="moins_bien"><img src="img/moins.png" alt="moins bien" /><br />
+        Moins bien</label>
+        <input type="radio" name="emotion" id="pareil" onClick="valide_un_radio();" />
+        <label for="pareil"><img src="img/egale.png" alt="pareil" /><br />
+        Pareil</label>
+        <input type="radio" name="emotion" id="mieux" onClick="valide_un_radio();" />
+        <label for="mieux"><img src="img/plus.png" alt="mieux"  /><br />
+        Mieux</label>
+      </div>
+      <div class="suite">
+        <input type="submit" value="Suite &gt;&gt;" disabled="disabled" id="btn_submit" name="btn_submit">
+      </div>
+    </form>
+  </div>
+</div>
 </body>
 </html>
