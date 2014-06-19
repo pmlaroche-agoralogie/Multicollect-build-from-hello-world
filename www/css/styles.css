@@ -1,12 +1,13 @@
 @charset "utf-8";
 /* CSS Document */
 
-html{font-family:sans-serif;height:480px;}
-body{width:100%;height:480px;font-size:13px;margin:0;padding:0;}
+html{font-family:sans-serif;}
+body{width:100%;height:100%;font-size:13px;margin:0;padding:0;text-align:center;}
 
+form{margin-left:5%;margin-right:5%;}
 
-div.question{margin-bottom:40px;margin-top:50px;font-weight:bold;font-size:16px;}
-div.question.sans_bottom{margin-bottom:10px;}
+div.question{font-weight:bold;font-size:16px;margin-top:5%;margin-bottom:5%;}
+div.question.sans_bottom{margin-bottom:0%;}
 
 
 .left {float:left;font-size:20px;}
@@ -24,44 +25,18 @@ div.question.sans_bottom{margin-bottom:10px;}
 .radioaucentre{text-align:left;margin-left:30%;font-size:20px;}
 .radioaucentre input{width:20px;height:20px;padding-top:0;margin:0 10px 32px 0;}
 
-div.suite{bottom:10%;width:100%;position: absolute;left:0;}
+div.suite{bottom:10px;width:100%;position: absolute;left:0;}
 div.suite input{width:200px;height:80px;font-weight:bold;font-size:25px;}
 div.suite.retour_accueil input{font-size:20px;}
 
 
-form{text-align:center; margin-left:5%;margin-right:5%;}
 
-input[type='range'] {
-    -webkit-appearance: none !important;
-    background:red;
-    height:27px;
-}
-input[type='range']::-webkit-slider-thumb {
-    -webkit-appearance: none !important;
-    background:blue;
-    height:10px;
-    width:10px;
-}
-
-#emotion .input_hidden {
-    position: absolute;
-    left: -9999px;
-}
-
-#emotion .selected {
-    background-color: #ccc;
-}
-
-#emotion label {
-    display: inline-block;
-    cursor: pointer;
-}
-
-#emotion label img {
-    padding: 10px;
-}
-
-
+input[type='range'] {-webkit-appearance: none !important;background:red;height:27px;}
+input[type='range']::-webkit-slider-thumb {-webkit-appearance: none !important;background:blue;height:10px;width:10px;}
+#emotion .input_hidden {position: absolute;left: -9999px;}
+#emotion .selected {background-color: #ccc;}
+#emotion label {display: inline-block;cursor: pointer;}
+#emotion label img {padding: 10px;}
 #slider-range{
 	margin-top:20px;
 	background: -webkit-linear-gradient(left, red , yellow, green); /* For Safari 5.1 to 6.0 */
@@ -70,13 +45,6 @@ input[type='range']::-webkit-slider-thumb {
 	background: linear-gradient(to right, red , yellow, green); /* Standard syntax */
 }
 
-
-@media screen and (orientation:landscape) {
-div.question{margin-bottom:10px;margin-top:10px;}
-div.question.sans_bottom{margin-bottom:5px;}
-div.suite{bottom:5%;}
-.radioaucentre input{padding-top:0;margin:0 10px 15px 0;}
-}
 
 
 
