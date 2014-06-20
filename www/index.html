@@ -26,67 +26,78 @@
 <link rel="stylesheet" type="text/css" href="css/styles.css" />
 <meta name="msapplication-tap-highlight" content="no" />
 <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/load_and_read.js"></script>
 <title>Collecting</title>
 </head>
 <body class="home">
-<div class="conteneur">
-  <div class="contenu">
-    <div id='blocinit' class="app">
-      <h1>Apache Cordova</h1>
-      <div id="deviceready" class="blink">
-        <p class="event listening">Connecting to Device</p>
-        <p class="event received">Device is Ready</p>
-      </div>
-    </div>
-    <script type="text/javascript" src="js/load_and_read.js"></script>
-    <!-- <div id="pagesettings">
-                <button id="chargement">Get LSS</button>
+
+		<!-- bloc init -->
+        <div id='blocinit' class="app">
+          <h1>Apache Cordova</h1>
+          <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+          </div>
+        </div>
+        
+        <!-- <div id="pagesettings">
+        <button id="chargement">Get LSS</button>
         </div>  -->
-    <script type="text/javascript"> 
-        var questionText = "nondef";
-        var button1 = document.getElementById('chargement');  
-      	//console.log('cc');
-        //button1.onclick = makeCorsRequest('http://mcp.ocd-dbs-france.org/lss/lss_934317'); 
-        $( document ).ready(function() {
-        	$('#chargement').click(function() {
-        		makeCorsRequest('http://mcp.ocd-dbs-france.org/lss/lss_934317'); 
-        	});
-        	});
+        
+        <!-- code javascript -->
+		<script type="text/javascript"> 
+			var questionText = "nondef";
+			var button1 = document.getElementById('chargement');  
+			//console.log('cc');
+			//button1.onclick = makeCorsRequest('http://mcp.ocd-dbs-france.org/lss/lss_934317'); 
+			$( document ).ready(function() {
+				$('#chargement').click(function() {
+					makeCorsRequest('http://mcp.ocd-dbs-france.org/lss/lss_934317'); 
+				});
+				});
         </script>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript">
-        if(isMobile)
-        	 app.initialize();
-        else
-        	app.onDeviceReady();
+		<script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+			if(isMobile)
+				 app.initialize();
+			else
+				app.onDeviceReady();
         </script>
-    <!--<a href="javascript:;" onClick="begin_acquisition();">Il y a un questionnaire disponible</a>
-    </br>
-    <a href="javascript:;" onClick="show_settings();">Reglage</a>-->
-    <div class="btn_reglages"><a href="javascript:;" onClick="show_settings();"><img src="img/reglages.png" /></a></div>
-    <div class="titre_journal">Journal de bord</div>
-    <div id='home'>
-      <div class="question">Vous avez un questionnaire à remplir</div>
-      <div class="suite home">
-        <input type="button" value="Je remplis&#13;&#10;le questionnaire" onClick="window.location='testmulti0.html'">
-      </div>
-    </div>
-    <div id='acquisition' style='display: none;'> <span id='question1' font-size: 30pt></span> <span id='answer1' font-size: 25pt></span> <br>
-      Suite </div>
-    <div id='settings' style='display: none;'>
-      <div class="question">Vous participez au suivi : 156984<br /><br />
-        Nouveau suivi : </div>
-      <form NAME="myform" ACTION="" METHOD="GET">
-        <INPUT TYPE="text" NAME="inputbox" VALUE="">
-        </br>
-        <INPUT TYPE="button" NAME="button" Value="Charger" onClick="testNewStudy(this.form)">
-      </form>
-      <div class="suite home">
-        <input type="button" value="Retour Accueil" onClick="go_home();">
-      </div>
-    </div>
-  </div>
-</div>
+		<!--<a href="javascript:;" onClick="begin_acquisition();">Il y a un questionnaire disponible</a></br><a href="javascript:;" onClick="show_settings();">Reglage</a>-->
+
+		<!-- contenu de la page -->
+        <div class="conteneur">
+          <div class="contenu">
+            <!--<div class="btn_reglages"><a href="javascript:;" onClick="show_settings();"><img src="img/reglages.png" /></a></div>
+            <div class="titre_journal">Journal de bord</div>
+            <div id='home'>-->
+              <div class="question">Vous avez un questionnaire à remplir</div>
+              <div class="suite home">
+                <input type="button" value="Je remplis&#13;&#10;le questionnaire" onClick="window.location='testmulti0.html'">
+              </div>
+           <!--  </div> -->
+            <div id='acquisition' style='display: none;'> 
+            	<span id='question1' font-size: 30pt></span> <span id='answer1' font-size: 25pt></span> <br>Suite
+            </div>
+            <div id='settings' style='display: none;'>
+              <div class="question">Vous participez au suivi : 156984<br />
+                <br />
+                Nouveau suivi : </div>
+              <form NAME="myform" ACTION="" METHOD="GET">
+                <INPUT TYPE="text" NAME="inputbox" VALUE="">
+                </br>
+                <INPUT TYPE="button" NAME="button" Value="Charger" onClick="testNewStudy(this.form)">
+              </form>
+              <div class="suite home">
+                <input type="button" value="Retour Accueil" onClick="go_home();">
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
 </body>
 </html>
