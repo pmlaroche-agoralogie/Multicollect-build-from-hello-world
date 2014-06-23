@@ -39,17 +39,22 @@ $( document ).ready(function() {
 <body>
 <div class="conteneur">
   <div class="contenu">
-    <div class="question">Je pense qu'avec la stimulation, mon TOC :</div>
-    <form action="resultat.html" class="multi_radio" id="multi_form" name="multi_form">
-      <div class="radioaucentre">
-        <input type="radio" name="sans" id="sans" onClick="valide_un_radio();" />
-        S'améliorerait<br />
-        <input type="radio" name="sans" id="sans" onClick="valide_un_radio();" />
-        Serait identique<br />
-        <input type="radio" name="sans" id="sans" onClick="valide_un_radio();;" />
-        S'aggraverait<br />
-        <input type="radio" name="sans" id="sans" onClick="valide_un_radio();" />
-        Je ne sais pas</div>
+    <div class="question">Pensez-vous qu'avec la stimulation, votre TOC :</div>
+    <form action="resultat.html" id="multi_form" name="multi_form">
+      <div id="emotion">
+        <div id="emotion">
+        <input type="radio" name="reponse" id="agrave" onClick="valide_un_radio();" />
+        <label for="agrave"><img src="img/moins.png" alt="s'agrave" /><br />
+        S'aggraverait</label>
+
+        <input type="radio" name="reponse" id="identique" onClick="valide_un_radio();" />
+        <label for="identique"><img src="img/egale.png" alt="s'agrave" /><br />
+        Serait identique</label>
+        
+        <input type="radio" name="reponse" id="ameliore" onClick="valide_un_radio();" />
+        <label for="ameliore"><img src="img/plus.png" alt="s'améliore" /><br />
+        S'améliorerait</label>
+      </div>
       <div class="suite">
         <input type="submit" value="Suite &gt;&gt;"  disabled="disabled" id="btn_submit" name="btn_submit">
       </div>

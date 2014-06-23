@@ -40,12 +40,15 @@ $( document ).ready(function() {
 <div class="conteneur">
   <div class="contenu">
     <div class="question">Etes-vous actuellement sous stimulation ?</div>
-    <form action="testmulti10.html" class="multi_radio" id="multi_form" name="multi_form">
-      <div class="btnouinon"><span class="btnagauche">
-        <input type="radio" name="radio" id="radio" value="sous_stim" onClick="valide_un_radio();"/>
-        OUI</span><span class="btnadroite">
-        <input type="radio" name="radio" id="radio" value="sans_stim" onClick="valide_un_radio();" />
-        NON</span></div>
+    <form action="testmulti10.html" id="multi_form" name="multi_form">
+      <div id="emotion">
+        <input type="radio" name="reponse" id="oui" onClick="valide_un_radio('testmulti10.html');" />
+        <label for="oui"><img src="img/ok.png" alt="oui" /><br />
+        Oui</label>
+        <input type="radio" name="reponse" id="non" onClick="valide_un_radio('testmulti11.html');" />
+        <label for="non"><img src="img/ko.png" alt="non" /><br />
+        Non</label>
+      </div>
       <div class="suite">
         <input type="submit" value="Suite &gt;&gt;" disabled="disabled" id="btn_submit" name="btn_submit">
       </div>

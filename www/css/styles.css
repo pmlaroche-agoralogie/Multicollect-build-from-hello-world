@@ -20,7 +20,8 @@ div.conteneur {display:table;height:60%;width:100%;}
 
 div.contenu {display:table-cell; vertical-align:middle;text-align:center}
 
-div.question{font-weight:bold;font-size:16px;margin-bottom:20px;}
+div.question{font-weight:bold;font-size:16px;margin-bottom:20px;background-color: #CCCCCC;padding: 5px 0 5px 0;	border-radius:25px;}
+div.bulle_seule {background-image:url(../img/bulle_seule.png);background-repeat:no-repeat;width:282px;height:210px;text-align:center;font-size:25px;margin:auto;padding-top:80px;}
 
 .left {float:left;font-size:20px;}
 .left.bulle {background-image:url(../img/bulle_gauche.jpg);background-repeat:no-repeat;width:141px;height:77px;text-align:center;padding-top:28px;font-size:20px;}
@@ -30,12 +31,6 @@ div.question{font-weight:bold;font-size:16px;margin-bottom:20px;}
 .right.bulle.une_ligne{height:67px;padding-top:38px;}
 .clear {clear:both;}
 
-.btnouinon{font-size:20px;}
-.btnouinon span.btnagauche{padding-right:100px;}
-.btnouinon input{width:20px;height:20px;padding-top:0;margin-top:0;margin-right:10px;}
-
-.radioaucentre{text-align:left;margin-left:30%;font-size:20px;}
-.radioaucentre input{width:20px;height:20px;padding-top:0;margin:0 10px 32px 0;}
 
 div.suite{bottom:10px;width:100%;position: absolute;left:0;}
 div.suite input{width:200px;height:75px;font-weight:bold;font-size:25px;}
@@ -74,6 +69,34 @@ div.titre_journal {
 }
 div.btn_reglages{text-align:right;width:98%;margin: 10px 0 0 0;}
 
+#radio_style{text-align:left;width:300px;margin:50px auto 0 auto;}
+#radio_style p{margin-bottom:20px;}
+#radio_style input[type='radio'] {
 
+    /* Hide the input, but have it still be clickable */
+    opacity: 0;
 
+    width: 20px;
+}
 
+#radio_style input[type='radio'] + label {
+font-size: 20px;
+	height:45px;
+    margin: 0;
+    clear: none;
+
+    /* Left padding makes room for image */
+    padding: 5px 0 0 30px;
+
+    /* Make look clickable because they are */
+    cursor: pointer;
+
+    background: url(../img/radio_off.jpg) left center no-repeat;
+}
+
+/*
+    Change from unchecked to checked graphic
+*/
+#radio_style input[type='radio']:checked + label {
+    background-image: url(../img/radio_on.jpg);
+}
