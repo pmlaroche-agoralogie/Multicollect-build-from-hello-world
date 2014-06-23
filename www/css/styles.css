@@ -20,8 +20,9 @@ div.conteneur {display:table;height:60%;width:100%;}
 
 div.contenu {display:table-cell; vertical-align:middle;text-align:center}
 
-div.question{font-weight:bold;font-size:16px;margin-bottom:20px;background-color: #CCCCCC;padding: 5px 0 5px 0;	border-radius:25px;}
-div.bulle_seule {background-image:url(../img/bulle_seule.png);background-repeat:no-repeat;width:282px;height:210px;text-align:center;font-size:25px;margin:auto;padding-top:80px;}
+div.question{font-weight:bold;font-size:16px;margin-bottom:20px;background-color: #5bca63;padding: 5px 5px 5px 5px;	border-radius:25px; color:#FFFFFF;}
+div.question.sans_bottom{margin-bottom:10px;}
+div.bulle_seule {background-image:url(../img/bulle_seule.png);background-repeat:no-repeat;width:282px;height:210px;text-align:center;font-size:25px;margin:auto;padding-top:80px;margin-top:10px;}
 
 .left {float:left;font-size:20px;}
 .left.bulle {background-image:url(../img/bulle_gauche.jpg);background-repeat:no-repeat;width:141px;height:77px;text-align:center;padding-top:28px;font-size:20px;}
