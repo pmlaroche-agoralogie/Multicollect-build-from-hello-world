@@ -69,8 +69,8 @@ div.titre_journal {
 }
 div.btn_reglages{text-align:right;width:98%;margin: 10px 0 0 0;}
 
-#radio_style{text-align:left;width:300px;margin:50px auto 0 auto;}
-#radio_style p{margin-bottom:20px;}
+#radio_style{text-align:left;width:300px;margin:0 auto 0 auto;}
+
 #radio_style input[type='radio'] {
 
     /* Hide the input, but have it still be clickable */
@@ -81,7 +81,7 @@ div.btn_reglages{text-align:right;width:98%;margin: 10px 0 0 0;}
 
 #radio_style input[type='radio'] + label {
 font-size: 20px;
-	height:45px;
+
     margin: 0;
     clear: none;
 
