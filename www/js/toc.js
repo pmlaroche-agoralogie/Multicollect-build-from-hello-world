@@ -9,7 +9,7 @@ function valide_un_select(nom_select){
 	}
 
 }
-function valide_un_radio(change_action=''){
+function valide_un_radio(change_action){
 	if (change_action != ''){
 		document.multi_form.action=change_action;
 	}
