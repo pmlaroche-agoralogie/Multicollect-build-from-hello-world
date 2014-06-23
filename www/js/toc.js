@@ -16,17 +16,29 @@ function valide_un_radio(change_action){
 	document.multi_form.btn_submit.disabled=false;
 	
 }
-function valide_slider(){
-	
-	if (document.multi_form.slidervalue.value == 50){
-		var r = confirm("Confirmez-vous la valeur du slider ?");
-		if (r == true) {
+function valide_slider(valeur){
+
+	if( typeof(valeur) != 'undefined' ){
+		if (document.multi_form.slidervalue.value == 5 && document.multi_form.slidervalue2.value == 30){
+			var r = confirm("Confirmez-vous la valeur du slider ?");
+			if (r == true) {
+				return true;
+			 }else{
+				return false;
+			 }
+		}else{
 			return true;
-		 }else{
-			return false;
-		 }
+		}
 	}else{
-		return true;
+		if (document.multi_form.slidervalue.value == 50){
+			var r = confirm("Confirmez-vous la valeur du slider ?");
+			if (r == true) {
+				return true;
+			 }else{
+				return false;
+			 }
+		}else{
+			return true;
+		}
 	}
-	
 }

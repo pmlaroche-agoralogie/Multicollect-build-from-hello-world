@@ -20,17 +20,28 @@ $( document ).ready(function() {
 	
 	 $( "#slider-range" ).slider({
 		 min: 0,
-		 max: 100,
-		 values: [ 50 ],
+		 max: 10,
+		 values: [ 5 ],
 		change: function(event, ui) 
 		{
 	 		$('input#slidervalue').val(ui.value);
 		}
 	});
-	 $('input#slidervalue').val(50);
-	 
+	
+	$( "#slider-range2" ).slider({
+		 min: 0,
+		 max: 60,
+		 values: [ 30 ],
+		change: function(event, ui) 
+		{
+	 		$('input#slidervalue2').val(ui.value);
+		}
+	});
+	
+	 $('input#slidervalue').val(5);
+	 $('input#slidervalue2').val(30);	 
 	 $( "#slider-range" ).draggable();
-
+	 $( "#slider-range2" ).draggable();
 	
 	
 });
@@ -40,38 +51,22 @@ $( document ).ready(function() {
 <div class="conteneur">
   <div class="contenu">
     <div class="question">Pendant combien de temps avez-vous été occupé par le TOC (obsessions et/ou compulsions) au cours des dernières 24h ? </div>
-    <form action="testmulti5.html" id="multi_form" name="multi_form">
-      <select name="select_choix_heures" id="select_choix_heures" onChange="valide_un_select(this);">
-        <option></option>
-        <option>0</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>6</option>
-        <option>7</option>
-        <option>8</option>
-        <option>9</option>
-        <option>10</option>
-      </select>
-      heures et
-      <select name="select_choix_minutes" id="select_choix_minutes" onChange="valide_un_select(this);">
-        <option></option>
-        <option>10</option>
-        <option>15</option>
-        <option>20</option>
-        <option>25</option>
-        <option>30</option>
-        <option>35</option>
-        <option>40</option>
-        <option>45</option>
-        <option>50</option>
-        <option>55</option>
-      </select>
-      minutes
+     <form id="multi_form" name="multi_form" action="testmulti6.html" onSubmit="return valide_slider('temps');">
+      <div class="un_slider">
+          <span class="infos_slider"><input type="text" id="slidervalue" name="slidervalue" size="1" /> heure(s)</span>
+          <div class="clear"></div>
+           
+          <div id="slider-range" class="plusieurs"></div>
+      </div>
+       <div class="deux_slider">    
+          <span class="infos_slider"><input type="text" id="slidervalue2" name="slidervalue2" size="1" /> minute(s)</span>
+          <div class="clear"></div>
+          
+          <div id="slider-range2" class="plusieurs"></div>
+            </div>    
+
       <div class="suite">
-        <input type="submit" value="Suite &gt;&gt;" disabled="disabled" id="btn_submit" name="btn_submit">
+        <input type="submit" value="Suite &gt;&gt;" id="btn_submit" name="btn_submit">
       </div>
     </form>
   </div>
