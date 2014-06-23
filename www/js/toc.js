@@ -10,7 +10,7 @@ function valide_un_select(nom_select){
 
 }
 function valide_un_radio(change_action){
-	if (change_action != ''){
+ if( typeof(change_action) == 'undefined' ){
 		document.multi_form.action=change_action;
 	}
 	document.multi_form.btn_submit.disabled=false;
