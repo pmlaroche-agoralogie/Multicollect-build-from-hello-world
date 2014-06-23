@@ -51,8 +51,8 @@ input[type='range']::-webkit-slider-thumb {-webkit-appearance: none !important;b
 	background: -moz-linear-gradient(right, red , yellow, green); /* For Firefox 3.6 to 15 */
 	background: linear-gradient(to right, red , yellow, green); /* Standard syntax */
 }
-#slider-range.plusieurs,#slider-range2.plusieurs{margin-top:15px;}
-div.deux_slider{margin-top:60px;}
+#slider-range.plusieurs,#slider-range2.plusieurs{margin-top:10px;}
+div.deux_slider{margin-top:20px;}
 span.infos_slider{font-size:20px;}
 span.infos_slider input{border:0;border:none;font-size:20px;text-align:right;}
 
