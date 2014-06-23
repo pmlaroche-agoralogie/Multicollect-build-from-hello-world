@@ -114,7 +114,53 @@ onDeviceReady: function() {
                                       }, function(e) {
                                       alert("ERROR: " + e.message);
                                       });
+                        
+                        //test affichage questionnaire sur timestamp
+                        //tx.executeSql('CREATE TABLE IF NOT EXISTS "horaires" ("id" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "uidquestionnaire" VARCHAR, "tsdebut" INTEGER, "dureevalidite" INTEGER, "fait" INTEGER);');
+                        //tx.executeSql('DROP TABLE IF EXISTS "horaires"');
+                        //alert('CREATE TABLE IF NOT EXISTS "horaires" ("id" INTEGER PRIMARY KEY AUTOINCREMENT , "uidquestionnaire" VARCHAR, "tsdebut" INTEGER, "dureevalidite" INTEGER, "fait" INTEGER);');
+                        tx.executeSql('CREATE TABLE IF NOT EXISTS "horaires" ("id" INTEGER PRIMARY KEY AUTOINCREMENT , "uidquestionnaire" VARCHAR, "tsdebut" INTEGER, "dureevalidite" INTEGER, "fait" INTEGER);');
+                        
+                        //si pas d'enregistrement, j'en remet
+                        var timestamp = Math.round(new Date().getTime() / 1000);
+                        //alert('timestamp '+timestamp);
+                        tx.executeSql('select count("id") as cnt from "horaires" WHERE tsdebut > '+timestamp+';', [], function(tx, res) {
+                        	//2mn =120
+                        	//15min = 900
+                        	var periodetest = 120;
+                        	var ecarttest = 120*3;
+                        	var nbtest = 4;
+                        	var i = 0;
+                        	//alert('nbligne '+res.rows.item(0).cnt);
+                        	if (res.rows.item(0).cnt == 0)
+                        	{
+                        		while (i < nbtest) {
+                        			//alert('insert INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite, fait) VALUES("monuidtest",'+(timestamp+(ecarttest*i))+','+periodetest+',0);');
+                        			tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite, fait) VALUES("monuidtest",'+(timestamp+(ecarttest*i))+','+periodetest+',0);');
+                        		    i++;
+                        		}
+                        	}
                         });
+                        
+                        //alert('SELECT *,(tsdebut +dureevalidite) as fin FROM "horaires" WHERE tsdebut < '+timestamp+' AND fin > '+timestamp+';');
+                        tx.executeSql('SELECT *,(tsdebut +dureevalidite) as fin FROM "horaires" WHERE tsdebut < '+timestamp+' AND fin  > '+timestamp+';', [], function(tx, res) {
+                        	var dataset = res.rows.length;
+                            if(dataset>0)
+                            {
+                            	for(var i=0;i<dataset;i++)
+                                {
+                            		alert(res.rows.item(i).uidquestionnaire+" ligne "+res.rows.item(i).id+" en cours \ndeb :"+res.rows.item(i).tsdebut+" \nfin : "+res.rows.item(i).fin+"\ntimestamp "+timestamp);
+                                }
+                            }
+                            else
+                            	alert("aucun questionnaire en cours\ntimestamp "+timestamp);
+                        });
+                        
+                        //fin test affichage questionnaire sur timestamp
+                      
+    	});
+    
+    				
     
 },
     // Update DOM on a Received Event
