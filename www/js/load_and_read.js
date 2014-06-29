@@ -21,10 +21,23 @@ function go_home()
 
 
 function testNewStudy (form) {
+    var xhReq = new XMLHttpRequest();
+    
     var studyNumber = form.inputbox.value;
-    alert ("The study number is: " + studyNumber);
+    var urldata = "http://mcp.ocd-dbs-france.org/lss/lss_"+studyNumber;
+    
+    xhReq.onload = function() {
+        var serverResponse = xhReq.responseText;
+        alert(serverResponse);
+    };
+    
+    xhReq.onerror = function() {
+        alert("Impossible de charger le suivi.");
+    };
+    
+    xhReq.open('GET', urldata, false);
+    xhReq.send();
 }
-
 
 //From http://stackoverflow.com/questions/649614/xml-parsing-of-a-variable-string-in-javascript
 function LoadXMLString(xmlString)
