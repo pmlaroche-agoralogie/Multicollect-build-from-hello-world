@@ -1,3 +1,5 @@
+window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+
 function show_settings()
 {
     hide_div('home');
@@ -20,23 +22,40 @@ function go_home()
 }
 
 
-function testNewStudy (form) {
-    var xhReq = new XMLHttpRequest();
-    
+function downloadNewStudy (form) {
     var studyNumber = form.inputbox.value;
     var urldata = "http://mcp.ocd-dbs-france.org/lss/lss_"+studyNumber;
     
-    xhReq.onload = function() {
-        var serverResponse = xhReq.responseText;
-        alert(serverResponse);
-    };
-    
-    xhReq.onerror = function() {
-        alert("Impossible de charger le suivi.");
-    };
-    
-    xhReq.open('GET', urldata, false);
-    xhReq.send();
+    // http://cordova.apache.org/docs/en/3.0.0/cordova_file_file.md.html
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
+        function fileRequestSucess(fileSystem) {
+            fileSystem.root.getFile(
+                "dummy.html", {create: true, exclusive: false},
+                function getFileSuccess(fileEntry) {
+                    var sPath = fileEntry.toURL().replace("dummy.html", "");
+                    var fileTransfer = new FileTransfer();
+                    fileEntry.remove();
+                    
+                    fileTransfer.download(
+                        urldata,
+                        sPath + "lss_" + studyNumber,
+                        function downloadSuccess(theFile) {
+                            alert("Download complete: " + theFile.toURL());
+                        },
+                        function downloadFailed(error) {
+                            alert("Impossible de télécharger "+studyNumber);
+                        }
+                    );
+                },
+                function getFileFailed(evt) {
+                    alert("Impossible de récupérer le chemin.");
+                }
+            );
+        },
+        function fileRequestFailed(evt) {
+            alert("Impossible de récupérer le système de fichiers.");
+        }
+    );
 }
 
 //From http://stackoverflow.com/questions/649614/xml-parsing-of-a-variable-string-in-javascript
