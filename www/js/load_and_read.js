@@ -40,15 +40,56 @@ function downloadNewStudy (form) {
                         urldata,
                         sPath + "lss_" + studyNumber,
                         function downloadSuccess(theFile) {
-                            alert("Download complete: " + theFile.toURL());
+                            alert("Téléchargement terminé : " + theFile.toURL());
                         },
                         function downloadFailed(error) {
-                            alert("Impossible de télécharger "+studyNumber);
+                            alert("Impossible de télécharger : "+studyNumber);
                         }
                     );
                 },
                 function getFileFailed(evt) {
                     alert("Impossible de récupérer le chemin.");
+                }
+            );
+        },
+        function fileRequestFailed(evt) {
+            alert("Impossible de récupérer le système de fichiers.");
+        }
+    );
+}
+
+function openStudy (form) {
+    var studyNumber = form.inputbox.value;
+    
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
+        function fileRequestSucess(fileSystem) {
+            fileSystem.root.getFile(
+                "lss_" + studyNumber, null,
+                function getFileSuccess(fileEntry) {
+                    alert(fileEntry.toURL());
+                    
+                    fileEntry.file(
+                        function(file) {
+                            var fileReader = new FileReader();
+                    
+                            fileReader.onloadend = function(evt) {
+                                alert(evt.target.result);
+                            };
+                            
+                            fileReader.onerror = function(evt) {
+                                alert("Error"+evt.error.code);
+                            };
+                            
+                            fileReader.readAsText(file);
+                        },
+                        function(error){
+                            alert("Impossible d'ouvrir le suivi demandé.");
+                        }
+                    );
+                    
+                },
+                function getFileFailed(evt) {
+                    alert("Impossible d'ouvrir le suivi demandé.");
                 }
             );
         },
