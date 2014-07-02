@@ -29,14 +29,23 @@ var LSSForm = function(xmlString) {
 LSSForm.prototype = {
     constructor: LSSForm,
     
+    /**
+     * Get the LimeSurveyDocType
+     **/
     getLSDocType: function() {
         return this.xmlDocument.getElementsByTagName("LimeSurveyDocType")[0].childNodes[0].nodeValue;
     },
     
+    /**
+     * Get the DBVersion
+     **/
     getDBVersion: function() {
         return this.xmlDocument.getElementsByTagName("DBVersion")[0].childNodes[0].nodeValue;
     },
     
+    /**
+     * Get a javascript list of strings representing the country code for each languages
+     **/
     getLanguages: function() {
         var liste = [];
         var nodeList = this.xmlDocument.getElementsByTagName("languages")[0].getElementsByTagName("language");
@@ -48,6 +57,14 @@ LSSForm.prototype = {
         return liste;
     },
     
+    /**
+     * Helper method to get the fieldnames of a limesurvey category
+     * 
+     * Parameters :
+     * - group : the category (answers, groups, questions, surveys, surveys_languagesettings)
+     * 
+     * Returns a javascript list of strings
+     **/
     getFieldnamesOf: function(group) {
         var liste = [];
         var nodeList = this.xmlDocument.getElementsByTagName(group)[0].getElementsByTagName("fields")[0].getElementsByTagName("fieldname");
@@ -59,6 +76,14 @@ LSSForm.prototype = {
         return liste;
     },
     
+    /**
+     * Helper method to get the rows of a limesurvey category
+     * 
+     * Parameters :
+     * - group : the category (answers, groups, questions, surveys, surveys_languagesettings)
+     * 
+     * Returns a javascript list of javascript objects representing each row
+     **/
     getRowsOf: function(group) {
         var fields = this.getFieldnamesOf(group);
         var liste = [];
@@ -141,7 +166,7 @@ function openStudy (form, callback) {
                                 var lss = new LSSForm(evt.target.result);
                                 if (callback) {
                                     callback(lss);
-                                } else {
+                                } else { // Debug only, the user should provide a callback
                                     alert(lss.getFieldnamesOf("answers"));
                                     alert(JSON.stringify(lss.getRowsOf("questions")[2]));
                                 }
