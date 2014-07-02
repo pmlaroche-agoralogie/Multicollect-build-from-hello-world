@@ -29,6 +29,14 @@ var LSSForm = function(xmlString) {
 LSSForm.prototype = {
     constructor: LSSForm,
     
+    getLSDocType: function() {
+        return this.xmlDocument.getElementsByTagName("LimeSurveyDocType")[0].childNodes[0].nodeValue;
+    },
+    
+    getDBVersion: function() {
+        return this.xmlDocument.getElementsByTagName("DBVersion")[0].childNodes[0].nodeValue;
+    },
+    
     getLanguages: function() {
         var liste = [];
         var nodeList = this.xmlDocument.getElementsByTagName("languages")[0].getElementsByTagName("language");
@@ -92,7 +100,11 @@ function downloadNewStudy (form) {
                         urldata,
                         sPath + "lss_" + studyNumber,
                         function downloadSuccess(theFile) {
-                            alert("Téléchargement terminé : " + theFile.toURL());
+                            var callback = function(lss) {
+                                alert("Téléchargement terminé : " + theFile.toURL() + "\n\n" +
+                                      "Type: " + lss.getLSDocType() + ", Version: " + lss.getDBVersion());
+                            };
+                            openStudy(form, callback);
                         },
                         function downloadFailed(error) {
                             alert("Impossible de télécharger : "+studyNumber);
@@ -110,7 +122,7 @@ function downloadNewStudy (form) {
     );
 }
 
-function openStudy (form) {
+function openStudy (form, callback) {
     var studyNumber = form.inputbox.value;
     
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
@@ -127,9 +139,12 @@ function openStudy (form) {
                             fileReader.onloadend = function(evt) {
                                 //alert(evt.target.result);
                                 var lss = new LSSForm(evt.target.result);
-                                //alert(lss.getLanguages());
-                                alert(lss.getFieldnamesOf("answers"));
-                                alert(JSON.stringify(lss.getRowsOf("questions")[2]));
+                                if (callback) {
+                                    callback(lss);
+                                } else {
+                                    alert(lss.getFieldnamesOf("answers"));
+                                    alert(JSON.stringify(lss.getRowsOf("questions")[2]));
+                                }
                             };
                             
                             fileReader.onerror = function(evt) {
