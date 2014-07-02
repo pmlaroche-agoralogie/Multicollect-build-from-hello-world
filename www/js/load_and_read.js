@@ -21,6 +21,58 @@ function go_home()
     show_div('home');
 }
 
+var LSSForm = function(xmlString) {
+    var domParser = new DOMParser();
+    this.xmlDocument = domParser.parseFromString(xmlString, "text/xml");
+};
+
+LSSForm.prototype = {
+    constructor: LSSForm,
+    
+    getLanguages: function() {
+        var liste = [];
+        var nodeList = this.xmlDocument.getElementsByTagName("languages")[0].getElementsByTagName("language");
+        for (var i in nodeList) {
+            if (nodeList[i].childNodes && nodeList[i].childNodes[0]) {
+                liste.push(nodeList[i].childNodes[0].nodeValue);
+            }
+        }
+        return liste;
+    },
+    
+    getFieldnamesOf: function(group) {
+        var liste = [];
+        var nodeList = this.xmlDocument.getElementsByTagName(group)[0].getElementsByTagName("fields")[0].getElementsByTagName("fieldname");
+        for (var i in nodeList) {
+            if (nodeList[i].childNodes && nodeList[i].childNodes[0]) {
+                liste.push(nodeList[i].childNodes[0].nodeValue);
+            }
+        }
+        return liste;
+    },
+    
+    getRowsOf: function(group) {
+        var fields = this.getFieldnamesOf(group);
+        var liste = [];
+        var nodeList = this.xmlDocument.getElementsByTagName(group)[0].getElementsByTagName("rows")[0].getElementsByTagName("row");
+        for (var i in nodeList) {
+            if (nodeList[i].childNodes) {
+                var row = {};
+                for (var j in fields) {
+                    var field = nodeList[i].getElementsByTagName(fields[j])[0];
+                    if (field && field.childNodes && field.childNodes[0]) {
+                        row[fields[j]] = field.childNodes[0].nodeValue;
+                    } else {
+                        row[fields[j]] = null;
+                    }
+                }
+                liste.push(row);
+            }
+        }
+        return liste;
+    }
+};
+
 
 function downloadNewStudy (form) {
     var studyNumber = form.inputbox.value;
@@ -66,14 +118,18 @@ function openStudy (form) {
             fileSystem.root.getFile(
                 "lss_" + studyNumber, null,
                 function getFileSuccess(fileEntry) {
-                    alert(fileEntry.toURL());
+                    //alert(fileEntry.toURL());
                     
                     fileEntry.file(
                         function(file) {
                             var fileReader = new FileReader();
                     
                             fileReader.onloadend = function(evt) {
-                                alert(evt.target.result);
+                                //alert(evt.target.result);
+                                var lss = new LSSForm(evt.target.result);
+                                //alert(lss.getLanguages());
+                                alert(lss.getFieldnamesOf("answers"));
+                                alert(JSON.stringify(lss.getRowsOf("questions")[2]));
                             };
                             
                             fileReader.onerror = function(evt) {
