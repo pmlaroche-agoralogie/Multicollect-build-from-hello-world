@@ -115,6 +115,8 @@ onDeviceReady: function() {
                                       alert("ERROR: " + e.message);
                                       });
                         
+                        var timestamp = Math.round(new Date().getTime() / 1000);
+                        
                         //test affichage questionnaire sur timestamp
                         //tx.executeSql('CREATE TABLE IF NOT EXISTS "horaires" ("id" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "uidquestionnaire" VARCHAR, "tsdebut" INTEGER, "dureevalidite" INTEGER, "fait" INTEGER);');
                         //tx.executeSql('DROP TABLE IF EXISTS "horaires"');
@@ -122,8 +124,6 @@ onDeviceReady: function() {
                         tx.executeSql('CREATE TABLE IF NOT EXISTS "horaires" ("id" INTEGER PRIMARY KEY AUTOINCREMENT , "uidquestionnaire" VARCHAR, "tsdebut" INTEGER, "dureevalidite" INTEGER, "fait" INTEGER);');
                         
                         //si pas d'enregistrement, j'en remet
-                        var timestamp = Math.round(new Date().getTime() / 1000);
-                        //alert('timestamp '+timestamp);
                         tx.executeSql('select count("id") as cnt from "horaires" WHERE tsdebut > '+timestamp+';', [], function(tx, res) {
                         	//2mn =120
                         	//15min = 900
@@ -157,6 +157,16 @@ onDeviceReady: function() {
                         });
                         
                         //fin test affichage questionnaire sur timestamp
+                        
+                        //creation table réponses et ligne test
+                        tx.executeSql('CREATE TABLE IF NOT EXISTS "reponses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT , "idhoraire", "uidquestionnaire" VARCHAR, "uidreponse" VARCHAR, "tsreponse" INTEGER, "envoi" BOOLEAN not null default 0);');
+                        //lignes de test à modifier selon besoins
+                        tx.executeSql('INSERT INTO "reponses" (idhoraire,uidquestionnaire, uidreponse, tsreponse, envoi) VALUES(21,10,2, '+(timestamp-360)+',0);');
+                        tx.executeSql('INSERT INTO "reponses" (idhoraire,uidquestionnaire, uidreponse, tsreponse, envoi) VALUES(21,13,1, '+(timestamp-355)+',0);');
+                        tx.executeSql('INSERT INTO "reponses" (idhoraire,uidquestionnaire, uidreponse, tsreponse, envoi) VALUES(24,10,2, '+(timestamp-5)+',0);');
+                        
+                        
+                        //fin creation table réponses et ligne test
                       
     	});
     
