@@ -147,6 +147,18 @@ function downloadNewStudy (form) {
     );
 }
 
+/**
+ * DEBUG ONLY
+ **/
+function openFakeStudy(studyStr, callback) {
+    var lss = new LSSForm(studyStr);
+    if (callback) {
+        callback(lss);
+    } else { // Debug only, the user should provide a callback
+        alert(JSON.stringify(lss.getRowsOf("questions")[0]));
+    }
+}
+
 function openStudy (form, callback) {
     var studyNumber = form.inputbox.value;
     

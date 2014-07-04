@@ -27,6 +27,7 @@
 <link rel="stylesheet" type="text/css" href="css/styles.css" />
 <meta name="msapplication-tap-highlight" content="no" />
 <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/simulation.js"></script>
 <script type="text/javascript" src="js/load_and_read.js"></script>
 <title>Collecting</title>
 </head>
@@ -55,8 +56,21 @@
 				$('#chargement').click(function() {
 					makeCorsRequest('http://mcp.ocd-dbs-france.org/lss/lss_934317'); 
 				});
-				});
-        </script>
+			});
+			
+			var onLssLoaded = function(lss) {
+			  var questions = lss.getRowsOf("questions");
+			  var q1 = questions[0];
+			  //alert(JSON.stringify(q1)); // Affichage de la première question
+			  //alert(q1.title); // Affichage du titre de la question
+			  alert(q1.question); // Affichage du texte de la question
+			};
+			
+			var repondre_questionaire = function() {
+			  openFakeStudy(xmlquotidien, onLssLoaded);
+			  window.location='testmulti0.html';
+			};
+    </script>
 		<script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
@@ -75,7 +89,7 @@
             <div id='home'>
               <div class="question">Vous avez un questionnaire à remplir</div>
               <div class="suite home">
-                <input type="button" value="Je remplis&#13;&#10;le questionnaire" onClick="window.location='testmulti0.html'">
+                <input type="button" value="Je remplis&#13;&#10;le questionnaire" onClick="repondre_questionaire()">
               </div>
            </div>
             <div id='acquisition' style='display: none;'> 
