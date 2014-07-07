@@ -46,6 +46,15 @@
         <button id="chargement">Get LSS</button>
         </div>  -->
         
+        
+		<script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+			if(isMobile)
+				 app.initialize();
+			else
+				app.onDeviceReady();
+        </script>
         <!-- code javascript -->
 		<script type="text/javascript"> 
 			var questionText = "nondef";
@@ -59,26 +68,54 @@
 			});
 			
 			var onLssLoaded = function(lss) {
-			  var questions = lss.getRowsOf("questions");
+			  questions = lss.getRowsOf("questions");
+			  //answers = lss.getFieldnamesOf("answers");
+			  answers = lss.getRowsOf("answers");
 			  var q1 = questions[0];
 			  //alert(JSON.stringify(q1)); // Affichage de la première question
 			  //alert(q1.title); // Affichage du titre de la question
 			  alert(q1.question); // Affichage du texte de la question
+			  console.log("questions");
+			  console.log(questions);
+			  console.log("reponses");
+			  console.log(answers);
+			  /*
+			  Object
+			  gid: "4"
+			  help: null
+			  language: "fr"
+			  mandatory: "N"
+			  other: "N"
+			  parent_qid: "0"
+			  preg: null
+			  qid: "10"
+			  question: "Où êtes-vous ?&nbsp;"
+			  question_order: "0"
+			  relevance: "1"
+			  same_default: "0"
+			  scale_id: "0"
+			  sid: "934317"
+			  title: "where"
+			  type: "!"*/
 			};
 			
+			
 			var repondre_questionaire = function() {
+				//TODO switch ismobile pour test locaux seulement sinon fonctionnement normal
 			  openFakeStudy(xmlquotidien, onLssLoaded);
-			  window.location='testmulti0.html';
+			  //TEMP POUR TESTS : remplissage auto réponses.
+			  db.transaction(function(tx) {
+			  for (var key in questions){
+				  var timestamp = Math.round(new Date().getTime() / 1000);
+				  if (questions[key].type == "N"){	 
+				  	tx.executeSql('INSERT INTO "reponses" (idhoraire,gid,qid, code, tsreponse, envoi) VALUES(21,"'+(questions[key].gid)+'","'+(questions[key].qid)+'","2", '+(timestamp-360)+',0);');
+				  }else
+					 tx.executeSql('INSERT INTO "reponses" (idhoraire,gid,qid, code, tsreponse, envoi) VALUES(21,"'+(questions[key].gid)+'","'+(questions[key].qid)+'","A1", '+(timestamp-360)+',0);');
+				}
+			  });
+			 // window.location='testmulti0.html';
 			};
     </script>
-		<script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-			if(isMobile)
-				 app.initialize();
-			else
-				app.onDeviceReady();
-        </script>
 		<!--<a href="javascript:;" onClick="begin_acquisition();">Il y a un questionnaire disponible</a></br><a href="javascript:;" onClick="show_settings();">Reglage</a>-->
 
 		<!-- contenu de la page -->

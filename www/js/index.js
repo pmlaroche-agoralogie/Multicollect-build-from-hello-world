@@ -90,11 +90,14 @@ onDeviceReady: function() {
     }
     // https://github.com/brodysoft/Cordova-SQLitePlugin
     if(isMobile)
-    	this.db = window.sqlitePlugin.openDatabase("Database", "1.0", "Demo", -1);
+    	//this.db = window.sqlitePlugin.openDatabase("Database", "1.0", "Demo", -1);
+    	db = window.sqlitePlugin.openDatabase("Database", "1.0", "Demo", -1);
     else
-    	this.db = openDatabase("Database", "1.0", "Demo", -1);
+    	//this.db = openDatabase("Database", "1.0", "Demo", -1);
+    	db = openDatabase("Database", "1.0", "Demo", -1);
     
-    this.db.transaction(function(tx) {
+    //this.db.transaction(function(tx) {
+    db.transaction(function(tx) {
                         tx.executeSql('DROP TABLE IF EXISTS test_table');
                         tx.executeSql('CREATE TABLE IF NOT EXISTS test_table (id integer primary key, data text, data_num integer)');
                         
@@ -159,11 +162,12 @@ onDeviceReady: function() {
                         //fin test affichage questionnaire sur timestamp
                         
                         //creation table réponses et ligne test
-                        tx.executeSql('CREATE TABLE IF NOT EXISTS "reponses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT , "idhoraire", "uidquestionnaire" VARCHAR, "uidreponse" VARCHAR, "tsreponse" INTEGER, "envoi" BOOLEAN not null default 0);');
+                        //tx.executeSql('DROP TABLE IF EXISTS "reponses"');
+                        tx.executeSql('CREATE TABLE IF NOT EXISTS "reponses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT , "idhoraire" INTEGER DEFAULT (0), "gid" VARCHAR, "qid" VARCHAR, "code" VARCHAR, "tsreponse" INTEGER, "envoi" BOOLEAN not null default 0);');
                         //lignes de test à modifier selon besoins
-                        tx.executeSql('INSERT INTO "reponses" (idhoraire,uidquestionnaire, uidreponse, tsreponse, envoi) VALUES(21,10,2, '+(timestamp-360)+',0);');
-                        tx.executeSql('INSERT INTO "reponses" (idhoraire,uidquestionnaire, uidreponse, tsreponse, envoi) VALUES(21,13,1, '+(timestamp-355)+',0);');
-                        tx.executeSql('INSERT INTO "reponses" (idhoraire,uidquestionnaire, uidreponse, tsreponse, envoi) VALUES(24,10,2, '+(timestamp-5)+',0);');
+                        tx.executeSql('INSERT INTO "reponses" (idhoraire,gid,qid, code, tsreponse, envoi) VALUES(21,20,10,2, '+(timestamp-360)+',0);');
+                        //tx.executeSql('INSERT INTO "reponses" (idhoraire,uidquestionnaire, uidreponse, tsreponse, envoi) VALUES(21,13,1, '+(timestamp-355)+',0);');
+                        //tx.executeSql('INSERT INTO "reponses" (idhoraire,uidquestionnaire, uidreponse, tsreponse, envoi) VALUES(24,10,2, '+(timestamp-5)+',0);');
                         
                         
                         //fin creation table réponses et ligne test
