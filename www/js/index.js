@@ -163,13 +163,9 @@ onDeviceReady: function() {
                         
                         //creation table réponses et ligne test
                         //tx.executeSql('DROP TABLE IF EXISTS "reponses"');
-                        tx.executeSql('CREATE TABLE IF NOT EXISTS "reponses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT , "idhoraire" INTEGER DEFAULT (0), "gid" VARCHAR, "qid" VARCHAR, "code" VARCHAR, "tsreponse" INTEGER, "envoi" BOOLEAN not null default 0);');
+                        tx.executeSql('CREATE TABLE IF NOT EXISTS "reponses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT , "idhoraire" INTEGER DEFAULT (0), "sid" VARCHAR, "gid" VARCHAR, "qid" VARCHAR, "code" VARCHAR, "tsreponse" INTEGER, "envoi" BOOLEAN not null default 0);');
                         //lignes de test à modifier selon besoins
-                        tx.executeSql('INSERT INTO "reponses" (idhoraire,gid,qid, code, tsreponse, envoi) VALUES(21,20,10,2, '+(timestamp-360)+',0);');
-                        //tx.executeSql('INSERT INTO "reponses" (idhoraire,uidquestionnaire, uidreponse, tsreponse, envoi) VALUES(21,13,1, '+(timestamp-355)+',0);');
-                        //tx.executeSql('INSERT INTO "reponses" (idhoraire,uidquestionnaire, uidreponse, tsreponse, envoi) VALUES(24,10,2, '+(timestamp-5)+',0);');
-                        
-                        
+                        /*tx.executeSql('INSERT INTO "reponses" (idhoraire,sid,gid,qid, code, tsreponse, envoi) VALUES(21,11,20,10,2, '+(timestamp-360)+',0);');*/
                         //fin creation table réponses et ligne test
                       
     	});

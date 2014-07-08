@@ -108,13 +108,13 @@
 			  for (var key in questions){
 				  var timestamp = Math.round(new Date().getTime() / 1000);
 				  if (questions[key].type == "N"){	 
-				  	tx.executeSql('INSERT INTO "reponses" (idhoraire,gid,qid, code, tsreponse, envoi) VALUES(21,"'+(questions[key].gid)+'","'+(questions[key].qid)+'","2", '+(timestamp-360)+',0);');
+				  	tx.executeSql('INSERT INTO "reponses" (idhoraire,sid,gid,qid, code, tsreponse, envoi) VALUES(21,"'+(questions[key].sid)+'","'+(questions[key].gid)+'","'+(questions[key].qid)+'","2", '+(timestamp-360)+',0);');
 				  }
 				  else if (questions[key].type == "S"){	 
-					  	tx.executeSql('INSERT INTO "reponses" (idhoraire,gid,qid, code, tsreponse, envoi) VALUES(21,"'+(questions[key].gid)+'","'+(questions[key].qid)+'","champ libre", '+(timestamp-360)+',0);');
+					  	tx.executeSql('INSERT INTO "reponses" (idhoraire,sid,gid,qid, code, tsreponse, envoi) VALUES(21,"'+(questions[key].sid)+'","'+(questions[key].gid)+'","'+(questions[key].qid)+'","champ libre", '+(timestamp-360)+',0);');
 				 }
 				  else
-					 tx.executeSql('INSERT INTO "reponses" (idhoraire,gid,qid, code, tsreponse, envoi) VALUES(21,"'+(questions[key].gid)+'","'+(questions[key].qid)+'","A1", '+(timestamp-360)+',0);');
+					 tx.executeSql('INSERT INTO "reponses" (idhoraire,sid,gid,qid, code, tsreponse, envoi) VALUES(21,"'+(questions[key].sid)+'","'+(questions[key].gid)+'","'+(questions[key].qid)+'","A1", '+(timestamp-360)+',0);');
 				}
 			  });
 			 // window.location='testmulti0.html';
