@@ -109,7 +109,11 @@
 				  var timestamp = Math.round(new Date().getTime() / 1000);
 				  if (questions[key].type == "N"){	 
 				  	tx.executeSql('INSERT INTO "reponses" (idhoraire,gid,qid, code, tsreponse, envoi) VALUES(21,"'+(questions[key].gid)+'","'+(questions[key].qid)+'","2", '+(timestamp-360)+',0);');
-				  }else
+				  }
+				  else if (questions[key].type == "S"){	 
+					  	tx.executeSql('INSERT INTO "reponses" (idhoraire,gid,qid, code, tsreponse, envoi) VALUES(21,"'+(questions[key].gid)+'","'+(questions[key].qid)+'","champ libre", '+(timestamp-360)+',0);');
+				 }
+				  else
 					 tx.executeSql('INSERT INTO "reponses" (idhoraire,gid,qid, code, tsreponse, envoi) VALUES(21,"'+(questions[key].gid)+'","'+(questions[key].qid)+'","A1", '+(timestamp-360)+',0);');
 				}
 			  });
