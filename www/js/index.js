@@ -219,47 +219,52 @@ function getSurveyConfig()
 function saveSession() {
 	db.transaction(function(tx) {
 		var timestamp = Math.round(new Date().getTime() / 1000);
-		alert(new Date().getDay());
+		//alert(new Date().getDay());
 		var sid = surveys[0].sid;
 		var duration = surveys_config.duration;
 		var scheduling = surveys_config.scheduling;
 		//si pas d'enregistrement ou reste seulement un, j'en remet
 		tx.executeSql('select count("id") as cnt from "horaires" WHERE tsdebut > '+timestamp+' and uidquestionnaire = '+sid+';', [], function(tx, res) {
-        	
-        	if ((sid == "1") || (sid=="2")) //mettre sid test suivant besoin
-        	{
-        		//var periodetest = 120;
-            	//var ecarttest = 120*3;
-            	//var nbtest = 4;
-            	var i = 0;
+			if (scheduling=="W") // questionnaire hebdo
+			{  		
 	        	if (res.rows.item(0).cnt <= 1)
-	        	{
-	        		while (i < nbtest) {
-	        			//test
-	        			//tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite, fait) VALUES("monuidtest",'+(timestamp+(ecarttest*i))+','+periodetest+',0,0);');
-	        		    i++;
+	        	{        		
+	        		var jour = new Date();
+	        		var nb = surveys_config.maxOccurences; 
+	        		var i = 0;
+	        		var numOfDay = surveys_config.day; 
+	        		var startHour = surveys_config.startHour; 
+	        		var test = 0;
+	        		if (surveys_config.test) 
+	        		{
+	        			var test=1;
+	        			duration = 60; //dure 1 min
+                    	var ecarttest = (duration*5); //toutes les 5 min
+	        		}
+	        		while (i < nb) {
+	        			if (test)
+	        			{//fonctionnement test
+	        				dateSession = new Date((jour.getTime()+(ecarttest*i*1000)) );
+	        				var timestampSession = Math.round(dateSession.getTime() / 1000);
+	        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');               		    
+	        			}
+	        			else
+	        			{//fonctionnement normal
+		        			var dayko = true;
+		        			while (dayko)
+		        			{
+		        				jour = new Date(jour.getTime() + (24*60*60*1000));
+		        				if (jour.getDay() == numOfDay)
+		        					dayko=false;
+		        			}
+		        			dateSession = new Date(jour.getFullYear(),jour.getMonth(),jour.getDate(),startHour);
+		        			var timestampSession = Math.round(dateSession.getTime() / 1000);
+		        			tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');
+	        			}
+	        			i++;
 	        		}
 	        	}
-        	}
-        	else //fonctionnement normal
-        	{
-        		if (scheduling=="W") // questionnaire hebdo
-        		{  		
-		        	if (res.rows.item(0).cnt <= 1)
-		        	{
-		        		alert("ajout");
-		        		/*var periodetest = 120;
-		            	var ecarttest = 120*3;*/
-		        		var nb = 4;
-		        		var i = 0;
-		        		while (i < nb) {
-		        			//test
-		        			//tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite, fait) VALUES("monuidtest",'+(timestamp+(ecarttest*i))+','+periodetest+',0,0);');
-		        		    i++;
-		        		}
-		        	}
-        		}
-        	}
+			}        	
         });
 		
 	});
