@@ -24,42 +24,29 @@
 <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
 <!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />-->
 <meta name="viewport" content="width=device-width">
+<meta name="msapplication-tap-highlight" content="no" />
+
+<title>Collecting</title>
+
 <link rel="stylesheet" type="text/css" href="css/styles.css" />
 <link href="css/ui-lightness/jquery-ui-1.10.4.custom.css" rel="stylesheet">
-<meta name="msapplication-tap-highlight" content="no" />
-<script src='js/jquery-2.1.1.min.js' type='text/javascript'></script>
-<script src='js/jquery-ui-1.10.4.custom.min.js' type='text/javascript'></script>
-<script src='js/jquery.ui.touch-punch.min.js' type='text/javascript'></script>
+
+<script type='text/javascript' src='js/jquery-2.1.1.min.js'></script>
+<script type='text/javascript' src='js/jquery-ui-1.10.4.custom.min.js'></script>
+<script type='text/javascript' src='js/jquery.ui.touch-punch.min.js'></script>
 <script type="text/javascript" src="js/simulation.js"></script>
 <script type="text/javascript" src="js/load_and_read.js"></script>
 <script type="text/javascript" src="js/template_toc.js"></script>
-<script src='js/toc.js' type='text/javascript'></script>
-
-<title>Collecting</title>
-</head>
-<body class="home">
-
-		<!-- bloc init -->
-        <div id='blocinit' class="app">
-          <h1>Apache Cordova</h1>
-          <div id="deviceready" class="blink">
-            <p class="event listening">Connecting to Device</p>
-            <p class="event received">Device is Ready</p>
-          </div>
-        </div>
-        
-        <!-- <div id="pagesettings">
-        <button id="chargement">Get LSS</button>
-        </div>  -->
-        
-        
-		<script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
+<script type='text/javascript' src='js/toc.js'></script>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+		$(document).ready(function(){
 			if(isMobile)
 				 app.initialize();
 			else
 				app.onDeviceReady();
+			});
         </script>
         <!-- code javascript -->
 		<script type="text/javascript"> 
@@ -76,11 +63,23 @@
 			var onLssLoaded = function(lss) {
 			  questions = lss.getRowsOf("questions");
 			  answers = lss.getRowsOf("answers");
+			  surveys = lss.getRowsOf("surveys");
+			  surveys_languagesettings = lss.getRowsOf("surveys_languagesettings");
+			  surveys_config = getSurveyConfig();
+			  
 			  var q1 = questions[0];
+			  console.log("surveys");
+			  console.log(surveys);
+			  console.log("surveys_languagesettings");
+			  console.log(surveys_languagesettings);
 			  console.log("questions");
 			  console.log(questions);
 			  console.log("reponses");
 			  console.log(answers);
+			  console.log("surveys_config");
+			  console.log(surveys_config);
+			  //remplit table horaires
+			  saveSession();
 			};
 			
 			
@@ -88,23 +87,22 @@
 			  //TODO switch ismobile pour test locaux seulement sinon fonctionnement normal
 			  if(!isMobile)
 			  	openFakeStudy(xmlquotidien, onLssLoaded);
-			  //TEMP POUR TESTS : remplissage auto réponses.
-			  db.transaction(function(tx) {
-			  for (var key in questions){
-				  var timestamp = Math.round(new Date().getTime() / 1000);
-				  if (questions[key].type == "N"){	 
-				  	tx.executeSql('INSERT INTO "reponses" (idhoraire,sid,gid,qid, code, tsreponse, envoi) VALUES(21,"'+(questions[key].sid)+'","'+(questions[key].gid)+'","'+(questions[key].qid)+'","2", '+(timestamp-360)+',0);');
-				  }
-				  else if (questions[key].type == "S"){	 
-					  	tx.executeSql('INSERT INTO "reponses" (idhoraire,sid,gid,qid, code, tsreponse, envoi) VALUES(21,"'+(questions[key].sid)+'","'+(questions[key].gid)+'","'+(questions[key].qid)+'","champ libre", '+(timestamp-360)+',0);');
-				 }
-				  else
-					 tx.executeSql('INSERT INTO "reponses" (idhoraire,sid,gid,qid, code, tsreponse, envoi) VALUES(21,"'+(questions[key].sid)+'","'+(questions[key].gid)+'","'+(questions[key].qid)+'","A1", '+(timestamp-360)+',0);');
-				}
-			  });
 			 getTemplate('.contenu',0);
 			};
-    </script>
+ </script>
+</head>
+
+<body class="home">
+
+		<!-- bloc init -->
+        <div id='blocinit' class="app">
+          <h1>Apache Cordova</h1>
+          <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+          </div>
+        </div>
+        
 		<!--<a href="javascript:;" onClick="begin_acquisition();">Il y a un questionnaire disponible</a></br><a href="javascript:;" onClick="show_settings();">Reglage</a>-->
 
 		<!-- contenu de la page -->
@@ -141,9 +139,5 @@
             </div>
           </div>
         </div>
-
-
-
-
 </body>
 </html>
