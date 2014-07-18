@@ -45,7 +45,10 @@
 			if(isMobile)
 				 app.initialize();
 			else
+			{
 				app.onDeviceReady();
+				$('body.home .raz_session').show();
+			}
 			});
         </script>
         <!-- code javascript -->
@@ -82,7 +85,6 @@
 			  saveSession();
 			};
 			
-			
 			var repondre_questionaire = function() {
 			  //TODO switch ismobile pour test locaux seulement sinon fonctionnement normal
 			  if(!isMobile)
@@ -111,8 +113,8 @@
             <div class="btn_reglages"><a href="javascript:;" onClick="show_settings();"><img src="img/reglages.png" /></a></div>
             <div class="titre_journal">Journal de bord</div>
             <div id='home'>
-              <div class="question">Vous avez un questionnaire à remplir</div>
-              <div class="suite home">
+              <div class="question">Vous n'avez pas de questionnaire à remplir</div>
+              <div class="questionnaire suite home">
                 <input type="button" value="Je remplis&#13;&#10;le questionnaire" onClick="repondre_questionaire()">
               </div>
            </div>
@@ -128,13 +130,22 @@
                 </br>
                 <INPUT TYPE="button" NAME="button" Value="Télécharger" onClick="downloadNewStudy(this.form)">
               </form>
-              <form NAME="myform2" ACTION="" METHOD="GET">
-                <INPUT TYPE="text" NAME="inputbox" VALUE="934317">
+              <form id="opensurvey" NAME="myform2" ACTION="" METHOD="GET">
+                <INPUT id="idsurvey" TYPE="text" NAME="inputbox" VALUE="934317">
                 </br>
-                <INPUT TYPE="button" NAME="button" Value="Ouvrir" onClick="openStudy(this.form)">
+                <INPUT id="buttonopensurvey" TYPE="button" NAME="button" Value="Ouvrir" onClick="openStudy(this.form)">
               </form>
               <div class="suite home">
                 <input type="button" value="Retour Accueil" onClick="go_home();">
+              </div>
+              <div class="raz_session home">
+                <input type="button" value="save session" onClick="openFakeStudy(xmlquotidien, onLssLoaded);">
+              </div>
+              <div class="raz_session home">
+                <input type="button" value="RAZ session" onClick="RazSession();">
+              </div>
+               <div class="raz_session home">
+                <input type="button" value="RAZ reponse" onClick="RazReponse();">
               </div>
             </div>
           </div>

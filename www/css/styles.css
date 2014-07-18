@@ -105,3 +105,9 @@ font-size: 20px;
 #radio_style input[type='radio']:checked + label {
     background-image: url(../img/radio_on.jpg);
 }
+
+
+/*body.home .question {display:none;}*/
+body.home .questionnaire {display:none;}
+body.home .raz_session {display:none;}
+body.home #opensurvey {display:none;}

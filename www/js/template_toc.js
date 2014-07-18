@@ -33,7 +33,7 @@ function getTemplate(selector,qkey)
 	template = template.replace('##qid##',question.qid)
 						.replace('##sid##',question.sid)
 						.replace('##gid##',question.gid)
-						.replace('##idhoraire##',21);
+						.replace('##idhoraire##',session_encours);
 	
 	$('body').removeClass();
 	$(selector).html(template);
@@ -51,6 +51,10 @@ function saveFormData(type)
 	{
 		case "radio": 
 			form_reponse = $("#multi_form input[type='radio']:checked").attr("id");
+		break; 
+		case "slider": 
+			form_reponse = $("#slidervalue").attr("value");
+			alert(form_reponse);
 		break; 
 		default: 
 			alert("pas de type");
@@ -104,6 +108,10 @@ var form_slider =
 '  <input type="hidden" id="slidervalue" name="slidervalue"/>' +   
 '  <div id="slider-range"></div>' +   
 '  <div class="suite">' +   
+'        <input type="hidden" value="##gid##" id="gid" name="gid">'  +
+'        <input type="hidden" value="##sid##" id="sid" name="sid">'  +
+'        <input type="hidden" value="##qid##" id="qid" name="qid">'  +
+'        <input type="hidden" value="##idhoraire##" id="idhoraire" name="idhoraire">'  +
 '    <input type="submit" value="Suite &gt;&gt;">' +   
 '  </div>' +   
 '</form>' + form_slider_script;
