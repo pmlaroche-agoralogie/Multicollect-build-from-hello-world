@@ -89,6 +89,8 @@
 			  //TODO switch ismobile pour test locaux seulement sinon fonctionnement normal
 			  if(!isMobile)
 			  	openFakeStudy(xmlquotidien, onLssLoaded);
+			  else
+			  	$('body.home #opensurvey #buttonopensurvey').click();
 			 getTemplate('.contenu',0);
 			};
  </script>

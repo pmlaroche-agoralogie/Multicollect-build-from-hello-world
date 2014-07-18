@@ -135,9 +135,7 @@ onDeviceReady: function() {
                             		$('body.home .questionnaire').show();
                             		questionnaire_encours = res.rows.item(i).uidquestionnaire;
                             		session_encours = res.rows.item(i).id;
-                            		$('body.home #opensurvey #idsurvey').attr('value',questionnaire_encours);
-                            		if(isMobile)
-                            			$('body.home #opensurvey #buttonopensurvey').click();
+                            		$('body.home #opensurvey #idsurvey').attr('value',questionnaire_encours);                         			
                                 }
                             }
                             else
@@ -226,7 +224,7 @@ function saveSession(firstTime) {
 	        		{
 	        			var test=1;
 	        			duration = 60*3; //dure 3 min
-                    	var ecarttest = (duration*5); //toutes les 5 min
+                    	var ecarttest = (60*5); //toutes les 5 min
 	        		}
 	        		if ((firstTime) && (test!=0))
 	        		{	//première ligne pour test dans 5 min si pas mode test
