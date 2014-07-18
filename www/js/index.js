@@ -254,7 +254,10 @@ function saveSession(firstTime) {
 				        			dateSession = new Date(jour.getFullYear(),jour.getMonth(),jour.getDate(),startHour);
 				        			var timestampSession = Math.round(dateSession.getTime() / 1000);
 				        			if (nbLineBefore)
+				        			{
 				        				nbLineBefore = 0;
+				        				nb++;
+				        			}
 				        			else
 				        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');
 	        		        	}
@@ -263,7 +266,79 @@ function saveSession(firstTime) {
 	        			i++;
 	        		}
 	        	}
-			}        	
+			}// fin (scheduling=="W") 
+			if (scheduling=="D") // questionnaire quotidien
+			{  		
+				//if (res.rows.item(0).cnt <= 1)
+				if(1)
+	        	{
+					var nbLineBefore = res.rows.item(0).cnt;
+	        		var jour = new Date();
+	        		var nb = 14; 
+	        		var max = parseInt(surveys_config.maxOccurences,10); 
+	        		var i = 0;
+	        		var numOfDayOff = surveys_config.dayOff; 
+	        		var startHour = surveys_config.startHour; 
+	        		//var randomTime = surveys_config.randomTime; 
+	        		//TODO : gestion multiple startHour, randomTime
+	        		var randomTime = 10800;
+	        		var test = 0;
+	        		var randomTab={};
+	        		for (j=1;j<=nb;j++)
+	        			randomTab[j]=j;
+	        		if (parseInt(surveys_config.test,10)) 
+	        		{
+	        			var test=1;
+	        			duration = 60*3; //dure 3 min
+                    	var ecarttest = (60*5); //toutes les 5 min
+	        		}
+	        		if ((firstTime) && (test!=0))
+	        		{	//première ligne pour test dans 5 min si pas mode test
+        				var timestampSession = Math.round(jour.getTime() / 1000)+300; //dans 5min
+	        			tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');
+	        		}
+	        		while (i < nb) {
+	        			if (test)
+	        			{//fonctionnement test
+	        				dateSession = new Date((jour.getTime()+(ecarttest*i*1000)) );
+	        				var timestampSession = Math.round(dateSession.getTime() / 1000);
+	        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');               		    
+	        			}
+	        			else
+	        			{//fonctionnement normal
+	        				//test si max atteint ou non activé
+	        				tx.executeSql('select count("id") as cnt from "horaires" WHERE uidquestionnaire = '+sid+';', [], function(tx, res) {
+	        					if ((max == 0) || (res.rows.item(0).cnt < max))
+	        		        	{        		
+				        			var dayko = true;
+				        			while (dayko)
+				        			{
+				        				jour = new Date(jour.getTime() + (24*60*60*1000));
+				        				if (jour.getDay() != numOfDayOff)
+				        					dayko=false;
+				        			}
+				        			partOfDay = pickRandomProperty(randomTab);
+				        			if (partOfDay%2 == 0)
+				        				dateSession = new Date(jour.getFullYear(),jour.getMonth(),jour.getDate(),10);
+				        			else
+				        				dateSession = new Date(jour.getFullYear(),jour.getMonth(),jour.getDate(),18);
+				        			delete randomTab[partOfDay];
+				        			console.log(randomTab);
+				        			var timestampSession = Math.round(dateSession.getTime() / 1000) + Math.floor((Math.random() * randomTime));
+				        			if (nbLineBefore)
+				        			{
+				        				nbLineBefore = 0;
+				        				nb++;
+				        			}
+				        			else
+				        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');
+	        		        	}
+	        				});
+	        			}
+	        			i++;
+	        		}// fin while
+	        	} // fin (res.rows.item(0).cnt <= 1)
+			}// fin (scheduling=="D") 
         });
 		
 	});
@@ -283,3 +358,11 @@ function RazReponse()
 	});
 }
 
+function pickRandomProperty(obj) {
+    var result;
+    var count = 0;
+    for (var prop in obj)
+        if (Math.random() < 1/++count)
+           result = prop;
+    return result;
+}
