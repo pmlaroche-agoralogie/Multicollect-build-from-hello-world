@@ -93,6 +93,7 @@ onDeviceReady: function() {
     
     alert('db');
     // https://github.com/brodysoft/Cordova-SQLitePlugin
+    alert('ismobile'+isMobile)
     if(isMobile)
     	//this.db = window.sqlitePlugin.openDatabase("Database", "1.0", "Demo", -1);
     	app.db = window.sqlitePlugin.openDatabase("Database", "1.0", "Demo", -1);
