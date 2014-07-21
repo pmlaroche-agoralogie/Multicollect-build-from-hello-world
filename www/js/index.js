@@ -46,8 +46,8 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        var el = document.getElementById("chargement"); 
-        el.addEventListener('clic', this.getlssfile, false);
+      /*  var el = document.getElementById("chargement"); 
+        el.addEventListener('clic', this.getlssfile, false);*/
     },
     // deviceready Event Handler
     //
