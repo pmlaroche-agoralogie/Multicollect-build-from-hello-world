@@ -130,12 +130,12 @@
               <form NAME="myform" ACTION="" METHOD="GET">
                 <INPUT TYPE="text" NAME="inputbox" VALUE="934317">
                 </br>
-                <INPUT TYPE="button" NAME="button" Value="Télécharger" onClick="downloadNewStudy(this.form)">
+                <INPUT TYPE="button" NAME="button" Value="Télécharger" onClick="downloadNewStudy(this.form, onLssLoaded)">
               </form>
               <form id="opensurvey" NAME="myform2" ACTION="" METHOD="GET">
                 <INPUT id="idsurvey" TYPE="text" NAME="inputbox" VALUE="934317">
                 </br>
-                <INPUT id="buttonopensurvey" TYPE="button" NAME="button" Value="Ouvrir" onClick="openStudy(this.form)">
+                <INPUT id="buttonopensurvey" TYPE="button" NAME="button" Value="Ouvrir" onClick="openStudy(this.form, onLssLoaded)">
               </form>
               <div class="suite home">
                 <input type="button" value="Retour Accueil" onClick="go_home();">
