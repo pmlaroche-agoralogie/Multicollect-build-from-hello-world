@@ -17,7 +17,7 @@
  * under the License.
  */
 
-var db;
+//var db;
 
 //test si different de  mobile
 //http://detectmobilebrowsers.com/ javascript pour mise à jour...
@@ -97,14 +97,14 @@ onDeviceReady: function() {
     // https://github.com/brodysoft/Cordova-SQLitePlugin
     if(isMobile)
     	//this.db = window.sqlitePlugin.openDatabase("Database", "1.0", "Demo", -1);
-    	db = window.sqlitePlugin.openDatabase("Database", "1.0", "Demo", -1);
+    	this.db = window.sqlitePlugin.openDatabase("Database", "1.0", "Demo", -1);
     else
     	//this.db = openDatabase("Database", "1.0", "Demo", -1);
-    	db = openDatabase("Database", "1.0", "Demo", -1);
+    	this.db = openDatabase("Database", "1.0", "Demo", -1);
     
     alert('requete');
     //this.db.transaction(function(tx) {
-    db.transaction(function(tx) {
+    this.db.transaction(function(tx) {
                    /*     tx.executeSql('DROP TABLE IF EXISTS test_table');
                         tx.executeSql('CREATE TABLE IF NOT EXISTS test_table (id integer primary key, data text, data_num integer)');
                         
@@ -125,6 +125,7 @@ onDeviceReady: function() {
                                       alert("ERROR: " + e.message);
                                       });*/
                         
+    					alert('timestamp');
                         var timestamp = Math.round(new Date().getTime() / 1000);
                         
                         //test affichage questionnaire sur timestamp
@@ -207,7 +208,7 @@ function getSurveyConfig()
 
 function saveSession(firstTime) {
 	firstTime = typeof firstTime !== 'undefined' ? firstTime : 0;
-	db.transaction(function(tx) {
+	app.db.transaction(function(tx) {
 		var timestamp = Math.round(new Date().getTime() / 1000);
 		//alert(new Date().getDay());
 		var sid = surveys[0].sid;
@@ -353,14 +354,14 @@ function saveSession(firstTime) {
 
 function RazSession()
 {
-	db.transaction(function(tx) {
+	app.db.transaction(function(tx) {
 		tx.executeSql('DELETE FROM "horaires";');
 	});
 }
 
 function RazReponse()
 {
-	db.transaction(function(tx) {
+	app.db.transaction(function(tx) {
 		tx.executeSql('DELETE FROM "reponses";');
 	});
 }
