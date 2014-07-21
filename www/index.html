@@ -71,16 +71,19 @@
 			  surveys_config = getSurveyConfig();
 			  
 			  var q1 = questions[0];
-			  console.log("surveys");
-			  console.log(surveys);
-			  console.log("surveys_languagesettings");
-			  console.log(surveys_languagesettings);
-			  console.log("questions");
-			  console.log(questions);
-			  console.log("reponses");
-			  console.log(answers);
-			  console.log("surveys_config");
-			  console.log(surveys_config);
+			  if(!isMobile)
+			  {
+				  console.log("surveys");
+				  console.log(surveys);
+				  console.log("surveys_languagesettings");
+				  console.log(surveys_languagesettings);
+				  console.log("questions");
+				  console.log(questions);
+				  console.log("reponses");
+				  console.log(answers);
+				  console.log("surveys_config");
+				  console.log(surveys_config);
+			  }
 			  //remplit table horaires
 			  alert('savesession');
 			  saveSession();

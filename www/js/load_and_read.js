@@ -107,7 +107,7 @@ LSSForm.prototype = {
 };
 
 
-function downloadNewStudy (form) {
+function downloadNewStudy (form,callback) {
     var studyNumber = form.inputbox.value;
     var urldata = "http://mcp.ocd-dbs-france.org/lss/lss_"+studyNumber;
     
@@ -125,10 +125,10 @@ function downloadNewStudy (form) {
                         urldata,
                         sPath + "lss_" + studyNumber,
                         function downloadSuccess(theFile) {
-                            var callback = function(lss) {
+                            /*var callback = function(lss) {
                                 alert("Téléchargement terminé : " + theFile.toURL() + "\n\n" +
                                       "Type: " + lss.getLSDocType() + ", Version: " + lss.getDBVersion());
-                            };
+                            };*/
                             openStudy(form, callback);
                         },
                         function downloadFailed(error) {
