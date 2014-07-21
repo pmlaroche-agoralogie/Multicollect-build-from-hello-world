@@ -82,6 +82,7 @@
 			  console.log("surveys_config");
 			  console.log(surveys_config);
 			  //remplit table horaires
+			  alerte('savesession')
 			  saveSession();
 			};
 			
@@ -115,8 +116,10 @@
             <div class="btn_reglages"><a href="javascript:;" onClick="show_settings();"><img src="img/reglages.png" /></a></div>
             <div class="titre_journal">Journal de bord</div>
             <div id='home'>
-            	<script>$(document).ready(function(){           	
+            	<script>$(document).ready(function(){	
             		window.onfocus = function(){
+            			alert('recharge');
+            			location.reload();
             			}
             		/*setTimeout(function() {location.reload();}, 10000);*/});</script>
               <div class="question">Vous n'avez pas de questionnaire à remplir</div>
