@@ -289,14 +289,14 @@ function saveSession(firstTime) {
 	        				var timestampSession = Math.round(dateSession.getTime() / 1000);
 	        				//tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');   
 	        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[], function(tx, results){
-	        			            	if(isMobile)
+	        			            	if ((isMobile) && (i!=0))
 	        	        			    {   
 	        			            		timestampSessionNotif = timestampSession*1000;
 	        	        				    window.plugin.notification.local.add({
-	        	        				                                         id:      results.insertId,
+	        	        				                                         id:      parseInt(results.insertId,10),
 	        	        				                                         title:   'Application de Suivi',
 	        	        				                                         message: 'Merci de répondre au questionnaire de l application de suivi.',
-	        	        				                                         repeat:  'weekly',
+	        	        				                                         /*repeat:  'weekly',*/
 	        	        				                                         date:    timestampSessionNotif
 	        	        				                                         });
 	        	        			    }
