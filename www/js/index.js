@@ -85,27 +85,7 @@ onDeviceReady: function() {
     else
     	app.db = openDatabase("Database", "1.0", "Demo", -1);
     
-    app.db.transaction(function(tx) {
-                   /*     tx.executeSql('DROP TABLE IF EXISTS test_table');
-                        tx.executeSql('CREATE TABLE IF NOT EXISTS test_table (id integer primary key, data text, data_num integer)');
-                        
-                        tx.executeSql('CREATE TABLE IF NOT EXISTS  "question" ("qid" INTEGER DEFAULT (0) ,"parent_qid" INTEGER DEFAULT (0) ,"gid" INTEGER DEFAULT (0) ,"sid" INTEGER DEFAULT (0) ,"kind" VARCHAR,"title" VARCHAR, "answers" TEXT, "order" INTEGER DEFAULT 0);');
-                        tx.executeSql("INSERT INTO 'question' VALUES(10,0,4,934317,'L','where','Où êtes vous',0);");
-                        
-                        */
-                        /* tx.executeSql("INSERT INTO test_table (data, data_num) VALUES (?,?)", ["test", 100], function(tx, res) {
-                                 //   alert("insertId: " + res.insertId + " -- probably 1");
-                                 //   alert("rowsAffected: " + res.rowsAffected + " -- should be 1");
-                                      
-                         tx.executeSql("select count(qid) as cnt from question;", [], function(tx, res) {
-                                                    alert("res.rows.length: " + res.rows.length + " -- should be 1");
-                                                    alert("res.rows.item(0).cnt: " + res.rows.item(0).cnt + " -- should be 1");
-                                                    });
-                                      
-                                      }, function(e) {
-                                      alert("ERROR: " + e.message);
-                                      });*/
-                        
+    app.db.transaction(function(tx) {                   
                         var timestamp = Math.round(new Date().getTime() / 1000);
                         //test affichage questionnaire sur timestamp
                         //tx.executeSql('DROP TABLE IF EXISTS "horaires"');
@@ -255,6 +235,19 @@ function saveSession(firstTime) {
 			}// fin (scheduling=="W") 
 			if (scheduling=="D") // questionnaire quotidien
 			{  	
+				var now                  = new Date().getTime(),
+			    _60_seconds_from_now = new Date(now + 60*1000);
+			    
+			    if(isMobile)
+			    {
+				    window.plugin.notification.local.add({
+				                                         id:      1,
+				                                         title:   'Application de Suivi',
+				                                         message: 'Merci de répondre au questionnaire de l application de suivi.',
+				                                         repeat:  'weekly',
+				                                         date:    _60_seconds_from_now
+				                                         });
+				    
 				if (res.rows.item(0).cnt <= 1)
 	        	{
 					var nbLineBefore = res.rows.item(0).cnt;
@@ -294,13 +287,13 @@ function saveSession(firstTime) {
 	        			            	if ((isMobile) && (i!=0))
 	        	        			    {   
 	        			            		timestampSessionNotif = timestampSession*1000;
-	        	        				    window.plugin.notification.local.add({
+	        	        				    /*window.plugin.notification.local.add({
 	        	        				                                         id:      parseInt(results.insertId,10),
 	        	        				                                         title:   'Application de Suivi',
 	        	        				                                         message: 'Merci de répondre au questionnaire de l application de suivi.',
-	        	        				                                         /*repeat:  'weekly',*/
+	        	        				                                         //repeat:  'weekly',
 	        	        				                                         date:    timestampSessionNotif
-	        	        				                                         });
+	        	        				                                         });*/
 	        	        			    }
 	        			            });
 	        				
