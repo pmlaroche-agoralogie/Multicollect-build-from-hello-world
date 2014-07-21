@@ -188,6 +188,7 @@ function saveSession(firstTime) {
 		var timestamp = Math.round(new Date().getTime() / 1000);
 		//alert(new Date().getDay());
 		var sid = surveys[0].sid;
+		alert(surveys[0].sid);
 		var duration = surveys_config.duration;
 		var scheduling = surveys_config.scheduling;
 		//si pas d'enregistrement ou reste seulement un, j'en remet
@@ -252,7 +253,7 @@ function saveSession(firstTime) {
 	        	}
 			}// fin (scheduling=="W") 
 			if (scheduling=="D") // questionnaire quotidien
-			{  		
+			{  	
 				if (res.rows.item(0).cnt <= 1)
 	        	{
 					var nbLineBefore = res.rows.item(0).cnt;
@@ -306,6 +307,7 @@ function saveSession(firstTime) {
 	        			else
 	        			{//fonctionnement normal
 	        				//test si max atteint ou non activé
+	        				alert('normal  daily');
 	        				tx.executeSql('select count("id") as cnt from "horaires" WHERE uidquestionnaire = '+sid+';', [], function(tx, res) {
 	        					if ((max == 0) || (res.rows.item(0).cnt < max))
 	        		        	{        		
