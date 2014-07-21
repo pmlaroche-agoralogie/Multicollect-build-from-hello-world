@@ -292,7 +292,7 @@ function saveSession(firstTime) {
 	        			            		lastID = parseInt(results.insertId,10);
 	        			            		alert(lastID);
 	        	        				    window.plugin.notification.local.add({
-	        	        				                                         id:      lastID,
+	        	        				                                         /*id:      lastID,*/
 	        	        				                                         title:   'Application de Suivi',
 	        	        				                                         message: 'test '+lastID+': Merci de répondre au questionnaire de l application de suivi.',
 	        	        				                                         date:    _timestampSessionNotif
