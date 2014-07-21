@@ -290,6 +290,7 @@ function saveSession(firstTime) {
 	        			            		
 	        			            		_timestampSessionNotif = new Date(timestampSession*1000);
 	        			            		lastID = parseInt(results.insertId,10);
+	        			            		//lastID = String(results.insertId);
 	        			            		//alert(lastID);
 	        	        				    window.plugin.notification.local.add({
 	        	        				                                         id:      lastID,
