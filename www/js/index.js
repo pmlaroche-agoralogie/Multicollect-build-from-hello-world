@@ -254,6 +254,8 @@ function saveSession(firstTime) {
 			}// fin (scheduling=="W") 
 			if (scheduling=="D") // questionnaire quotidien
 			{  	
+				alert('daily');
+				alert('res.rows.item(0).cnt');
 				if (res.rows.item(0).cnt <= 1)
 	        	{
 					var nbLineBefore = res.rows.item(0).cnt;
