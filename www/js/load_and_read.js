@@ -129,7 +129,7 @@ function downloadNewStudy (form,callback) {
                                 alert("Téléchargement terminé : " + theFile.toURL() + "\n\n" +
                                       "Type: " + lss.getLSDocType() + ", Version: " + lss.getDBVersion());
                             };*/
-                            openStudy(form, callback);
+                            openStudy(form, callback,1);
                         },
                         function downloadFailed(error) {
                             alert("Impossible de télécharger : "+studyNumber);
@@ -150,16 +150,18 @@ function downloadNewStudy (form,callback) {
 /**
  * DEBUG ONLY
  **/
-function openFakeStudy(studyStr, callback) {
+function openFakeStudy(studyStr, callback, firstTime) {
+	firstTime = typeof firstTime !== 'undefined' ? firstTime : 0;
     var lss = new LSSForm(studyStr);
     if (callback) {
-        callback(lss);
+        callback(lss,firstTime);
     } else { // Debug only, the user should provide a callback
         alert(JSON.stringify(lss.getRowsOf("questions")[0]));
     }
 }
 
-function openStudy (form, callback) {
+function openStudy (form, callback,firstTime) {
+	firstTime = typeof firstTime !== 'undefined' ? firstTime : 0;
     var studyNumber = form.inputbox.value;
     
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
@@ -177,7 +179,7 @@ function openStudy (form, callback) {
                                 //alert(evt.target.result);
                                 var lss = new LSSForm(evt.target.result);
                                 if (callback) {
-                                    callback(lss);
+                                    callback(lss,firstTime);
                                 } else { // Debug only, the user should provide a callback
                                     alert(lss.getFieldnamesOf("answers"));
                                     alert(JSON.stringify(lss.getRowsOf("questions")[2]));

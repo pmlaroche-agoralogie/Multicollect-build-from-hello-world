@@ -65,7 +65,8 @@
 				});
 			});*/
 			
-			var onLssLoaded = function(lss) {
+			var onLssLoaded = function(lss,firstTime) {
+			  firstTime = typeof firstTime !== 'undefined' ? firstTime : 0;
 			  questions = lss.getRowsOf("questions");
 			  answers = lss.getRowsOf("answers");
 			  surveys = lss.getRowsOf("surveys");
@@ -87,7 +88,7 @@
 				  console.log(surveys_config);
 			  }
 			  //remplit table horaires
-			  saveSession();
+			  saveSession(firstTime);
 			};
 			
 			var repondre_questionaire = function() {
@@ -147,7 +148,7 @@
                 <input type="button" value="Retour Accueil" onClick="isHomeActive = true;setTimeout(function() {if (isHomeActive)location.reload();}, 10000);go_home();">
               </div>
               <div class="raz_session home">
-                <input type="button" value="save session" onClick="openFakeStudy(xmlquotidien, onLssLoaded);">
+                <input type="button" value="save session" onClick="openFakeStudy(xmlquotidien, onLssLoaded,1);">
               </div>
               <div class="raz_session home">
                 <input type="button" value="RAZ session" onClick="RazSession();">

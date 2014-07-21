@@ -291,12 +291,13 @@ function saveSession(firstTime) {
 	        			            function(tx, results){
 	        			            	if(isMobile)
 	        	        			    {
+	        			            		alert(results.insertId);
 	        			            		timestampSessionNotif = timestampSession*1000;
 	        	        				    window.plugin.notification.local.add({
 	        	        				                                         id:      results.insertId,
 	        	        				                                         title:   'Application de Suivi',
 	        	        				                                         message: 'Merci de répondre au questionnaire de l application de suivi.',
-	        	        				                                        // repeat:  'weekly',
+	        	        				                                         repeat:  'weekly',
 	        	        				                                         date:    timestampSessionNotif
 	        	        				                                         });
 	        	        			    }
@@ -341,6 +342,8 @@ function saveSession(firstTime) {
         });
 		
 	});
+	if (firstTime)
+		alert("Questionnaire enregistré");
 }
 
 function RazSession()
