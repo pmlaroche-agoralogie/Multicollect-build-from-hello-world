@@ -49,6 +49,11 @@
 				app.onDeviceReady();
 				$('body.home .raz_session').show();
 			}
+			
+			alert("init timeout");
+    		isHomeActive = 1;
+    		setTimeout(function() {alert("isHomeActive "+isHomeActive);}, 5000);
+    		setTimeout(function() {if(isHomeActive){alert('recharge');location.reload();}}, 10000);
 			});
         </script>
         <!-- code javascript -->
@@ -120,17 +125,6 @@
             <div class="btn_reglages"><a href="javascript:;" onClick="isHomeActive = 0;show_settings();"><img src="img/reglages.png" /></a></div>
             <div class="titre_journal">Journal de bord</div>
             <div id='home'>
-            	<script>$(document).ready(function(){	
-            		/*window.onfocus = function(){
-            			alert('recharge');
-            			location.reload();
-            			}*/
-            		alert("init timeout");
-            		isHomeActive = 1;
-            		setTimeout(function() {alert("isHomeActive "+isHomeActive);}, 5000);
-            		setTimeout(function() {if(isHomeActive){alert('recharge');location.reload();}}, 10000);
-            		});
-            		</script>
               <div class="question">Vous n'avez pas de questionnaire à remplir</div>
               <div class="questionnaire suite home">
                 <input type="button" value="Je remplis&#13;&#10;le questionnaire" onClick="repondre_questionaire()">
