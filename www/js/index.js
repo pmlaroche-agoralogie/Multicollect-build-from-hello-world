@@ -191,6 +191,7 @@ function saveSession(firstTime) {
 		alert(surveys[0].sid);
 		var duration = surveys_config.duration;
 		var scheduling = surveys_config.scheduling;
+		alert(duration);
 		alert(scheduling);
 		//si pas d'enregistrement ou reste seulement un, j'en remet
 		tx.executeSql('select count("id") as cnt from "horaires" WHERE tsdebut > '+timestamp+' and uidquestionnaire = '+sid+';', [], function(tx, res) {
