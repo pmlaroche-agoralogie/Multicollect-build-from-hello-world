@@ -82,11 +82,12 @@
 			  console.log("surveys_config");
 			  console.log(surveys_config);
 			  //remplit table horaires
-			  alert('savesession')
+			  alert('savesession');
 			  saveSession();
 			};
 			
 			var repondre_questionaire = function() {
+			   isHomeActive = 0;
 			  //TODO switch ismobile pour test locaux seulement sinon fonctionnement normal
 			  if(!isMobile)
 			  	openFakeStudy(xmlquotidien, onLssLoaded);
@@ -113,15 +114,18 @@
 		<!-- contenu de la page -->
         <div class="conteneur">
           <div class="contenu">
-            <div class="btn_reglages"><a href="javascript:;" onClick="show_settings();"><img src="img/reglages.png" /></a></div>
+            <div class="btn_reglages"><a href="javascript:;" onClick="isHomeActive = 0;show_settings();"><img src="img/reglages.png" /></a></div>
             <div class="titre_journal">Journal de bord</div>
             <div id='home'>
             	<script>$(document).ready(function(){	
-            		window.onfocus = function(){
+            		/*window.onfocus = function(){
             			alert('recharge');
             			location.reload();
-            			}
-            		/*setTimeout(function() {location.reload();}, 10000);*/});</script>
+            			}*/
+            		isHomeActive = 1;
+            		if (isHomeActive)
+            			setTimeout(function() {if (isHomeActive)location.reload();}, 10000);
+            		});</script>
               <div class="question">Vous n'avez pas de questionnaire à remplir</div>
               <div class="questionnaire suite home">
                 <input type="button" value="Je remplis&#13;&#10;le questionnaire" onClick="repondre_questionaire()">
@@ -145,7 +149,7 @@
                 <INPUT id="buttonopensurvey" TYPE="button" NAME="button" Value="Ouvrir" onClick="openStudy(this.form, onLssLoaded)">
               </form>
               <div class="suite home">
-                <input type="button" value="Retour Accueil" onClick="go_home();">
+                <input type="button" value="Retour Accueil" onClick="isHomeActive = 1;go_home();">
               </div>
               <div class="raz_session home">
                 <input type="button" value="save session" onClick="openFakeStudy(xmlquotidien, onLssLoaded);">
