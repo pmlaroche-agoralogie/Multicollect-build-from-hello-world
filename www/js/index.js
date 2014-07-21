@@ -168,6 +168,7 @@ function getSurveyConfig()
 {
 	var config = {};
 	var strSurveyConfig = surveys_languagesettings[0].surveyls_description;
+	alert(surveys_languagesettings[0].surveyls_description);
 	var line = strSurveyConfig.split("#");
 	for (var linekey in line)
 	{
