@@ -57,7 +57,6 @@ onDeviceReady: function() {
     app.receivedEvent('deviceready');
     hide_div('blocinit');
 
-    alert('GPS');
     if(isMobile)
     {
     	//gestion GPS
@@ -78,7 +77,6 @@ onDeviceReady: function() {
 	    navigator.geolocation.getCurrentPosition(onSuccessGPS, onErrorGPS);
     }
     
-    alert('notif');
     var now                  = new Date().getTime(),
     _60_seconds_from_now = new Date(now + 60*1000);
     
@@ -102,7 +100,6 @@ onDeviceReady: function() {
     	//this.db = openDatabase("Database", "1.0", "Demo", -1);
     	this.db = openDatabase("Database", "1.0", "Demo", -1);
     
-    alert('requete');
     //this.db.transaction(function(tx) {
     this.db.transaction(function(tx) {
                    /*     tx.executeSql('DROP TABLE IF EXISTS test_table');
@@ -125,7 +122,6 @@ onDeviceReady: function() {
                                       alert("ERROR: " + e.message);
                                       });*/
                         
-    					alert('timestamp');
                         var timestamp = Math.round(new Date().getTime() / 1000);
                         
                         //test affichage questionnaire sur timestamp
