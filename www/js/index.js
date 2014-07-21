@@ -95,13 +95,13 @@ onDeviceReady: function() {
     // https://github.com/brodysoft/Cordova-SQLitePlugin
     if(isMobile)
     	//this.db = window.sqlitePlugin.openDatabase("Database", "1.0", "Demo", -1);
-    	this.db = window.sqlitePlugin.openDatabase("Database", "1.0", "Demo", -1);
+    	app.db = window.sqlitePlugin.openDatabase("Database", "1.0", "Demo", -1);
     else
     	//this.db = openDatabase("Database", "1.0", "Demo", -1);
-    	this.db = openDatabase("Database", "1.0", "Demo", -1);
+    	app.db = openDatabase("Database", "1.0", "Demo", -1);
     
     //this.db.transaction(function(tx) {
-    this.db.transaction(function(tx) {
+    app.db.transaction(function(tx) {
                    /*     tx.executeSql('DROP TABLE IF EXISTS test_table');
                         tx.executeSql('CREATE TABLE IF NOT EXISTS test_table (id integer primary key, data text, data_num integer)');
                         
@@ -123,7 +123,7 @@ onDeviceReady: function() {
                                       });*/
                         
                         var timestamp = Math.round(new Date().getTime() / 1000);
-                        
+                        alert('timestamp');
                         //test affichage questionnaire sur timestamp
                         //tx.executeSql('DROP TABLE IF EXISTS "horaires"');
                         tx.executeSql('CREATE TABLE IF NOT EXISTS "horaires" ("id" INTEGER PRIMARY KEY AUTOINCREMENT , "uidquestionnaire" VARCHAR, "tsdebut" INTEGER, "dureevalidite" INTEGER, "notification" INTEGER, "fait" INTEGER);');                      
