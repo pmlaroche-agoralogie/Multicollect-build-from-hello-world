@@ -57,6 +57,7 @@ onDeviceReady: function() {
     app.receivedEvent('deviceready');
     hide_div('blocinit');
 
+    alert('GPS');
     if(isMobile)
     {
     	//gestion GPS
@@ -77,6 +78,7 @@ onDeviceReady: function() {
 	    navigator.geolocation.getCurrentPosition(onSuccessGPS, onErrorGPS);
     }
     
+    alert('notif');
     var now                  = new Date().getTime(),
     _60_seconds_from_now = new Date(now + 60*1000);
     
@@ -90,6 +92,8 @@ onDeviceReady: function() {
 	                                         date:    _60_seconds_from_now
 	                                         });
     }
+    
+    alert('db');
     // https://github.com/brodysoft/Cordova-SQLitePlugin
     if(isMobile)
     	//this.db = window.sqlitePlugin.openDatabase("Database", "1.0", "Demo", -1);
@@ -98,6 +102,7 @@ onDeviceReady: function() {
     	//this.db = openDatabase("Database", "1.0", "Demo", -1);
     	db = openDatabase("Database", "1.0", "Demo", -1);
     
+    alert('requete');
     //this.db.transaction(function(tx) {
     db.transaction(function(tx) {
                    /*     tx.executeSql('DROP TABLE IF EXISTS test_table');
@@ -151,7 +156,7 @@ onDeviceReady: function() {
 
                       
     	});
-    
+    alert('fin deviceready');
     				
     
 },
