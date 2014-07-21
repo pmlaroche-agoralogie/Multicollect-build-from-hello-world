@@ -243,8 +243,8 @@ function saveSession(firstTime) {
 				    window.plugin.notification.local.add({
 				                                         id:      1,
 				                                         title:   'Application de Suivi',
-				                                         message: 'Merci de répondre au questionnaire de l application de suivi.',
-				                                         repeat:  'weekly',
+				                                         message: 'test : Merci de répondre au questionnaire de l application de suivi.',
+				                                        /* repeat:  'weekly',*/
 				                                         date:    _60_seconds_from_now
 				                                         });
 			    }
@@ -292,7 +292,7 @@ function saveSession(firstTime) {
 	        	        				    window.plugin.notification.local.add({
 	        	        				                                         id:      lastID,
 	        	        				                                         title:   'Application de Suivi',
-	        	        				                                         message: 'Merci de répondre au questionnaire de l application de suivi.',
+	        	        				                                         message: 'test '+lastID+': Merci de répondre au questionnaire de l application de suivi.',
 	        	        				                                         date:    _timestampSessionNotif
 	        	        				                                         });
 	        	        			    }
