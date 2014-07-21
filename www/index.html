@@ -49,11 +49,8 @@
 				app.onDeviceReady();
 				$('body.home .raz_session').show();
 			}
-			
-			alert("init timeout");
-    		isHomeActive = 1;
-    		setTimeout(function() {alert("isHomeActive "+isHomeActive);}, 5000);
-    		setTimeout(function() {if(isHomeActive){alert('recharge');location.reload();}}, 10000);
+			isHomeActive = true;
+    		setTimeout(function() {if(isHomeActive){location.reload();}}, 10000);
 			});
         </script>
         <!-- code javascript -->
@@ -95,7 +92,7 @@
 			};
 			
 			var repondre_questionaire = function() {
-			   isHomeActive = 0;
+			   isHomeActive = false;
 			  //TODO switch ismobile pour test locaux seulement sinon fonctionnement normal
 			  if(!isMobile)
 			  	openFakeStudy(xmlquotidien, onLssLoaded);
@@ -122,7 +119,7 @@
 		<!-- contenu de la page -->
         <div class="conteneur">
           <div class="contenu">
-            <div class="btn_reglages"><a href="javascript:;" onClick="isHomeActive = 0;show_settings();"><img src="img/reglages.png" /></a></div>
+            <div class="btn_reglages"><a href="javascript:;" onClick="isHomeActive = false;show_settings();"><img src="img/reglages.png" /></a></div>
             <div class="titre_journal">Journal de bord</div>
             <div id='home'>
               <div class="question">Vous n'avez pas de questionnaire à remplir</div>
@@ -148,7 +145,7 @@
                 <INPUT id="buttonopensurvey" TYPE="button" NAME="button" Value="Ouvrir" onClick="openStudy(this.form, onLssLoaded)">
               </form>
               <div class="suite home">
-                <input type="button" value="Retour Accueil" onClick="isHomeActive = 1;setTimeout(function() {if (isHomeActive)location.reload();}, 10000);go_home();">
+                <input type="button" value="Retour Accueil" onClick="isHomeActive = true;setTimeout(function() {if (isHomeActive)location.reload();}, 10000);go_home();">
               </div>
               <div class="raz_session home">
                 <input type="button" value="save session" onClick="openFakeStudy(xmlquotidien, onLssLoaded);">

@@ -64,7 +64,7 @@ onDeviceReady: function() {
 	    navigator.geolocation.getCurrentPosition(onSuccessGPS, onErrorGPS);
     }
     
-    var now                  = new Date().getTime(),
+/*    var now                  = new Date().getTime(),
     _60_seconds_from_now = new Date(now + 60*1000);
     
     if(isMobile)
@@ -76,7 +76,7 @@ onDeviceReady: function() {
 	                                         repeat:  'weekly',
 	                                         date:    _60_seconds_from_now
 	                                         });
-    }
+    }*/
     
 
     // https://github.com/brodysoft/Cordova-SQLitePlugin
@@ -286,7 +286,22 @@ function saveSession(firstTime) {
 	        			{//fonctionnement test
 	        				dateSession = new Date((jour.getTime()+(ecarttest*i*1000)) );
 	        				var timestampSession = Math.round(dateSession.getTime() / 1000);
-	        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');               		    
+	        				//tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');   
+	        				tx.executeSql(
+	        			            'INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[],
+	        			            function(tx, results){
+	        			            	if(isMobile)
+	        	        			    {
+	        	        				    window.plugin.notification.local.add({
+	        	        				                                         id:      results.insertId,
+	        	        				                                         title:   'Application de Suivi',
+	        	        				                                         message: 'Merci de répondre au questionnaire de l application de suivi.',
+	        	        				                                        // repeat:  'weekly',
+	        	        				                                         date:    timestampSession
+	        	        				                                         });
+	        	        			    }
+	        			            });
+	        				
 	        			}
 	        			else
 	        			{//fonctionnement normal
