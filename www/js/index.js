@@ -168,7 +168,7 @@ function getSurveyConfig()
 {
 	var config = {};
 	var strSurveyConfig = surveys_languagesettings[0].surveyls_description;
-	alert(surveys_languagesettings[0].surveyls_description);
+	//alert(surveys_languagesettings[0].surveyls_description);
 	var line = strSurveyConfig.split("#");
 	for (var linekey in line)
 	{
@@ -192,8 +192,6 @@ function saveSession(firstTime) {
 		alert(surveys[0].sid);
 		var duration = surveys_config.duration;
 		var scheduling = surveys_config.scheduling;
-		alert(duration);
-		alert(scheduling);
 		//si pas d'enregistrement ou reste seulement un, j'en remet
 		tx.executeSql('select count("id") as cnt from "horaires" WHERE tsdebut > '+timestamp+' and uidquestionnaire = '+sid+';', [], function(tx, res) {
 			if (scheduling=="W") // questionnaire hebdo
@@ -257,8 +255,6 @@ function saveSession(firstTime) {
 			}// fin (scheduling=="W") 
 			if (scheduling=="D") // questionnaire quotidien
 			{  	
-				alert('daily');
-				alert('res.rows.item(0).cnt');
 				if (res.rows.item(0).cnt <= 1)
 	        	{
 					var nbLineBefore = res.rows.item(0).cnt;
@@ -289,14 +285,12 @@ function saveSession(firstTime) {
 	        		while (i < nb) {
 	        			if (test)
 	        			{//fonctionnement test
-	        				alert('test  daily');
 	        				dateSession = new Date((jour.getTime()+(ecarttest*i*1000)) );
 	        				var timestampSession = Math.round(dateSession.getTime() / 1000);
 	        				//tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');   
 	        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[], function(tx, results){
 	        			            	if(isMobile)
-	        	        			    {   alert('notif  daily');
-	        			            		alert(results.insertId);
+	        	        			    {   
 	        			            		timestampSessionNotif = timestampSession*1000;
 	        	        				    window.plugin.notification.local.add({
 	        	        				                                         id:      results.insertId,
