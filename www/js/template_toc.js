@@ -54,14 +54,13 @@ function saveFormData(type)
 		break; 
 		case "slider": 
 			form_reponse = $("#slidervalue").attr("value");
-			alert(form_reponse);
 		break; 
 		default: 
 			alert("pas de type");
 		 	myreturn = false;
 		break; 
 	}
-	 db.transaction(function(tx) {
+	 app.db.transaction(function(tx) {
 		var timestamp = Math.round(new Date().getTime() / 1000); 
 		tx.executeSql('INSERT INTO "reponses" (idhoraire,sid,gid,qid, code, tsreponse, envoi) VALUES('+form_idhoraire+',"'+form_sid+'","'+form_gid+'","'+form_qid+'","'+form_reponse+'", '+(timestamp-360)+',0);');
 	});

@@ -253,8 +253,7 @@ function saveSession(firstTime) {
 			}// fin (scheduling=="W") 
 			if (scheduling=="D") // questionnaire quotidien
 			{  		
-				//if (res.rows.item(0).cnt <= 1)
-				if(1)
+				if (res.rows.item(0).cnt <= 1)
 	        	{
 					var nbLineBefore = res.rows.item(0).cnt;
 	        		var jour = new Date();
@@ -292,12 +291,13 @@ function saveSession(firstTime) {
 	        			            function(tx, results){
 	        			            	if(isMobile)
 	        	        			    {
+	        			            		timestampSessionNotif = timestampSession*1000;
 	        	        				    window.plugin.notification.local.add({
 	        	        				                                         id:      results.insertId,
 	        	        				                                         title:   'Application de Suivi',
 	        	        				                                         message: 'Merci de répondre au questionnaire de l application de suivi.',
 	        	        				                                        // repeat:  'weekly',
-	        	        				                                         date:    timestampSession
+	        	        				                                         date:    timestampSessionNotif
 	        	        				                                         });
 	        	        			    }
 	        			            });
