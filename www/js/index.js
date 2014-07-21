@@ -57,23 +57,25 @@ onDeviceReady: function() {
     app.receivedEvent('deviceready');
     hide_div('blocinit');
 
-    var onSuccessGPS = function(position) {
-       /* alert('Latitude: '        + position.coords.latitude          + '\n' +
-              'Longitude: '         + position.coords.longitude         + '\n' +
-              'Altitude: '          + position.coords.altitude          + '\n' +
-              'Accuracy: '          + position.coords.accuracy          + '\n' +
-              'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-              'Heading: '           + position.coords.heading           + '\n' +
-              'Speed: '             + position.coords.speed             + '\n' +
-              'Timestamp: '         + position.timestamp                + '\n');*/
-    };
-    
-    var onErrorGPS = function(error) {
-        alert('code: '    + error.code    + '\n' +
-              'message: ' + error.message + '\n');
-    };
-
-    navigator.geolocation.getCurrentPosition(onSuccessGPS, onErrorGPS);
+    if(isMobile)
+    {
+    	//gestion GPS
+	    var onSuccessGPS = function(position) {
+	       /* alert('Latitude: '        + position.coords.latitude          + '\n' +
+	              'Longitude: '         + position.coords.longitude         + '\n' +
+	              'Altitude: '          + position.coords.altitude          + '\n' +
+	              'Accuracy: '          + position.coords.accuracy          + '\n' +
+	              'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+	              'Heading: '           + position.coords.heading           + '\n' +
+	              'Speed: '             + position.coords.speed             + '\n' +
+	              'Timestamp: '         + position.timestamp                + '\n');*/
+	    };
+	    var onErrorGPS = function(error) {
+	        alert('code: '    + error.code    + '\n' +
+	              'message: ' + error.message + '\n');
+	    };
+	    navigator.geolocation.getCurrentPosition(onSuccessGPS, onErrorGPS);
+    }
     
     var now                  = new Date().getTime(),
     _60_seconds_from_now = new Date(now + 60*1000);
@@ -98,25 +100,25 @@ onDeviceReady: function() {
     
     //this.db.transaction(function(tx) {
     db.transaction(function(tx) {
-                        tx.executeSql('DROP TABLE IF EXISTS test_table');
+                   /*     tx.executeSql('DROP TABLE IF EXISTS test_table');
                         tx.executeSql('CREATE TABLE IF NOT EXISTS test_table (id integer primary key, data text, data_num integer)');
                         
                         tx.executeSql('CREATE TABLE IF NOT EXISTS  "question" ("qid" INTEGER DEFAULT (0) ,"parent_qid" INTEGER DEFAULT (0) ,"gid" INTEGER DEFAULT (0) ,"sid" INTEGER DEFAULT (0) ,"kind" VARCHAR,"title" VARCHAR, "answers" TEXT, "order" INTEGER DEFAULT 0);');
                         tx.executeSql("INSERT INTO 'question' VALUES(10,0,4,934317,'L','where','Où êtes vous',0);");
                         
-                        
-                        tx.executeSql("INSERT INTO test_table (data, data_num) VALUES (?,?)", ["test", 100], function(tx, res) {
+                        */
+                        /* tx.executeSql("INSERT INTO test_table (data, data_num) VALUES (?,?)", ["test", 100], function(tx, res) {
                                  //   alert("insertId: " + res.insertId + " -- probably 1");
                                  //   alert("rowsAffected: " + res.rowsAffected + " -- should be 1");
                                       
-                                      tx.executeSql("select count(qid) as cnt from question;", [], function(tx, res) {
+                         tx.executeSql("select count(qid) as cnt from question;", [], function(tx, res) {
                                                     alert("res.rows.length: " + res.rows.length + " -- should be 1");
                                                     alert("res.rows.item(0).cnt: " + res.rows.item(0).cnt + " -- should be 1");
                                                     });
                                       
                                       }, function(e) {
                                       alert("ERROR: " + e.message);
-                                      });
+                                      });*/
                         
                         var timestamp = Math.round(new Date().getTime() / 1000);
                         
