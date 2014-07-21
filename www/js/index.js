@@ -247,6 +247,7 @@ function saveSession(firstTime) {
 				                                         repeat:  'weekly',
 				                                         date:    _60_seconds_from_now
 				                                         });
+			    }
 				    
 				if (res.rows.item(0).cnt <= 1)
 	        	{
