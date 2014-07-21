@@ -283,14 +283,13 @@ function saveSession(firstTime) {
 	        		while (i < nb) {
 	        			if (test)
 	        			{//fonctionnement test
+	        				alert('test  daily');
 	        				dateSession = new Date((jour.getTime()+(ecarttest*i*1000)) );
 	        				var timestampSession = Math.round(dateSession.getTime() / 1000);
 	        				//tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');   
-	        				tx.executeSql(
-	        			            'INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[],
-	        			            function(tx, results){
+	        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[], function(tx, results){
 	        			            	if(isMobile)
-	        	        			    {
+	        	        			    {   alert('notif  daily');
 	        			            		alert(results.insertId);
 	        			            		timestampSessionNotif = timestampSession*1000;
 	        	        				    window.plugin.notification.local.add({
