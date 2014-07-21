@@ -287,8 +287,10 @@ function saveSession(firstTime) {
 	        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[], function(tx, results){
 	        			            	if ((isMobile) && (i!=0))
 	        	        			    {   
+	        			            		
 	        			            		_timestampSessionNotif = timestampSession*1000;
 	        			            		lastID = parseInt(results.insertId,10);
+	        			            		alert(lastID);
 	        	        				    window.plugin.notification.local.add({
 	        	        				                                         id:      lastID,
 	        	        				                                         title:   'Application de Suivi',
