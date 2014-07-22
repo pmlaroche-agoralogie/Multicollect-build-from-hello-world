@@ -167,9 +167,7 @@ function saveSession(firstTime) {
 	firstTime = typeof firstTime !== 'undefined' ? firstTime : 0;
 	app.db.transaction(function(tx) {
 		var timestamp = Math.round(new Date().getTime() / 1000);
-		//alert(new Date().getDay());
 		var sid = surveys[0].sid;
-		alert(surveys[0].sid);
 		var duration = surveys_config.duration;
 		var scheduling = surveys_config.scheduling;
 		//si pas d'enregistrement ou reste seulement un, j'en remet
