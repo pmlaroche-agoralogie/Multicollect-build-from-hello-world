@@ -189,8 +189,8 @@ function saveSession(firstTime) {
 	        		if (parseInt(surveys_config.test,10)) 
 	        		{
 	        			var test=1;
-	        			duration = 60*3; //dure 3 min
-                    	ecarttest = 60*5; //toutes les 5 min
+	        			duration = 180; //dure 3 min
+                    	ecarttest = 300; //toutes les 5 min
 	        		}
 	        		if ((firstTime) && (test!=1))
 	        		{	//première ligne pour test dans 5 min si pas mode test
@@ -287,8 +287,8 @@ function saveSession(firstTime) {
 	        		if (parseInt(surveys_config.test,10)) 
 	        		{
 	        			var test=1;
-	        			duration = 60*3; //dure 3 min
-                    	ecarttest = 60*5; //toutes les 5 min
+	        			duration = 180; //dure 3 min
+                    	ecarttest = 300; //toutes les 5 min
 	        			/*duration = 30; //dure 30 s
                     	var ecarttest = 60; //toutes les min*/
 	        		}
