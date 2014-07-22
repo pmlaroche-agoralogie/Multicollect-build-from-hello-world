@@ -190,7 +190,7 @@ function saveSession(firstTime) {
 	        		{
 	        			var test=1;
 	        			duration = 60*3; //dure 3 min
-                    	var ecarttest = (60*5); //toutes les 5 min
+                    	ecarttest = (60*5); //toutes les 5 min
 	        		}
 	        		if ((firstTime) && (test!=0))
 	        		{	//première ligne pour test dans 5 min si pas mode test
@@ -234,21 +234,7 @@ function saveSession(firstTime) {
 	        	}
 			}// fin (scheduling=="W") 
 			if (scheduling=="D") // questionnaire quotidien
-			{  	
-				var now                  = new Date().getTime(),
-			    _60_seconds_from_now = new Date(now + 60*1000);
-			    
-			    if(isMobile)
-			    {
-				    window.plugin.notification.local.add({
-				                                         id:      1,
-				                                         title:   'Application de Suivi',
-				                                         message: 'test : Merci de répondre au questionnaire de l application de suivi.',
-				                                        /* repeat:  'weekly',*/
-				                                         date:    _60_seconds_from_now
-				                                         });
-			    }
-				    
+			{  				    
 				if (res.rows.item(0).cnt <= 1)
 	        	{
 					var nbLineBefore = res.rows.item(0).cnt;
@@ -269,7 +255,7 @@ function saveSession(firstTime) {
 	        		{
 	        			var test=1;
 	        			duration = 60*3; //dure 3 min
-                    	var ecarttest = (60*5); //toutes les 5 min
+                    	ecarttest = (60*5); //toutes les 5 min
 	        			/*duration = 30; //dure 3 min
                     	var ecarttest = 60; //toutes les 5 min*/
 	        		}
