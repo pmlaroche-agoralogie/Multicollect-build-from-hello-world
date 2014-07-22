@@ -192,7 +192,7 @@ function saveSession(firstTime) {
 	        		}
 	        		if ((firstTime) && (test!=1))
 	        		{	//première ligne pour test dans 5 min si pas mode test
-        				var timestampSession = Math.round(jour.getTime() / 1000)+300; //dans 5min
+        				timestampSession = Math.round(jour.getTime() / 1000)+300; //dans 5min
 	        			tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');
 	        			if (isMobile)
         			    {   			
@@ -209,7 +209,7 @@ function saveSession(firstTime) {
 	        			if (test)
 	        			{//fonctionnement test
 	        				dateSession = new Date((jour.getTime()+(ecarttest*i*1000)) );
-	        				var timestampSession = Math.round(dateSession.getTime() / 1000);
+	        				timestampSession = Math.round(dateSession.getTime() / 1000);
 	        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');      
 	        				if ((isMobile) && (i!=0))
 	        			    {   
@@ -236,7 +236,7 @@ function saveSession(firstTime) {
 				        					dayko=false;
 				        			}
 				        			dateSession = new Date(jour.getFullYear(),jour.getMonth(),jour.getDate(),startHour);
-				        			var timestampSession = Math.round(dateSession.getTime() / 1000);
+				        			timestampSession = Math.round(dateSession.getTime() / 1000);
 				        			if (nbLineBefore)
 				        			{
 				        				nbLineBefore = 0;
@@ -292,7 +292,7 @@ function saveSession(firstTime) {
 	        		}
 	        		if ((firstTime) && (test!=1))
 	        		{	//première ligne pour test dans 5 min si pas mode test
-        				var timestampSession = Math.round(jour.getTime() / 1000)+300; //dans 5min
+        				timestampSession = Math.round(jour.getTime() / 1000)+300; //dans 5min
 	        			tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');
 	        			if (isMobile)
         			    {   	
@@ -362,7 +362,7 @@ function saveSession(firstTime) {
 				        				dateSession = new Date(jour.getFullYear(),jour.getMonth(),jour.getDate(),18);
 				        			delete randomTab[partOfDay];
 				        			console.log(randomTab);
-				        			var timestampSession = Math.round(dateSession.getTime() / 1000) + Math.floor((Math.random() * randomTime));
+				        			timestampSession = Math.round(dateSession.getTime() / 1000) + Math.floor((Math.random() * randomTime));
 				        			if (nbLineBefore)
 				        			{
 				        				nbLineBefore = 0;
