@@ -190,9 +190,9 @@ function saveSession(firstTime) {
 	        		{
 	        			var test=1;
 	        			duration = 60*3; //dure 3 min
-                    	ecarttest = (60*5); //toutes les 5 min
+                    	ecarttest = 60*5; //toutes les 5 min
 	        		}
-	        		if ((firstTime) && (test!=0))
+	        		if ((firstTime) && (test!=1))
 	        		{	//première ligne pour test dans 5 min si pas mode test
         				var timestampSession = Math.round(jour.getTime() / 1000)+300; //dans 5min
 	        			tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');
@@ -288,11 +288,11 @@ function saveSession(firstTime) {
 	        		{
 	        			var test=1;
 	        			duration = 60*3; //dure 3 min
-                    	ecarttest = (60*5); //toutes les 5 min
+                    	ecarttest = 60*5; //toutes les 5 min
 	        			/*duration = 30; //dure 30 s
                     	var ecarttest = 60; //toutes les min*/
 	        		}
-	        		if ((firstTime) && (test!=0))
+	        		if ((firstTime) && (test!=1))
 	        		{	//première ligne pour test dans 5 min si pas mode test
         				var timestampSession = Math.round(jour.getTime() / 1000)+300; //dans 5min
 	        			tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');
@@ -347,7 +347,6 @@ function saveSession(firstTime) {
 	        			else
 	        			{//fonctionnement normal
 	        				//test si max atteint ou non activé
-	        				alert('normal  daily');
 	        				tx.executeSql('select count("id") as cnt from "horaires" WHERE uidquestionnaire = '+sid+';', [], function(tx, res) {
 	        					if ((max == 0) || (res.rows.item(0).cnt < max))
 	        		        	{        		
