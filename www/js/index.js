@@ -196,13 +196,33 @@ function saveSession(firstTime) {
 	        		{	//première ligne pour test dans 5 min si pas mode test
         				var timestampSession = Math.round(jour.getTime() / 1000)+300; //dans 5min
 	        			tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');
+	        			if (isMobile)
+        			    {   			
+		            		_timestampSessionNotif = new Date(timestampSession*1000);
+        				    window.plugin.notification.local.add({
+        				                                         ///id:      lastID,
+        				                                         title:   'Application de Suivi',
+        				                                         message: 'Merci de répondre au questionnaire de l application de suivi.',
+        				                                         date:    _timestampSessionNotif
+        				                                         });
+        			    }
 	        		}
 	        		while (i < nb) {
 	        			if (test)
 	        			{//fonctionnement test
 	        				dateSession = new Date((jour.getTime()+(ecarttest*i*1000)) );
 	        				var timestampSession = Math.round(dateSession.getTime() / 1000);
-	        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');               		    
+	        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');      
+	        				if ((isMobile) && (i!=0))
+	        			    {   
+			            		_timestampSessionNotif = new Date(timestampSession*1000);
+	        				    window.plugin.notification.local.add({
+	        				                                         ///id:      lastID,
+	        				                                         title:   'Application de Suivi',
+	        				                                         message: 'test '+i+': Merci de répondre au questionnaire de l application de suivi.',
+	        				                                         date:    _timestampSessionNotif
+	        				                                         });
+	        			    }
 	        			}
 	        			else
 	        			{//fonctionnement normal
@@ -225,7 +245,20 @@ function saveSession(firstTime) {
 				        				nb++;
 				        			}
 				        			else
+				        			{
 				        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');
+				        				if (isMobile)
+				        			    {   	
+						            		_timestampSessionNotif = new Date(timestampSession*1000);
+				        				    window.plugin.notification.local.add({
+				        				                                         ///id:      lastID,
+				        				                                         title:   'Application de Suivi',
+				        				                                         message: 'Merci de répondre au questionnaire de l application de suivi.',
+				        				                                         date:    _timestampSessionNotif
+				        				                                         });
+				        			    }
+				        			}
+				        				
 	        		        	}
 	        				});
 	        			}
@@ -263,17 +296,25 @@ function saveSession(firstTime) {
 	        		{	//première ligne pour test dans 5 min si pas mode test
         				var timestampSession = Math.round(jour.getTime() / 1000)+300; //dans 5min
 	        			tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');
+	        			if (isMobile)
+        			    {   	
+		            		_timestampSessionNotif = new Date(timestampSession*1000);
+        				    window.plugin.notification.local.add({
+        				                                         ///id:      lastID,
+        				                                         title:   'Application de Suivi',
+        				                                         message: 'Merci de répondre au questionnaire de l application de suivi.',
+        				                                         date:    _timestampSessionNotif
+        				                                         });
+        			    }
 	        		}
 	        		while (i < nb) {
 	        			if (test)
 	        			{//fonctionnement test
-	        				//alert(i);
 	        				dateSession = new Date((jour.getTime()+(ecarttest*i*1000)) );
 	        				timestampSession = Math.round(dateSession.getTime() / 1000);
-	        				//alert(timestampSession);
 	        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');   
 	        				/*tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[], function(tx, results){
-	        					alert(timestampSession);    
+	        					//better way : lancer fonction avec idresult, select recup timestamp, faire notif
 	        					console.log('results', results);
 	        					if ((isMobile) && (i!=0))
 	        	        			    {   
@@ -293,11 +334,7 @@ function saveSession(firstTime) {
 	        			            });*/
 	        				if ((isMobile) && (i!=0))
 	        			    {   
-			            		
 			            		_timestampSessionNotif = new Date(timestampSession*1000);
-			            		//lastID = parseInt(results.insertId,10);
-			            		//lastID = String(results.insertId);
-			            		//alert(lastID);
 	        				    window.plugin.notification.local.add({
 	        				                                         ///id:      lastID,
 	        				                                         title:   'Application de Suivi',
@@ -335,7 +372,20 @@ function saveSession(firstTime) {
 				        				nb++;
 				        			}
 				        			else
+			        				{
 				        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');
+				        				if (isMobile)
+				        			    {   
+						            		_timestampSessionNotif = new Date(timestampSession*1000);
+				        				    window.plugin.notification.local.add({
+				        				                                         ///id:      lastID,
+				        				                                         title:   'Application de Suivi',
+				        				                                         message: 'Merci de répondre au questionnaire de l application de suivi.',
+				        				                                         date:    _timestampSessionNotif
+				        				                                         });
+				        			    }
+			        				}
+				        				
 	        		        	}
 	        				});
 	        			}
