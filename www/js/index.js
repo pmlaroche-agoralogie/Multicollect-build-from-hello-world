@@ -256,8 +256,8 @@ function saveSession(firstTime) {
 	        			var test=1;
 	        			duration = 60*3; //dure 3 min
                     	ecarttest = (60*5); //toutes les 5 min
-	        			/*duration = 30; //dure 3 min
-                    	var ecarttest = 60; //toutes les 5 min*/
+	        			duration = 30; //dure 30 s
+                    	var ecarttest = 60; //toutes les min
 	        		}
 	        		if ((firstTime) && (test!=0))
 	        		{	//première ligne pour test dans 5 min si pas mode test
@@ -275,8 +275,8 @@ function saveSession(firstTime) {
 	        	        			    {   
 	        			            		
 	        			            		_timestampSessionNotif = new Date(timestampSession*1000);
-	        			            		lastID = parseInt(results.insertId,10);
-	        			            		//lastID = String(results.insertId);
+	        			            		//lastID = parseInt(results.insertId,10);
+	        			            		lastID = String(results.insertId);
 	        			            		//alert(lastID);
 	        	        				    window.plugin.notification.local.add({
 	        	        				                                         id:      lastID,
