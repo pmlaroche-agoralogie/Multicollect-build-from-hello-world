@@ -267,16 +267,20 @@ function saveSession(firstTime) {
 	        		while (i < nb) {
 	        			if (test)
 	        			{//fonctionnement test
+	        				//alert(i);
 	        				dateSession = new Date((jour.getTime()+(ecarttest*i*1000)) );
-	        				var timestampSession = Math.round(dateSession.getTime() / 1000);
-	        				//tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');   
-	        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[], function(tx, results){
-	        			            	if ((isMobile) && (i!=0))
+	        				timestampSession = Math.round(dateSession.getTime() / 1000);
+	        				//alert(timestampSession);
+	        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');   
+	        				/*tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[], function(tx, results){
+	        					alert(timestampSession);    
+	        					console.log('results', results);
+	        					if ((isMobile) && (i!=0))
 	        	        			    {   
 	        			            		
 	        			            		_timestampSessionNotif = new Date(timestampSession*1000);
 	        			            		//lastID = parseInt(results.insertId,10);
-	        			            		alert(timestampSession);
+	        			            		
 	        			            		lastID = String(results.insertId);
 	        			            		//alert(lastID);
 	        	        				    window.plugin.notification.local.add({
@@ -286,7 +290,21 @@ function saveSession(firstTime) {
 	        	        				                                         date:    _timestampSessionNotif
 	        	        				                                         });
 	        	        			    }
-	        			            });
+	        			            });*/
+	        				if ((isMobile) && (i!=0))
+	        			    {   
+			            		
+			            		_timestampSessionNotif = new Date(timestampSession*1000);
+			            		//lastID = parseInt(results.insertId,10);
+			            		lastID = String(results.insertId);
+			            		//alert(lastID);
+	        				    window.plugin.notification.local.add({
+	        				                                         id:      lastID,
+	        				                                         title:   'Application de Suivi',
+	        				                                         message: 'test '+lastID+': Merci de répondre au questionnaire de l application de suivi.',
+	        				                                         date:    _timestampSessionNotif
+	        				                                         });
+	        			    }
 	        				
 	        			}
 	        			else
