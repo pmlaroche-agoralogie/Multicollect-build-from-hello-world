@@ -9,6 +9,19 @@ function getTemplate(selector,qkey)
 		case "N": 
 			//slider = 1;
 			configSlide = getQuestionConfig(question);
+			currentHour = new Date().getHours();
+			if ((configSlide.frq == "a") && currentHour >= 14)
+			{
+				getTemplate(selector,(qkey + 1));
+				return false;
+				exit();
+			}
+			if ((configSlide.frq == "b") && currentHour <= 14)
+			{
+				getTemplate(selector,(qkey + 1));
+				return false;
+				exit();
+			}
 			bulles = "";
 			if (configSlide.tpl=="sl1")
 				bulles = form_slider_bulle_g +form_slider_bulle_d;
