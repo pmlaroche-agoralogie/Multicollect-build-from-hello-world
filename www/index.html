@@ -43,12 +43,13 @@
 <script type="text/javascript">
 		$(document).ready(function(){
 			if(isMobile)
-				app.initialize();
+				app.initialize();			
 			else
 			{
 				app.onDeviceReady();
 				$('body.home .raz_session').show();
 			}
+			sendReponses();
 			isHomeActive = true;
     		setTimeout(function() {if(isHomeActive){location.reload();}}, 10000);
 			});

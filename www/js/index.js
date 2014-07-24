@@ -90,7 +90,7 @@ onDeviceReady: function() {
                         //test affichage questionnaire sur timestamp
                         //tx.executeSql('DROP TABLE IF EXISTS "horaires"');
                         tx.executeSql('CREATE TABLE IF NOT EXISTS "horaires" ("id" INTEGER PRIMARY KEY AUTOINCREMENT , "uidquestionnaire" VARCHAR, "tsdebut" INTEGER, "dureevalidite" INTEGER, "notification" INTEGER, "fait" INTEGER);');                      
-                        tx.executeSql('SELECT *,(tsdebut +dureevalidite) as fin FROM "horaires" WHERE tsdebut < '+timestamp+' AND fin  > '+timestamp+';', [], function(tx, res) {
+                        tx.executeSql('SELECT *,(tsdebut +dureevalidite) as fin FROM "horaires" WHERE tsdebut < '+timestamp+' AND fin  > '+timestamp+' AND fait=0;', [], function(tx, res) {
                         	var dataset = res.rows.length;
                             if(dataset>0)
                             {
@@ -162,6 +162,26 @@ function getSurveyConfig()
 	}
 	return config;
 }
+
+function getQuestionConfig(question)
+{
+	var config = {};
+	var strSurveyConfig = question.help;
+	//alert(surveys_languagesettings[0].surveyls_description);
+	var line = strSurveyConfig.split("#");
+	for (var linekey in line)
+	{
+		line2 = line[linekey].split(":");
+		if (line2[0]!= "")
+		{
+			line20=line2[0];
+			line21=line2[1];
+			config[line20] = line21;
+		}
+	}
+	return config;
+}
+
 
 function saveSession(firstTime) {
 	firstTime = typeof firstTime !== 'undefined' ? firstTime : 0;
@@ -418,4 +438,52 @@ function pickRandomProperty(obj) {
         if (Math.random() < 1/++count)
            result = prop;
     return result;
+}
+
+function sendReponses()
+{
+	var aReponses ={};
+	//'SELECT * FROM "horaires" AS h AND "reponses" AS r WHERE h.fait = 1 AND h.id = r.idhoraire '
+	app.db.transaction(function(tx) {
+		tx.executeSql('SELECT * FROM "horaires" WHERE fait = 1;', [], function(tx, resHoraires) {
+			var dataset = resHoraires.rows.length;
+            if(dataset>0)
+            {     	
+            	for(var i=0;i<dataset;i++)
+                {
+            		aReponses["sid"] = resHoraires.rows.item(i).uidquestionnaire;
+                	aReponses["timestamp"] = resHoraires.rows.item(i).tsdebut;
+                	saveResHorairesID = resHoraires.rows.item(i).id;
+                	console.log(aReponses);console.log(resHoraires);
+            		tx.executeSql('SELECT * FROM "reponses" WHERE envoi =0  AND idhoraire = '+resHoraires.rows.item(i).id+';', [], function(tx, res2) {
+            			var dataset2 = res2.rows.length;
+                        if(dataset2>0)
+                        {
+                        	for(var j=0;j<dataset2;j++)
+                            {
+                        		var jsonkey = res2.rows.item(j).sid +"X"+res2.rows.item(j).gid+"X"+res2.rows.item(j).qid;
+                        		aReponses[jsonkey]=res2.rows.item(j).code;
+                            }
+
+                        	xhr_object = new XMLHttpRequest(); 
+                        	xhr_object.open("GET", "http://mcp.ocd-dbs-france.org/test/testrpcpl.php?answer="+JSON.stringify(aReponses), false); 
+                        	xhr_object.send(null); 
+                        	console.log(xhr_object);
+                        	if(xhr_object.readyState == 4) 
+                        	{
+                        		/*if(!isMobile) 
+                        			alert("Requête effectuée !"); */
+                        		if(xhr_object.response == "1") 
+                        			tx.executeSql('UPDATE "reponses" SET envoi = 1 WHERE idhoraire = '+saveResHorairesID+';');
+                        			alert('UPDATE "reponses" SET envoi = 1 WHERE idhoraire = '+saveResHorairesID+';');
+                        	}
+                        	
+                        }
+            			
+            		});
+            		
+                }
+            }
+		});
+	});
 }

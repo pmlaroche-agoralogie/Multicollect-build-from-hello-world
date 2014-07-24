@@ -53,6 +53,10 @@ input[type='range']::-webkit-slider-thumb {-webkit-appearance: none !important;b
 	background: linear-gradient(to right, red , yellow, green); /* Standard syntax */
 }
 #slider-range.plusieurs,#slider-range2.plusieurs{margin-top:10px;}
+
+#slidervalue2{border:none;font-weight:bold;text-align:center;font-size: 24px;}
+#slider-range.heure {background:lightgrey}
+
 div.deux_slider{margin-top:20px;}
 span.infos_slider{font-size:20px;}
 span.infos_slider input{border:0;border:none;font-size:20px;text-align:right;}
