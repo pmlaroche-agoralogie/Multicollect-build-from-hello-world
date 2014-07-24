@@ -10,13 +10,13 @@ function getTemplate(selector,qkey)
 			//slider = 1;
 			configSlide = getQuestionConfig(question);
 			currentHour = new Date().getHours();
-			if ((configSlide.frq == "a") && currentHour >= 14)
+			if ((configSlide.frq == "a") && (currentHour > 14))
 			{
 				getTemplate(selector,(qkey + 1));
 				return false;
 				exit();
 			}
-			if ((configSlide.frq == "b") && currentHour <= 14)
+			if ((configSlide.frq == "b") && (currentHour <= 14))
 			{
 				getTemplate(selector,(qkey + 1));
 				return false;
@@ -35,6 +35,16 @@ function getTemplate(selector,qkey)
 				bulles = form_slider_emo2_g +form_slider_emo2_d;
 			if (configSlide.tpl=="sl7")
 				bulles = form_slider_emo3_g +form_slider_emo3_d;
+			
+			if (configSlide.tpl=="sl10")
+				bulles = form_slider_emo4_g +form_slider_emo4_d;
+			if (configSlide.tpl=="sl11")
+				bulles = form_slider_bulle4_g +form_slider_bulle4_d;
+			if (configSlide.tpl=="sl12")
+				bulles = form_slider_bulle5_g +form_slider_bulle5_d;
+			if (configSlide.tpl=="sl13")
+				bulles = form_slider_bulle6_g +form_slider_bulle6_d;
+			
 			template = form_slider.replace('##bulles##',bulles)
 				.replace('##question##',question.question)
 				.replace('##next##',"'"+selector+"'," +(qkey + 1));
@@ -52,6 +62,11 @@ function getTemplate(selector,qkey)
 			if (configRadio.tpl=="radio2")
 			{
 				template = form_radio2.replace('##question##',question.question)
+				.replace('##next##',"'"+selector+"'," +(qkey + 1));
+			}
+			else if (configRadio.tpl=="radio3")
+			{
+				template = form_radio3.replace('##question##',question.question)
 				.replace('##next##',"'"+selector+"'," +(qkey + 1));
 			}
 			else
@@ -121,7 +136,6 @@ function saveFormData(type)
 var form_radio = 
 '<div class="question">##question##</div>' +   
 '    <form method="post" action="" id="multi_form" name="multi_form" onSubmit="if(saveFormData(\'radio\')){getTemplate(##next##);}return false;">'  + 
-//'    <form method="post" action="" id="multi_form" name="multi_form" onSubmit="return getTemplate(##next##);">'  + 
 '       <div id="radio_style">'  + 
 '			##radio_items##' +
 '		</div>'  + 
@@ -145,11 +159,26 @@ var form_radio2_script =
 var form_radio2 = 
 	'<div class="question">##question##</div>' +   
 	'    <form method="post" action="" id="multi_form" name="multi_form" onSubmit="if(saveFormData(\'radio\')){getTemplate(##next##);}return false;">'  + 
-	//'    <form method="post" action="" id="multi_form" name="multi_form" onSubmit="return getTemplate(##next##);">'  + 
 	'       <div id="emotion">'  + 
-	'			<input type="radio" name="reponse" id="agrave" onClick="valide_un_radio();" /><label for="agrave"><img src="img/moins.png"/><br />Moins bien</label>' +
-	'			<input type="radio" name="reponse" id="identique" onClick="valide_un_radio();" /><label for="identique"><img src="img/egale.png"/><br />Pareil</label>' +
-	'			<input type="radio" name="reponse" id="ameliore" onClick="valide_un_radio();" /><label for="ameliore"><img src="img/plus.png"/><br />Mieux</label>' +
+	'			<input type="radio" name="reponse" id="pire" onClick="valide_un_radio();" /><label for="pire"><img src="img/moins.png"/><br />Moins bien</label>' +
+	'			<input type="radio" name="reponse" id="pareil" onClick="valide_un_radio();" /><label for="pareil"><img src="img/egale.png"/><br />Pareil</label>' +
+	'			<input type="radio" name="reponse" id="mieux" onClick="valide_un_radio();" /><label for="mieux"><img src="img/plus.png"/><br />Mieux</label>' +
+	'		</div>'  + 
+	'      <div class="suite">'  + 
+	'        <input type="hidden" value="##gid##" id="gid" name="gid">'  +
+	'        <input type="hidden" value="##sid##" id="sid" name="sid">'  +
+	'        <input type="hidden" value="##qid##" id="qid" name="qid">'  +
+	'        <input type="hidden" value="##idhoraire##" id="idhoraire" name="idhoraire">'  +
+	'        <input type="submit" value="Suite &gt;&gt;" disabled="disabled" id="btn_submit" name="btn_submit">'  + 
+	'      </div>'  + 
+	'    </form>' + form_radio2_script;
+
+var form_radio3 = 
+	'<div class="question">##question##</div>' +   
+	'    <form method="post" action="" id="multi_form" name="multi_form" onSubmit="if(saveFormData(\'radio\')){getTemplate(##next##);}return false;">'  + 
+	'       <div id="emotion">'  + 
+	'			<input type="radio" name="reponse" id="oui" onClick="valide_un_radio();" /><label for="oui"><img src="img/ok.png" alt="oui" /><br />Oui</label>' +
+	'			<input type="radio" name="reponse" id="non" onClick="valide_un_radio();" /><label for="non"><img src="img/ko.png" alt="non" /><br />Non</label>' +
 	'		</div>'  + 
 	'      <div class="suite">'  + 
 	'        <input type="hidden" value="##gid##" id="gid" name="gid">'  +
@@ -200,6 +229,9 @@ var form_slider_emo2_d = '<div class="right"><img src="img/soleil.png" alt="bien
 var form_slider_emo3_g = '<div class="left"><img src="img/nuage.png" alt="mal" /><br />Moins bien</div>';
 var form_slider_emo3_d = '<div class="right"><img src="img/soleil.png" alt="bien" /><br />Mieux</div>';
 
+var form_slider_emo4_g = '<div class="left"><img src="img/nuage.png" alt="mal" /><br />Très mauvaise</div>';
+var form_slider_emo4_d = '<div class="right"><img src="img/soleil.png" alt="bien" /><br />Très bonne</div>';
+
 //bulles
 var form_slider_bulle_g = '<div class="left bulle">Pas bien<br />du tout</div>';
 var form_slider_bulle_d = '<div class="right bulle">Parfaitement<br />bien</div>';
@@ -209,6 +241,15 @@ var form_slider_bulle2_d = '<div class="right bulle">Tout à fait<br />calme</di
 
 var form_slider_bulle3_g = '<div class="left bulle">Pas du<br />tout</div>';
 var form_slider_bulle3_d = '<div class="right bulle">Enormément<br /></div>';
+
+var form_slider_bulle4_g = '<div class="left bulle">Pas du<br />tout</div>';
+var form_slider_bulle4_d = '<div class="right bulle">Totalement<br /></div>';
+
+var form_slider_bulle5_g = '<div class="left bulle">Pas du<br />tout</div>';
+var form_slider_bulle5_d = '<div class="right bulle">Très<br />bien</div>';
+
+var form_slider_bulle6_g = '<div class="left bulle">Pas du<br />tout</div>';
+var form_slider_bulle6_d = '<div class="right bulle">Beaucoup<br /></div>';
 
 var form_slider2_script = '<script>$( "#slider-range" ).slider({' + 
 '	 min: 0,' + 
