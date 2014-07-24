@@ -90,7 +90,7 @@ onDeviceReady: function() {
                         //test affichage questionnaire sur timestamp
                         //tx.executeSql('DROP TABLE IF EXISTS "horaires"');
                         tx.executeSql('CREATE TABLE IF NOT EXISTS "horaires" ("id" INTEGER PRIMARY KEY AUTOINCREMENT , "uidquestionnaire" VARCHAR, "tsdebut" INTEGER, "dureevalidite" INTEGER, "notification" INTEGER, "fait" INTEGER);');                      
-                        tx.executeSql('SELECT *,(tsdebut +dureevalidite) as fin FROM "horaires" WHERE tsdebut < '+timestamp+' AND fin  > '+timestamp+';', [], function(tx, res) {
+                        tx.executeSql('SELECT *,(tsdebut +dureevalidite) as fin FROM "horaires" WHERE tsdebut < '+timestamp+' AND fin  > '+timestamp+' AND fait=0;', [], function(tx, res) {
                         	var dataset = res.rows.length;
                             if(dataset>0)
                             {
@@ -162,6 +162,26 @@ function getSurveyConfig()
 	}
 	return config;
 }
+
+function getQuestionConfig(question)
+{
+	var config = {};
+	var strSurveyConfig = question.help;
+	//alert(surveys_languagesettings[0].surveyls_description);
+	var line = strSurveyConfig.split("#");
+	for (var linekey in line)
+	{
+		line2 = line[linekey].split(":");
+		if (line2[0]!= "")
+		{
+			line20=line2[0];
+			line21=line2[1];
+			config[line20] = line21;
+		}
+	}
+	return config;
+}
+
 
 function saveSession(firstTime) {
 	firstTime = typeof firstTime !== 'undefined' ? firstTime : 0;

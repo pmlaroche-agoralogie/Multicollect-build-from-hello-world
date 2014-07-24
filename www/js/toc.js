@@ -42,3 +42,30 @@ function valide_slider(valeur){
 		}
 	}
 }
+
+function valide_slider2(valeur){
+
+	if( typeof(valeur) != 'undefined' ){
+		if (document.multi_form.slidervalue.value == 5 && document.multi_form.slidervalue2.value == 30){
+			var r = confirm("Confirmez-vous la valeur du slider ?");
+			if (r == true) {
+				return true;
+			 }else{
+				return false;
+			 }
+		}else{
+			return true;
+		}
+	}else{
+		if (document.multi_form.slidervalue.value == 0){
+			var r = confirm("Confirmez-vous la valeur du slider ?");
+			if (r == true) {
+				return true;
+			 }else{
+				return false;
+			 }
+		}else{
+			return true;
+		}
+	}
+}

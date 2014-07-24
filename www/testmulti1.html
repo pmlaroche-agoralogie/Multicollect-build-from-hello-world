@@ -20,14 +20,18 @@ $( document ).ready(function() {
 	
 	 $( "#slider-range" ).slider({
 		 min: 0,
-		 max: 100,
-		 values: [ 50 ],
+		 max: 20,
+		 values: [ 0 ],
 		change: function(event, ui) 
 		{
 	 		$('input#slidervalue').val(ui.value);
+	 		var h = Math.floor(ui.value/2) + "h";
+	 		var m = (ui.value%2==1?"30min":"00min");
+	 		$('input#slidervalue2').val(h+m);
 		}
 	});
-	 $('input#slidervalue').val(50);
+	 $('input#slidervalue').val(0);
+	 $('input#slidervalue2').val('0h00min');
 	 
 	 $( "#slider-range" ).draggable();
 
@@ -35,6 +39,10 @@ $( document ).ready(function() {
 	
 });
 </script>
+<style>
+#slidervalue2{border:none;font-weight:bold;text-align:center;font-size: 24px;}
+#slider-range.heure {background:lightgrey}
+</style>
 </head>
 <body>
 <div class="conteneur">
@@ -47,7 +55,10 @@ $( document ).ready(function() {
         bien</div>
       <div class="clear"></div>
       <input type="hidden" id="slidervalue" name="slidervalue"/>
-      <div id="slider-range"></div>
+      
+      <div id="slider-range" class="heure"></div>
+      <br/>
+      <input type="text" id="slidervalue2" name="slidervalue2"/>
       <div class="suite">
         <input type="submit" value="Suite &gt;&gt;">
       </div>
