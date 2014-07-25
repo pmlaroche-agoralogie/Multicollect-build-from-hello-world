@@ -113,11 +113,12 @@ font-size: 20px;
 
 /*body.home .question {display:none;}*/
 body.home .questionnaire {display:none;}
-form[name="myform"] input[type="button"] {width: 200px;height:75px;}
+form[name="myform"] input[type="text"] {width: 200px;height:75px;font-size: 30px;font-weight:bold;text-align:center}
+form[name="myform"] input[type="button"] {width: 200px;height:75px;font-size: 16px;font-weight:bold}
 /*body.home .raz_session input{width: 200px;height:75px;}*/
 body.home .raz_session {display:none;}
 body.home #opensurvey {display:none;}
 
 /*OCD*/
 
-.spirale {background:url('../img/spirale.png') top left repeat-x grey;}
+.spirale {background:url('../img/spirale.png') top left repeat-x grey;padding: 3% 3% 0.5%;}
