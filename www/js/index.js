@@ -470,7 +470,7 @@ function sendReponses()
                         		var jsonkey = res2.rows.item(j).sid +"X"+res2.rows.item(j).gid+"X"+res2.rows.item(j).qid;
                         		aReponses[jsonkey]=res2.rows.item(j).code;
                             }
-
+                        	alert("essai envoi");
                         	xhr_object = new XMLHttpRequest(); 
                         	xhr_object.open("GET", "http://mcp.ocd-dbs-france.org/test/testrpcpl.php?answer="+JSON.stringify(aReponses), false); 
                         	xhr_object.send(null); 
@@ -482,7 +482,7 @@ function sendReponses()
                         		if(xhr_object.response == "1") 
                         			{
                         			tx.executeSql('UPDATE "reponses" SET envoi = 1 WHERE idhoraire = '+saveResHorairesID+';');
-                        			alert('UPDATE "reponses" SET envoi = 1 WHERE idhoraire = '+saveResHorairesID+';');
+                        			//alert('UPDATE "reponses" SET envoi = 1 WHERE idhoraire = '+saveResHorairesID+';');
                         			}
                         	}
                         	
