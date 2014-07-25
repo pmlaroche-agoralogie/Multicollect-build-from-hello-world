@@ -4,6 +4,20 @@ function show_settings()
 {
     hide_div('home');
     show_div('settings');
+    app.db.transaction(function(tx) {
+    	tx.executeSql('SELECT uidquestionnaire FROM "horaires" WHERE fait = 0 GROUP BY uidquestionnaire;', [], function(tx, res) {
+			var dataset = res.rows.length;
+			var strSuivi = "Vous participez à : ";
+            if(dataset>0)
+            {     	
+            	for(var i=0;i<dataset;i++)
+                {
+            		strSuivi += "<br/>"+res.rows.item(i).uidquestionnaire;
+                }
+            	$("#settings .question").html(strSuivi);
+            }
+    	});
+	});
 }
 
 function begin_acquisition()

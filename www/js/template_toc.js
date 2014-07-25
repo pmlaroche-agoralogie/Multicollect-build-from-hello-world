@@ -160,7 +160,7 @@ function saveFormData(type)
 }
 
 var form_radio = 
-'<div class="question">##question##</div>' +   
+'<div class="spirale"><div class="question">##question##</div></div>' +   
 '    <form method="post" action="" id="multi_form" name="multi_form" onSubmit="if(saveFormData(\'radio\')){getTemplate(##next##);}return false;">'  + 
 '       <div id="radio_style">'  + 
 '			##radio_items##' +

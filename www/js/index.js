@@ -94,8 +94,9 @@ onDeviceReady: function() {
                         	var dataset = res.rows.length;
                             if(dataset>0)
                             {
-                            	for(var i=0;i<dataset;i++)
-                                {
+                            	var i=0;
+                            	/*for(var i=0;i<dataset;i++)
+                                {*/
                             		if(!isMobile)
                             			alert(res.rows.item(i).uidquestionnaire+" ligne "+res.rows.item(i).id+" en cours \ndeb :"+res.rows.item(i).tsdebut+" \nfin : "+res.rows.item(i).fin+"\ntimestamp "+timestamp);
                             		$('body.home .question').html("Vous avez un questionnaire à remplir");
@@ -103,7 +104,7 @@ onDeviceReady: function() {
                             		questionnaire_encours = res.rows.item(i).uidquestionnaire;
                             		session_encours = res.rows.item(i).id;
                             		$('body.home #opensurvey #idsurvey').attr('value',questionnaire_encours);                         			
-                                }
+                               /* }*/
                             }
                             else
                             	if(!isMobile)
@@ -455,7 +456,7 @@ function sendReponses()
             		aReponses["sid"] = resHoraires.rows.item(i).uidquestionnaire;
                 	aReponses["timestamp"] = resHoraires.rows.item(i).tsdebut;
                 	saveResHorairesID = resHoraires.rows.item(i).id;
-                	console.log(aReponses);console.log(resHoraires);
+                	
             		tx.executeSql('SELECT * FROM "reponses" WHERE envoi =0  AND idhoraire = '+resHoraires.rows.item(i).id+';', [], function(tx, res2) {
             			var dataset2 = res2.rows.length;
                         if(dataset2>0)
