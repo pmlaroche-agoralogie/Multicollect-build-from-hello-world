@@ -489,6 +489,9 @@ function sendReponses()
 	});
 }
 
-function sortByQuestionOrder(key1, key2){  
+/*function sortByQuestionOrder(key1, key2){  
 	   return key1.question_order > key2.question_order;  
 	}  
+function sortByQuestionOrder(key1, key2){  
+	   return key1.question_order > key2.question_order;  
+	}  */

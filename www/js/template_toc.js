@@ -82,7 +82,7 @@ function getTemplate(selector,qkey)
 			else if (configRadio.tpl=="radio21")
 			{
 				template = form_radio21.replace('##question##',question.question)
-				.replace('##next##',"'"+selector+"'," +(qkey + 1));
+				.replace('##next##',"'"+selector+"'," +(qkey + 2));
 			}
 			else if (configRadio.tpl=="radio22")
 			{
@@ -92,7 +92,8 @@ function getTemplate(selector,qkey)
 			else if (configRadio.tpl=="radio3")
 			{
 				template = form_radio3.replace('##question##',question.question)
-				.replace('##next##',"'"+selector+"'," +(qkey + 1));
+				.replace('##next##',"'"+selector+"'," +(qkey + 1))
+				.replace('##next2##',"'"+selector+"'," +(qkey + 2));
 			}
 			else
 			{
@@ -230,9 +231,19 @@ var form_radio22 =
 	'      </div>'  + 
 	'    </form>' + form_radio2_script;
 
+var form_radio3_script =
+'<script>' +
+'	function getNext(){' +
+'		if($(\'#multi_form input[type="radio"]:checked\').attr("id") == "oui")' +
+'			{getTemplate(##next##);}' +
+'		else' +
+'			{getTemplate(##next2##);}' +
+'	}' +
+'	</script>' ;
+
 var form_radio3 = 
 	'<div class="question">##question##</div>' +   
-	'    <form method="post" action="" id="multi_form" name="multi_form" onSubmit="if(saveFormData(\'radio\')){getTemplate(##next##);}return false;">'  + 
+	'    <form method="post" action="" id="multi_form" name="multi_form" onSubmit="if(saveFormData(\'radio\')){getNext();}return false;">'  + 
 	'       <div id="emotion">'  + 
 	'			<input type="radio" name="reponse" id="oui" onClick="valide_un_radio();" /><label for="oui"><img src="img/ok.png" alt="oui" /><br />Oui</label>' +
 	'			<input type="radio" name="reponse" id="non" onClick="valide_un_radio();" /><label for="non"><img src="img/ko.png" alt="non" /><br />Non</label>' +
@@ -244,7 +255,7 @@ var form_radio3 =
 	'        <input type="hidden" value="##idhoraire##" id="idhoraire" name="idhoraire">'  +
 	'        <input type="submit" value="Suite &gt;&gt;" disabled="disabled" id="btn_submit" name="btn_submit">'  + 
 	'      </div>'  + 
-	'    </form>' + form_radio2_script;
+	'    </form>' + form_radio2_script + form_radio3_script;
 
 var form_slider_script = '<script>$( "#slider-range" ).slider({' + 
 '	 min: 0,' + 
