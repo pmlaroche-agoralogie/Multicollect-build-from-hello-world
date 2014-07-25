@@ -79,6 +79,16 @@ function getTemplate(selector,qkey)
 				template = form_radio2.replace('##question##',question.question)
 				.replace('##next##',"'"+selector+"'," +(qkey + 1));
 			}
+			else if (configRadio.tpl=="radio21")
+			{
+				template = form_radio21.replace('##question##',question.question)
+				.replace('##next##',"'"+selector+"'," +(qkey + 1));
+			}
+			else if (configRadio.tpl=="radio22")
+			{
+				template = form_radio22.replace('##question##',question.question)
+				.replace('##next##',"'"+selector+"'," +(qkey + 1));
+			}
 			else if (configRadio.tpl=="radio3")
 			{
 				template = form_radio3.replace('##question##',question.question)
@@ -178,6 +188,38 @@ var form_radio2 =
 	'			<input type="radio" name="reponse" id="A1" onClick="valide_un_radio();" /><label for="A1"><img src="img/moins.png"/><br />Moins bien</label>' +
 	'			<input type="radio" name="reponse" id="A2" onClick="valide_un_radio();" /><label for="A2"><img src="img/egale.png"/><br />Pareil</label>' +
 	'			<input type="radio" name="reponse" id="A3" onClick="valide_un_radio();" /><label for="A3"><img src="img/plus.png"/><br />Mieux</label>' +
+	'		</div>'  + 
+	'      <div class="suite">'  + 
+	'        <input type="hidden" value="##gid##" id="gid" name="gid">'  +
+	'        <input type="hidden" value="##sid##" id="sid" name="sid">'  +
+	'        <input type="hidden" value="##qid##" id="qid" name="qid">'  +
+	'        <input type="hidden" value="##idhoraire##" id="idhoraire" name="idhoraire">'  +
+	'        <input type="submit" value="Suite &gt;&gt;" disabled="disabled" id="btn_submit" name="btn_submit">'  + 
+	'      </div>'  + 
+	'    </form>' + form_radio2_script;
+var form_radio21 = 
+	'<div class="question">##question##</div>' +   
+	'    <form method="post" action="" id="multi_form" name="multi_form" onSubmit="if(saveFormData(\'radio\')){getTemplate(##next##);}return false;">'  + 
+	'       <div id="emotion">'  + 
+	'			<input type="radio" name="reponse" id="A1" onClick="valide_un_radio();" /><label for="A1"><img src="img/moins.png"/><br />s\'aggrave</label>' +
+	'			<input type="radio" name="reponse" id="A2" onClick="valide_un_radio();" /><label for="A2"><img src="img/egale.png"/><br />est identique</label>' +
+	'			<input type="radio" name="reponse" id="A3" onClick="valide_un_radio();" /><label for="A3"><img src="img/plus.png"/><br />s\'améliore</label>' +
+	'		</div>'  + 
+	'      <div class="suite">'  + 
+	'        <input type="hidden" value="##gid##" id="gid" name="gid">'  +
+	'        <input type="hidden" value="##sid##" id="sid" name="sid">'  +
+	'        <input type="hidden" value="##qid##" id="qid" name="qid">'  +
+	'        <input type="hidden" value="##idhoraire##" id="idhoraire" name="idhoraire">'  +
+	'        <input type="submit" value="Suite &gt;&gt;" disabled="disabled" id="btn_submit" name="btn_submit">'  + 
+	'      </div>'  + 
+	'    </form>' + form_radio2_script;
+var form_radio22 = 
+	'<div class="question">##question##</div>' +   
+	'    <form method="post" action="" id="multi_form" name="multi_form" onSubmit="if(saveFormData(\'radio\')){getTemplate(##next##);}return false;">'  + 
+	'       <div id="emotion">'  + 
+	'			<input type="radio" name="reponse" id="A1" onClick="valide_un_radio();" /><label for="A1"><img src="img/moins.png"/><br />s\'aggraverait</label>' +
+	'			<input type="radio" name="reponse" id="A2" onClick="valide_un_radio();" /><label for="A2"><img src="img/egale.png"/><br />serait<br/>identique</label>' +
+	'			<input type="radio" name="reponse" id="A3" onClick="valide_un_radio();" /><label for="A3"><img src="img/plus.png"/><br />s\'améliorerait</label>' +
 	'		</div>'  + 
 	'      <div class="suite">'  + 
 	'        <input type="hidden" value="##gid##" id="gid" name="gid">'  +
