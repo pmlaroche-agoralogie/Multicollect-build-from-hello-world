@@ -208,8 +208,10 @@ function saveSession(firstTime) {
 	        		if (parseInt(surveys_config.test,10)) 
 	        		{
 	        			var test=1;
+	        			/*duration = 300; //dure 5 min
+                    	ecarttest = 21600; //toutes les 6*60 min*/
 	        			duration = 300; //dure 5 min
-                    	ecarttest = 21600; //toutes les 6*60 min
+                    	ecarttest = 600; //toutes les 10 min
 	        		}
 	        		if ((firstTime) && (test!=1))
 	        		{	//première ligne pour test dans 5 min si pas mode test
@@ -307,8 +309,10 @@ function saveSession(firstTime) {
 	        		if (parseInt(surveys_config.test,10)) 
 	        		{
 	        			var test=1;
-	        			duration = 300; //dure 5 min
-                    	ecarttest = 3600; //toutes les 60 min
+	        			/*duration = 300; //dure 5 min
+                    	ecarttest = 3600; //toutes les 60 min*/
+	        			duration = 180; //dure 3 min
+                    	ecarttest = 300; //toutes les 5 min
 	        			/*duration = 30; //dure 30 s
                     	var ecarttest = 60; //toutes les min*/
 	        		}
@@ -476,8 +480,10 @@ function sendReponses()
                         		/*if(!isMobile) 
                         			alert("Requête effectuée !"); */
                         		if(xhr_object.response == "1") 
+                        			{
                         			tx.executeSql('UPDATE "reponses" SET envoi = 1 WHERE idhoraire = '+saveResHorairesID+';');
-                        			//alert('UPDATE "reponses" SET envoi = 1 WHERE idhoraire = '+saveResHorairesID+';');
+                        			alert('UPDATE "reponses" SET envoi = 1 WHERE idhoraire = '+saveResHorairesID+';');
+                        			}
                         	}
                         	
                         }

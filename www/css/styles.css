@@ -18,9 +18,23 @@ body.home{background-color:#a7f58f;}
 form{padding-left:10px;padding-right:10px;}
 div.conteneur {display:table;height:60%;width:100%;}
 
-div.contenu {display:table-cell; vertical-align:middle;text-align:center}
+div.contenu {/*display:table-cell; vertical-align:middle;*/text-align:center}
 
-div.question{font-weight:bold;font-size:16px;margin-bottom:20px;background-color: #5bca63;padding: 5px 5px 5px 5px;	border-radius:25px; color:#FFFFFF;	margin-left:10px;	margin-right:10px;}
+/*div.question{font-weight:bold;font-size:16px;margin-bottom:20px;background-color: #5bca63;padding: 5px 5px 5px 5px;	border-radius:25px; color:#FFFFFF;	margin-left:10px;	margin-right:10px;}*/
+div.postit{
+	background-image: url('../img/postit_01.png'), url('../img/postit_03.png');
+background-position: center top, center bottom;
+background-repeat: no-repeat,no-repeat;
+background-size : 100%,100%;
+padding: 25px 0;
+}
+div.question{
+	background-image:  url('../img/postit_02.png');
+background-position: center center;
+background-repeat: repeat-y;
+background-size : 100%;
+background-color : transparent;
+}
 div.question.sans_bottom{margin-bottom:10px;}
 div.bulle_seule {background-image:url(../img/bulle_seule.png);background-repeat:no-repeat;width:282px;height:210px;text-align:center;font-size:25px;margin:auto;padding-top:80px;margin-top:10px;}
 
