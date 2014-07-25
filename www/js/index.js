@@ -290,7 +290,8 @@ function saveSession(firstTime) {
 	        	{
 					var nbLineBefore = res.rows.item(0).cnt;
 	        		var jour = new Date();
-	        		var nb = 14; 
+	        		//var nb = 14; 
+	        		var nb = 24; 
 	        		var max = parseInt(surveys_config.maxOccurences,10); 
 	        		var i = 0;
 	        		var numOfDayOff = surveys_config.dayOff; 
@@ -475,7 +476,7 @@ function sendReponses()
                         			alert("Requête effectuée !"); */
                         		if(xhr_object.response == "1") 
                         			tx.executeSql('UPDATE "reponses" SET envoi = 1 WHERE idhoraire = '+saveResHorairesID+';');
-                        			alert('UPDATE "reponses" SET envoi = 1 WHERE idhoraire = '+saveResHorairesID+';');
+                        			//alert('UPDATE "reponses" SET envoi = 1 WHERE idhoraire = '+saveResHorairesID+';');
                         	}
                         	
                         }

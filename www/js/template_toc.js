@@ -55,7 +55,22 @@ function getTemplate(selector,qkey)
 			.replace('##next##',"'"+selector+"'," +(qkey + 1));;
 		break; 
 		case "S": 
-			template = "string";
+			//template = "string";
+			configString = getQuestionConfig(question);
+			if (configString.tpl=="uid")
+			{
+				if (isMobile)
+					var deviceID = device.uuid;
+				else
+					var deviceID = "monDeviceUid";
+				app.db.transaction(function(tx) {
+					var timestamp = Math.round(new Date().getTime() / 1000); 
+					tx.executeSql('INSERT INTO "reponses" (idhoraire,sid,gid,qid, code, tsreponse, envoi) VALUES('+session_encours+',"'+question.sid+'","'+question.gid+'","'+question.qid+'","'+deviceID+'", '+(timestamp-360)+',0);');
+				});
+				getTemplate(selector,(qkey + 1));
+				return false;
+				exit();
+			}
 		break; 
 		default: 
 			configRadio = getQuestionConfig(question);
@@ -160,9 +175,9 @@ var form_radio2 =
 	'<div class="question">##question##</div>' +   
 	'    <form method="post" action="" id="multi_form" name="multi_form" onSubmit="if(saveFormData(\'radio\')){getTemplate(##next##);}return false;">'  + 
 	'       <div id="emotion">'  + 
-	'			<input type="radio" name="reponse" id="pire" onClick="valide_un_radio();" /><label for="pire"><img src="img/moins.png"/><br />Moins bien</label>' +
-	'			<input type="radio" name="reponse" id="pareil" onClick="valide_un_radio();" /><label for="pareil"><img src="img/egale.png"/><br />Pareil</label>' +
-	'			<input type="radio" name="reponse" id="mieux" onClick="valide_un_radio();" /><label for="mieux"><img src="img/plus.png"/><br />Mieux</label>' +
+	'			<input type="radio" name="reponse" id="A1" onClick="valide_un_radio();" /><label for="A1"><img src="img/moins.png"/><br />Moins bien</label>' +
+	'			<input type="radio" name="reponse" id="A2" onClick="valide_un_radio();" /><label for="A2"><img src="img/egale.png"/><br />Pareil</label>' +
+	'			<input type="radio" name="reponse" id="A3" onClick="valide_un_radio();" /><label for="A3"><img src="img/plus.png"/><br />Mieux</label>' +
 	'		</div>'  + 
 	'      <div class="suite">'  + 
 	'        <input type="hidden" value="##gid##" id="gid" name="gid">'  +
