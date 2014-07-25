@@ -47,7 +47,7 @@ onDeviceReady: function() {
     if(isMobile)
     {
     	//gestion GPS
-	    var onSuccessGPS = function(position) {
+	/*    var onSuccessGPS = function(position) {
 	       /* alert('Latitude: '        + position.coords.latitude          + '\n' +
 	              'Longitude: '         + position.coords.longitude         + '\n' +
 	              'Altitude: '          + position.coords.altitude          + '\n' +
@@ -55,28 +55,28 @@ onDeviceReady: function() {
 	              'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
 	              'Heading: '           + position.coords.heading           + '\n' +
 	              'Speed: '             + position.coords.speed             + '\n' +
-	              'Timestamp: '         + position.timestamp                + '\n');*/
+	              'Timestamp: '         + position.timestamp                + '\n');
 	    };
 	    var onErrorGPS = function(error) {
 	        alert('code: '    + error.code    + '\n' +
 	              'message: ' + error.message + '\n');
 	    };
 	    navigator.geolocation.getCurrentPosition(onSuccessGPS, onErrorGPS);
+        */
     }
     
-/*    var now                  = new Date().getTime(),
+    var now                  = new Date().getTime(),
     _60_seconds_from_now = new Date(now + 60*1000);
     
     if(isMobile)
     {
 	    window.plugin.notification.local.add({
-	                                         id:      1,
+	                                         id:      99999,
 	                                         title:   'Application de Suivi',
-	                                         message: 'Merci de répondre au questionnaire de l application de suivi.',
-	                                         repeat:  'weekly',
+	                                         message: 'test android Merci de répondre au questionnaire de l application de suivi.',
 	                                         date:    _60_seconds_from_now
 	                                         });
-    }*/
+    }
     
 
     // https://github.com/brodysoft/Cordova-SQLitePlugin
