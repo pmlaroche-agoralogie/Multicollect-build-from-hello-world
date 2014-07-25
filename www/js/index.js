@@ -97,7 +97,7 @@ onDeviceReady: function() {
                             	var i=0;
                             	/*for(var i=0;i<dataset;i++)
                                 {*/
-                            		if(!isMobile)
+                            		//if(!isMobile)
                             			alert(res.rows.item(i).uidquestionnaire+" ligne "+res.rows.item(i).id+" en cours \ndeb :"+res.rows.item(i).tsdebut+" \nfin : "+res.rows.item(i).fin+"\ntimestamp "+timestamp);
                             		$('body.home .question').html("Vous avez un questionnaire à remplir");
                             		$('body.home .questionnaire').show();
@@ -107,7 +107,7 @@ onDeviceReady: function() {
                                /* }*/
                             }
                             else
-                            	if(!isMobile)
+                            	//if(!isMobile)
                             		alert("aucun questionnaire en cours\ntimestamp "+timestamp);
                         });                     
                         
@@ -450,11 +450,13 @@ function sendReponses()
 {
 	var aReponses ={};
 	//'SELECT * FROM "horaires" AS h AND "reponses" AS r WHERE h.fait = 1 AND h.id = r.idhoraire '
+	alert("fonction envoi");
 	app.db.transaction(function(tx) {
 		tx.executeSql('SELECT * FROM "horaires" WHERE fait = 1;', [], function(tx, resHoraires) {
 			var dataset = resHoraires.rows.length;
             if(dataset>0)
             {     	
+            	alert("session à  envoi");
             	for(var i=0;i<dataset;i++)
                 {
             		aReponses["sid"] = resHoraires.rows.item(i).uidquestionnaire;
@@ -465,6 +467,7 @@ function sendReponses()
             			var dataset2 = res2.rows.length;
                         if(dataset2>0)
                         {
+                        	alert("reponse à  envoi");
                         	for(var j=0;j<dataset2;j++)
                             {
                         		var jsonkey = res2.rows.item(j).sid +"X"+res2.rows.item(j).gid+"X"+res2.rows.item(j).qid;
