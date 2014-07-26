@@ -207,13 +207,13 @@ function openStudy (form, callback,firstTime) {
                             fileReader.readAsText(file);
                         },
                         function(error){
-                            alert("Impossible d'ouvrir le suivi demandé.");
+                            alert("Impossible d'ouvrir le suivi demandé. ("+studyNumber+")");
                         }
                     );
                     
                 },
                 function getFileFailed(evt) {
-                    alert("Impossible d'ouvrir le suivi demandé.");
+                    alert("Impossible d'ouvrir le suivi demandé ="+studyNumber+" ");
                 }
             );
         },
