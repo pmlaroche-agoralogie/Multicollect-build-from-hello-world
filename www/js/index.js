@@ -64,7 +64,7 @@ onDeviceReady: function() {
 	    navigator.geolocation.getCurrentPosition(onSuccessGPS, onErrorGPS);
         */
     }
-    
+    /*
     var now                  = new Date().getTime(),
     _60_seconds_from_now = new Date(now + 60*1000);
     
@@ -77,7 +77,7 @@ onDeviceReady: function() {
 	                                         date:    _60_seconds_from_now
 	                                         });
     }
-    
+    */
 
     // https://github.com/brodysoft/Cordova-SQLitePlugin
     if(isMobile)
