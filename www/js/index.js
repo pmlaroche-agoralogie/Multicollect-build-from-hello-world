@@ -450,7 +450,7 @@ function sendReponses()
 {
 	var aReponses ={};
 	//'SELECT * FROM "horaires" AS h AND "reponses" AS r WHERE h.fait = 1 AND h.id = r.idhoraire '
-	alert("fonction envoi");
+	
 	app.db.transaction(function(tx) {
 		tx.executeSql('SELECT * FROM "horaires" WHERE fait = 0 limit 1 ;', [], function(tx, resHoraires) {
 			var dataset = resHoraires.rows.length;
