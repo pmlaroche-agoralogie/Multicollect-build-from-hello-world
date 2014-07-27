@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "fr.agoralogie.multicollect"
-        version   = "0.1.0">
+        version   = "0.3.0">
 
     <name>Multicollect-OCD</name>
 
@@ -51,6 +51,8 @@
    lighter whithout gps ?
    -->
     <gap:plugin name="com.millerjames01.sqlite-plugin" version="1.0.1" />
+    <!-- use phonegap plugin add https://github.com/brodysoft/Cordova-SQLitePlugin  -->
+    
     <gap:plugin name="de.appplant.cordova.plugin.local-notification" />
     <gap:plugin name="org.apache.cordova.file" />
     <gap:plugin name="org.apache.cordova.file-transfer" />
