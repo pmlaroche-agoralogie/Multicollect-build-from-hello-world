@@ -42,6 +42,8 @@
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript">
 		$(document).ready(function(){
+			isHomeActive = true;
+    			setTimeout(function() {if(isHomeActive){location.reload();}}, 10000);
 			if(isMobile)
 				app.initialize();			
 			else
@@ -50,8 +52,7 @@
 				$('body.home .raz_session').show();
 			}
 			sendReponses();
-			isHomeActive = true;
-    		setTimeout(function() {if(isHomeActive){location.reload();}}, 10000);
+		
 			});
         </script>
         <!-- code javascript -->
