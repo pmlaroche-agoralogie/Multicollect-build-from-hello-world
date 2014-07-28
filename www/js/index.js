@@ -276,12 +276,13 @@ function saveSession(firstTime) {
 	        						{
 	        							console.log(resnotif.rows.item(0).id+'+'+resnotif.rows.item(0).tsdebut+'>'+timestampNow);
 		        						_timestampSessionNotif = new Date(resnotif.rows.item(0).tsdebut*1000);
-	        							var monId = String(resnotif.rows.item(0).id);
+	        							//var monId = String(resnotif.rows.item(0).id);
+	        							var monId = parseInt(resnotif.rows.item(0).id,10);
 	        							if (isMobile)
 			        					 window.plugin.notification.local.add({
 		                                       id:      monId,
 		                                       title:   'Application de Suivi',
-		                                       message: 'test '+resnotif.rows.item(0).id+': Merci de répondre au questionnaire de l application de suivi.',
+		                                       message: 'Merci de répondre au questionnaire de l application de suivi.',
 		                                       date:    _timestampSessionNotif
 		                                       });
 			        				}
@@ -312,7 +313,8 @@ function saveSession(firstTime) {
 		        						{
 		        							console.log(resnotif.rows.item(0).id+'+'+resnotif.rows.item(0).tsdebut+'>'+timestampNow);
 			        						_timestampSessionNotif = new Date(resnotif.rows.item(0).tsdebut*1000);
-		        							var monId = String(resnotif.rows.item(0).id);
+		        							//var monId = String(resnotif.rows.item(0).id);
+		        							var monId = parseInt(resnotif.rows.item(0).id,10);
 		        							if (isMobile)
 				        					 window.plugin.notification.local.add({
 			                                       id:      monId,
@@ -365,12 +367,13 @@ function saveSession(firstTime) {
 					        						{
 					        							console.log(resnotif.rows.item(0).id+'+'+resnotif.rows.item(0).tsdebut+'>'+timestampNow);
 						        						_timestampSessionNotif = new Date(resnotif.rows.item(0).tsdebut*1000);
-					        							var monId = String(resnotif.rows.item(0).id);
+					        							//var monId = String(resnotif.rows.item(0).id);
+					        							var monId = parseInt(resnotif.rows.item(0).id,10);
 					        							if (isMobile)
 							        					 window.plugin.notification.local.add({
 						                                       id:      monId,
 						                                       title:   'Application de Suivi',
-						                                       message: 'test '+resnotif.rows.item(0).id+': Merci de répondre au questionnaire de l application de suivi.',
+						                                       message: 'Merci de répondre au questionnaire de l application de suivi.',
 						                                       date:    _timestampSessionNotif
 						                                       });
 							        				}
@@ -436,12 +439,13 @@ function saveSession(firstTime) {
 	        						{
 	        							console.log(resnotif.rows.item(0).id+'+'+resnotif.rows.item(0).tsdebut+'>'+timestampNow);
 		        						_timestampSessionNotif = new Date(resnotif.rows.item(0).tsdebut*1000);
-	        							var monId = String(resnotif.rows.item(0).id);
+	        							//var monId = String(resnotif.rows.item(0).id);
+	        							var monId = parseInt(resnotif.rows.item(0).id,10);
 	        							if (isMobile)
 			        					 window.plugin.notification.local.add({
 		                                       id:      monId,
 		                                       title:   'Application de Suivi',
-		                                       message: 'test '+resnotif.rows.item(0).id+': Merci de répondre au questionnaire de l application de suivi.',
+		                                       message: 'Merci de répondre au questionnaire de l application de suivi.',
 		                                       date:    _timestampSessionNotif
 		                                       });
 			        				}
@@ -472,7 +476,8 @@ function saveSession(firstTime) {
 		        						{
 		        							console.log(resnotif.rows.item(0).id+'+'+resnotif.rows.item(0).tsdebut+'>'+timestampNow);
 			        						_timestampSessionNotif = new Date(resnotif.rows.item(0).tsdebut*1000);
-		        							var monId = String(resnotif.rows.item(0).id);
+		        							//var monId = String(resnotif.rows.item(0).id);
+			        						var monId = parseInt(resnotif.rows.item(0).id,10);
 		        							if (isMobile)
 				        					 window.plugin.notification.local.add({
 			                                       id:      monId,
@@ -534,12 +539,13 @@ function saveSession(firstTime) {
 					        						{
 					        							console.log(resnotif.rows.item(0).id+'+'+resnotif.rows.item(0).tsdebut+'>'+timestampNow);
 						        						_timestampSessionNotif = new Date(resnotif.rows.item(0).tsdebut*1000);
-					        							var monId = String(resnotif.rows.item(0).id);
+					        							//var monId = String(resnotif.rows.item(0).id);
+					        							var monId = parseInt(resnotif.rows.item(0).id,10);
 					        							if (isMobile)
 							        					 window.plugin.notification.local.add({
 						                                       id:      monId,
 						                                       title:   'Application de Suivi',
-						                                       message: 'test '+resnotif.rows.item(0).id+': Merci de répondre au questionnaire de l application de suivi.',
+						                                       message: 'Merci de répondre au questionnaire de l application de suivi.',
 						                                       date:    _timestampSessionNotif
 						                                       });
 							        				}
