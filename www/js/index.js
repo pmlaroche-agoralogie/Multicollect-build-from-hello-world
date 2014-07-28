@@ -143,6 +143,7 @@ onDeviceReady: function() {
         var serverResponse = xhReq.responseText; 
         console.log(serverResponse);
     }
+    
 };
 
 function getSurveyConfig()
