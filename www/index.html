@@ -43,7 +43,6 @@
 <script type="text/javascript">
 		$(document).ready(function(){
 			isHomeActive = true;
-    			setTimeout(function() {if(isHomeActive){location.reload();}}, 10000);
 			if(isMobile)
 				app.initialize();			
 			else
@@ -51,9 +50,7 @@
 				app.onDeviceReady();
 				$('body.home .raz_session').show();
 			}
-			sendReponses();
-		
-			});
+		});
         </script>
         <!-- code javascript -->
 		<script type="text/javascript"> 
@@ -147,7 +144,7 @@
                 <INPUT id="buttonopensurvey" TYPE="button" NAME="button" Value="Ouvrir" onClick="openStudy(this.form, onLssLoaded)">
               </form>
               <div class="suite home">
-                <input type="button" value="Retour Accueil" onClick="isHomeActive = true;setTimeout(function() {if (isHomeActive)location.reload();}, 10000);go_home();">
+                <input type="button" value="Retour Accueil" onClick="isHomeActive = true;setTimeout(function() {if (isHomeActive)app.reload();}, 10000);go_home();">
               </div>
               <div class="raz_session home">
                 <input type="button" value="save session" onClick="openFakeStudy(xmlquotidien, onLssLoaded,1);">

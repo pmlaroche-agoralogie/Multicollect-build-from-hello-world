@@ -356,7 +356,7 @@ var form_slider2 =
 
 var merci =  
 '<div class="bulle_seule">Vous avez terminé !</div>'  +
-'<form action="index.html">'  +
+'<form action="" onSubmit="app.reload();">'  +
 '  <div class="suite retour_accueil">'  +
 '    <input type="submit" value="Retour Accueil">'  +
 '  </div>'  +

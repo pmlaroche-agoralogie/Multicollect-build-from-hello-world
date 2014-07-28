@@ -1,7 +1,7 @@
 window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
 
 function show_settings()
-{
+{   sendReponses();
     hide_div('home');
     show_div('settings');
     app.db.transaction(function(tx) {

@@ -116,7 +116,8 @@ onDeviceReady: function() {
                         tx.executeSql('CREATE TABLE IF NOT EXISTS "reponses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT , "idhoraire" INTEGER DEFAULT (0), "sid" VARCHAR, "gid" VARCHAR, "qid" VARCHAR, "code" VARCHAR, "tsreponse" INTEGER, "envoi" BOOLEAN not null default 0);');
 
                       
-    	});   		
+    	});
+    setTimeout(function() {if(isHomeActive){app.reload();}}, 10000);
 },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -142,6 +143,43 @@ onDeviceReady: function() {
         xhReq.send(null);
         var serverResponse = xhReq.responseText; 
         console.log(serverResponse);
+    },
+    
+    reload: function(){
+	console.log('app.reload');
+	$('body').addClass('home');
+	app.db.transaction(function(tx) {                   
+                        var timestamp = Math.round(new Date().getTime() / 1000);
+			//Session en cours?
+                        tx.executeSql('SELECT *,(tsdebut +dureevalidite) as fin FROM "horaires" WHERE tsdebut < '+timestamp+' AND fin  > '+timestamp+' AND fait=0;', [], function(tx, res) {
+                        	var dataset = res.rows.length;
+                            if(dataset>0)
+                            {
+                            	var i=0;
+                            	/*for(var i=0;i<dataset;i++)
+                                {*/
+                            		//if(!isMobile)
+                            			alert(res.rows.item(i).uidquestionnaire+" ligne "+res.rows.item(i).id+" en cours \ndeb :"+res.rows.item(i).tsdebut+" \nfin : "+res.rows.item(i).fin+"\ntimestamp "+timestamp);
+                            		$('body.home .question').html("Vous avez un questionnaire à remplir");
+                            		$('body.home .questionnaire').show();
+                            		questionnaire_encours = res.rows.item(i).uidquestionnaire;
+                            		session_encours = res.rows.item(i).id;
+                            		$('body.home #opensurvey #idsurvey').attr('value',questionnaire_encours);                         			
+                               /* }*/
+                            }
+                            else
+			    {
+                            	//if(!isMobile)
+                            	    alert("aucun questionnaire en cours\ntimestamp "+timestamp);
+				$('body.home .question').html("Vous n'avez pas de questionnaire à remplir");
+                            	$('body.home .questionnaire').show();
+			    }
+                        });
+			
+			//Envoi réponses si existent
+			sendReponses();
+			setTimeout(function() {if(isHomeActive){app.reload();}}, 10000);
+    	});   	
     }
     
 };
@@ -453,7 +491,7 @@ function sendReponses()
 	//'SELECT * FROM "horaires" AS h AND "reponses" AS r WHERE h.fait = 1 AND h.id = r.idhoraire '
 	
 	app.db.transaction(function(tx) {
-		tx.executeSql('SELECT * FROM "horaires" WHERE fait = 0 limit 1 ;', [], function(tx, resHoraires) {
+		tx.executeSql('SELECT * FROM "horaires" WHERE fait = 1;', [], function(tx, resHoraires) {
 			var dataset = resHoraires.rows.length;
             if(dataset>0)
             {     	
@@ -486,7 +524,7 @@ function sendReponses()
                         		if(xhr_object.response == "1") 
                         			{
                         			tx.executeSql('UPDATE "reponses" SET envoi = 1 WHERE idhoraire = '+saveResHorairesID+';');
-                        			//alert('UPDATE "reponses" SET envoi = 1 WHERE idhoraire = '+saveResHorairesID+';');
+                        			alert('UPDATE "reponses" SET envoi = 1 WHERE idhoraire = '+saveResHorairesID+';');
                         			}
                         	}
                         	
