@@ -103,6 +103,7 @@ onDeviceReady: function() {
                             		//if(!isMobile)
                             		if (debug)
                             			alert(res.rows.item(i).uidquestionnaire+" ligne "+res.rows.item(i).id+" en cours \ndeb :"+res.rows.item(i).tsdebut+" \nfin : "+res.rows.item(i).fin+"\ntimestamp "+timestamp);
+                            		$('body').removeClass('none');
                             		$('body.home .question').html("Vous avez un questionnaire à remplir");
                             		$('body.home .questionnaire').show();
                             		questionnaire_encours = res.rows.item(i).uidquestionnaire;
@@ -111,9 +112,12 @@ onDeviceReady: function() {
                                /* }*/
                             }
                             else
+                            {
+                            	$('body').addClass('none');
                             	//if(!isMobile)
                             	if (debug)
                             		alert("aucun questionnaire en cours\ntimestamp "+timestamp);
+                            }
                         });                     
                         
                         //creation table réponses et ligne test
@@ -166,6 +170,7 @@ onDeviceReady: function() {
                             		//if(!isMobile)
                             		if (debug)
                             			alert(res.rows.item(i).uidquestionnaire+" ligne "+res.rows.item(i).id+" en cours \ndeb :"+res.rows.item(i).tsdebut+" \nfin : "+res.rows.item(i).fin+"\ntimestamp "+timestamp);
+                            		$('body').removeClass('none');
                             		$('body.home .question').html("Vous avez un questionnaire à remplir");
                             		$('body.home .questionnaire').show();
                             		questionnaire_encours = res.rows.item(i).uidquestionnaire;
@@ -176,6 +181,7 @@ onDeviceReady: function() {
                             else
 			    {
                             	//if(!isMobile)
+                            	$('body').addClass('none');
                             	if (debug)
                             	    alert("aucun questionnaire en cours\ntimestamp "+timestamp);
                             	$('body.home .question').html("Vous n'avez pas de questionnaire à remplir");
