@@ -34,7 +34,10 @@ background-position: center center;
 background-repeat: repeat-y;
 background-size : 100%;
 background-color : transparent;
+font-size:16px;
+padding: 0 14%;
 }
+div.question p{margin:0;padding:0;}
 div.fille{background:url('../img/fille1.png') top left no-repeat transparent;width:50px;background-size:100%;height:150px;position:absolute;z-index:10;top:40px;left:5px;}
 div.question.sans_bottom{margin-bottom:10px;}
 div.bulle_seule {background-image:url(../img/bulle_seule.png);background-repeat:no-repeat;width:282px;height:210px;text-align:center;font-size:25px;margin:auto;padding-top:80px;margin-top:10px;}
@@ -93,7 +96,9 @@ div.titre_journal {
 }
 div.btn_reglages{text-align:right;width:98%;margin: 10px 0 0 0;position:absolute;top:50px;left:0;z-index:10;}
 
-#radio_style{text-align:left;width:300px;margin:0 auto 0 auto;}
+#radio_style{text-align:left;width:300px;margin:0 auto 0 auto;display: block;}
+#radio_style p{border-top:1px solid lightgrey;margin:0;padding: 5px 0;}
+#radio_style p:first-child{border-top:none}
 
 #radio_style input[type='radio'] {
 
@@ -136,8 +141,9 @@ body.home #opensurvey {display:none;}
 
 /*OCD*/
 
-.spirale {background:url('../img/spirale.png') top left repeat-x lightgrey;padding: 40px 20px 4px;position:relative;z-index:1;}
+.spirale {background:url('../img/spirale.png') top left repeat-x lightgrey;padding: 40px 20px 4px;position:relative;z-index:1;margin-bottom:60px}
 div.titre_journal{background:url('../img/spirale.png') top left repeat-x lightgrey;padding: 40px 20px 4px;position:relative;z-index:1;color:grey;height:40px;
 background-color:lightgrey;font-size:30px;padding-top:60px;position:relative;z-index:1;}
-body.home .question{background:url('../img/bulle_home.png') top center no-repeat transparent;background-size:80%;height:180px}
+body.home .question{background:url('../img/bulle_home.png') top center no-repeat transparent;background-size:80%;height:180px;margin-top:50px;padding:50px 80px;font-size:20px;}
 body.home  #settings .question{background:none;height:auto;}
+form.time {padding:0 10%;}
