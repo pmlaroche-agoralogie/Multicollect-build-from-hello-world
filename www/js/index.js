@@ -268,8 +268,26 @@ function saveSession(firstTime) {
 	        		if ((firstTime) && (test!=1))
 	        		{	//première ligne pour test dans 5 min si pas mode test
         				timestampSession = Math.round(jour.getTime() / 1000)+300; //dans 5min
-	        			tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');
-	        			
+        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[],function(tx, res) {
+        					lastId = res.insertId;
+        					tx.executeSql('SELECT * FROM "horaires" WHERE id = '+lastId+';',[],function(tx, resnotif) {
+        						timestampNow = Math.round(new Date().getTime() / 1000);
+	        						if (timestampNow < resnotif.rows.item(0).tsdebut)
+	        						{
+	        							console.log(resnotif.rows.item(0).id+'+'+resnotif.rows.item(0).tsdebut+'>'+timestampNow);
+		        						_timestampSessionNotif = new Date(resnotif.rows.item(0).tsdebut*1000);
+	        							var monId = String(resnotif.rows.item(0).id);
+	        							if (isMobile)
+			        					 window.plugin.notification.local.add({
+		                                       id:      monId,
+		                                       title:   'Application de Suivi',
+		                                       message: 'test '+resnotif.rows.item(0).id+': Merci de répondre au questionnaire de l application de suivi.',
+		                                       date:    _timestampSessionNotif
+		                                       });
+			        				}
+        					});	 //Fin select        			
+        				});  //Fin insert 
+	        			/*tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');
 	        			if (isMobile)
         			    {   			
 		            		_timestampSessionNotif = new Date(timestampSession*1000);
@@ -279,14 +297,33 @@ function saveSession(firstTime) {
         				                                         message: 'Merci de répondre au questionnaire de l application de suivi.',
         				                                         date:    _timestampSessionNotif
         				                                         });
-        			    }
+        			    }*/
 	        		}
 	        		while (i < nb) {
 	        			if (test)
 	        			{//fonctionnement test
 	        				dateSession = new Date((jour.getTime()+(ecarttest*i*1000)) );
 	        				timestampSession = Math.round(dateSession.getTime() / 1000);
-	        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');      
+	        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[],function(tx, res) {
+	        					lastId = res.insertId;
+	        					tx.executeSql('SELECT * FROM "horaires" WHERE id = '+lastId+';',[],function(tx, resnotif) {
+	        						timestampNow = Math.round(new Date().getTime() / 1000);
+		        						if (timestampNow < resnotif.rows.item(0).tsdebut)
+		        						{
+		        							console.log(resnotif.rows.item(0).id+'+'+resnotif.rows.item(0).tsdebut+'>'+timestampNow);
+			        						_timestampSessionNotif = new Date(resnotif.rows.item(0).tsdebut*1000);
+		        							var monId = String(resnotif.rows.item(0).id);
+		        							if (isMobile)
+				        					 window.plugin.notification.local.add({
+			                                       id:      monId,
+			                                       title:   'Application de Suivi',
+			                                       message: 'test '+resnotif.rows.item(0).id+': Merci de répondre au questionnaire de l application de suivi.',
+			                                       date:    _timestampSessionNotif
+			                                       });
+				        				}
+	        					});	 //Fin select        			
+	        				});  //Fin insert 
+	        				/*tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');      
 	        				if ((isMobile) && (i!=0))
 	        			    {   
 			            		_timestampSessionNotif = new Date(timestampSession*1000);
@@ -296,7 +333,7 @@ function saveSession(firstTime) {
 	        				                                         message: 'test '+i+': Merci de répondre au questionnaire de l application de suivi.',
 	        				                                         date:    _timestampSessionNotif
 	        				                                         });
-	        			    }
+	        			    }*/
 	        			}
 	        			else
 	        			{//fonctionnement normal
@@ -320,7 +357,26 @@ function saveSession(firstTime) {
 				        			}
 				        			else
 				        			{
-				        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');
+				        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[],function(tx, res) {
+				        					lastId = res.insertId;
+				        					tx.executeSql('SELECT * FROM "horaires" WHERE id = '+lastId+';',[],function(tx, resnotif) {
+				        						timestampNow = Math.round(new Date().getTime() / 1000);
+					        						if (timestampNow < resnotif.rows.item(0).tsdebut)
+					        						{
+					        							console.log(resnotif.rows.item(0).id+'+'+resnotif.rows.item(0).tsdebut+'>'+timestampNow);
+						        						_timestampSessionNotif = new Date(resnotif.rows.item(0).tsdebut*1000);
+					        							var monId = String(resnotif.rows.item(0).id);
+					        							if (isMobile)
+							        					 window.plugin.notification.local.add({
+						                                       id:      monId,
+						                                       title:   'Application de Suivi',
+						                                       message: 'test '+resnotif.rows.item(0).id+': Merci de répondre au questionnaire de l application de suivi.',
+						                                       date:    _timestampSessionNotif
+						                                       });
+							        				}
+				        					});	 //Fin select        			
+				        				});  //Fin insert 
+				        				/*tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');
 				        				if (isMobile)
 				        			    {   	
 						            		_timestampSessionNotif = new Date(timestampSession*1000);
@@ -330,7 +386,7 @@ function saveSession(firstTime) {
 				        				                                         message: 'Merci de répondre au questionnaire de l application de suivi.',
 				        				                                         date:    _timestampSessionNotif
 				        				                                         });
-				        			    }
+				        			    }*/
 				        			}
 				        				
 	        		        	}
@@ -372,7 +428,26 @@ function saveSession(firstTime) {
 	        		if ((firstTime) && (test!=1))
 	        		{	//première ligne pour test dans 5 min si pas mode test
         				timestampSession = Math.round(jour.getTime() / 1000)+300; //dans 5min
-	        			tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');
+        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[],function(tx, res) {
+        					lastId = res.insertId;
+        					tx.executeSql('SELECT * FROM "horaires" WHERE id = '+lastId+';',[],function(tx, resnotif) {
+        						timestampNow = Math.round(new Date().getTime() / 1000);
+	        						if (timestampNow < resnotif.rows.item(0).tsdebut)
+	        						{
+	        							console.log(resnotif.rows.item(0).id+'+'+resnotif.rows.item(0).tsdebut+'>'+timestampNow);
+		        						_timestampSessionNotif = new Date(resnotif.rows.item(0).tsdebut*1000);
+	        							var monId = String(resnotif.rows.item(0).id);
+	        							if (isMobile)
+			        					 window.plugin.notification.local.add({
+		                                       id:      monId,
+		                                       title:   'Application de Suivi',
+		                                       message: 'test '+resnotif.rows.item(0).id+': Merci de répondre au questionnaire de l application de suivi.',
+		                                       date:    _timestampSessionNotif
+		                                       });
+			        				}
+        					});	 //Fin select        			
+        				});  //Fin insert 
+	        			/*tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');
 	        			if (isMobile)
         			    {   	
 		            		_timestampSessionNotif = new Date(timestampSession*1000);
@@ -382,21 +457,20 @@ function saveSession(firstTime) {
         				                                         message: 'Merci de répondre au questionnaire de l application de suivi.',
         				                                         date:    _timestampSessionNotif
         				                                         });
-        			    }
+        			    }*/
 	        		}
 	        		while (i < nb) {
 	        			if (test)
 	        			{//fonctionnement test
 	        				dateSession = new Date((jour.getTime()+(ecarttest*i*1000)) );
 	        				timestampSession = Math.round(dateSession.getTime() / 1000);
-	        				//tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');   
 	        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[],function(tx, res) {
 	        					lastId = res.insertId;
 	        					tx.executeSql('SELECT * FROM "horaires" WHERE id = '+lastId+';',[],function(tx, resnotif) {
 	        						timestampNow = Math.round(new Date().getTime() / 1000);
 		        						if (timestampNow < resnotif.rows.item(0).tsdebut)
 		        						{
-		        							console.log(resnotif.rows.item(0).id+'+'+resnotif.rows.item(0).tsdebut+'>'+timestampNow)
+		        							console.log(resnotif.rows.item(0).id+'+'+resnotif.rows.item(0).tsdebut+'>'+timestampNow);
 			        						_timestampSessionNotif = new Date(resnotif.rows.item(0).tsdebut*1000);
 		        							var monId = String(resnotif.rows.item(0).id);
 		        							if (isMobile)
@@ -410,26 +484,9 @@ function saveSession(firstTime) {
 	        					});	 //Fin select        			
 	        				});  //Fin insert 
 	        				
-	        				/*tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[], function(tx, results){
-	        					//better way : lancer fonction avec idresult, select recup timestamp, faire notif
-	        					console.log('results', results);
-	        					if ((isMobile) && (i!=0))
-	        	        			    {   
-	        			            		
-	        			            		_timestampSessionNotif = new Date(timestampSession*1000);
-	        			            		//lastID = parseInt(results.insertId,10);
-	        			            		
-	        			            		lastID = String(results.insertId);
-	        			            		//alert(lastID);
-	        	        				    window.plugin.notification.local.add({
-	        	        				                                       //  id:      lastID,
-	        	        				                                         title:   'Application de Suivi',
-	        	        				                                         message: 'test '+lastID+': Merci de répondre au questionnaire de l application de suivi.',
-	        	        				                                         date:    _timestampSessionNotif
-	        	        				                                         });
-	        	        			    }
-	        			            });*/
-	        				/*if ((isMobile) && (i!=0))
+	        				/*
+	        				 tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');   
+	        				 if ((isMobile) && (i!=0))
 	        			    {   
 			            		_timestampSessionNotif = new Date(timestampSession*1000);
 	        				    window.plugin.notification.local.add({
@@ -469,7 +526,26 @@ function saveSession(firstTime) {
 				        			}
 				        			else
 			        				{
-				        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');
+				        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[],function(tx, res) {
+				        					lastId = res.insertId;
+				        					tx.executeSql('SELECT * FROM "horaires" WHERE id = '+lastId+';',[],function(tx, resnotif) {
+				        						timestampNow = Math.round(new Date().getTime() / 1000);
+					        						if (timestampNow < resnotif.rows.item(0).tsdebut)
+					        						{
+					        							console.log(resnotif.rows.item(0).id+'+'+resnotif.rows.item(0).tsdebut+'>'+timestampNow);
+						        						_timestampSessionNotif = new Date(resnotif.rows.item(0).tsdebut*1000);
+					        							var monId = String(resnotif.rows.item(0).id);
+					        							if (isMobile)
+							        					 window.plugin.notification.local.add({
+						                                       id:      monId,
+						                                       title:   'Application de Suivi',
+						                                       message: 'test '+resnotif.rows.item(0).id+': Merci de répondre au questionnaire de l application de suivi.',
+						                                       date:    _timestampSessionNotif
+						                                       });
+							        				}
+				        					});	 //Fin select        			
+				        				});  //Fin insert 
+				        				/*tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');
 				        				if (isMobile)
 				        			    {   
 						            		_timestampSessionNotif = new Date(timestampSession*1000);
@@ -479,7 +555,7 @@ function saveSession(firstTime) {
 				        				                                         message: 'Merci de répondre au questionnaire de l application de suivi.',
 				        				                                         date:    _timestampSessionNotif
 				        				                                         });
-				        			    }
+				        			    }*/
 			        				}
 				        				
 	        		        	}
@@ -522,8 +598,6 @@ function pickRandomProperty(obj) {
 function sendReponses()
 {
 	var aReponses ={};
-	//'SELECT * FROM "horaires" AS h AND "reponses" AS r WHERE h.fait = 1 AND h.id = r.idhoraire '
-	
 	app.db.transaction(function(tx) {
 		tx.executeSql('SELECT * FROM "horaires" WHERE fait = 1;', [], function(tx, resHoraires) {
 			var dataset = resHoraires.rows.length;
@@ -576,9 +650,3 @@ function sendReponses()
 	});
 }
 
-/*function sortByQuestionOrder(key1, key2){  
-	   return key1.question_order > key2.question_order;  
-	}  
-function sortByQuestionOrder(key1, key2){  
-	   return key1.question_order > key2.question_order;  
-	}  */
