@@ -4,12 +4,12 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "fr.agoralogie.multicollect"
-        version   = "0.3.0">
+        version   = "0.7.0">
 
     <name>Multicollect-OCD</name>
 
     <description>
-        Multicollect
+        Multicollect Health
     </description>
 
     <author href="http://www.agoralogie.fr" email="philippe.laroche@agoralogie.fr">
