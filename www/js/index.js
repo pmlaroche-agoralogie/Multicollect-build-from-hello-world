@@ -17,6 +17,9 @@
  * under the License.
  */
 
+//debug global
+debug=0;
+
 //test si chrome
 var isMobile = true;
 if (window.chrome)
@@ -98,6 +101,7 @@ onDeviceReady: function() {
                             	/*for(var i=0;i<dataset;i++)
                                 {*/
                             		//if(!isMobile)
+                            		if (debug)
                             			alert(res.rows.item(i).uidquestionnaire+" ligne "+res.rows.item(i).id+" en cours \ndeb :"+res.rows.item(i).tsdebut+" \nfin : "+res.rows.item(i).fin+"\ntimestamp "+timestamp);
                             		$('body.home .question').html("Vous avez un questionnaire à remplir");
                             		$('body.home .questionnaire').show();
@@ -108,6 +112,7 @@ onDeviceReady: function() {
                             }
                             else
                             	//if(!isMobile)
+                            	if (debug)
                             		alert("aucun questionnaire en cours\ntimestamp "+timestamp);
                         });                     
                         
@@ -159,6 +164,7 @@ onDeviceReady: function() {
                             	/*for(var i=0;i<dataset;i++)
                                 {*/
                             		//if(!isMobile)
+                            		if (debug)
                             			alert(res.rows.item(i).uidquestionnaire+" ligne "+res.rows.item(i).id+" en cours \ndeb :"+res.rows.item(i).tsdebut+" \nfin : "+res.rows.item(i).fin+"\ntimestamp "+timestamp);
                             		$('body.home .question').html("Vous avez un questionnaire à remplir");
                             		$('body.home .questionnaire').show();
@@ -170,9 +176,10 @@ onDeviceReady: function() {
                             else
 			    {
                             	//if(!isMobile)
+                            	if (debug)
                             	    alert("aucun questionnaire en cours\ntimestamp "+timestamp);
-				$('body.home .question').html("Vous n'avez pas de questionnaire à remplir");
-                            	$('body.home .questionnaire').show();
+                            	$('body.home .question').html("Vous n'avez pas de questionnaire à remplir");
+                            	$('body.home .questionnaire').hide();
 			    }
                         });
 			
@@ -256,11 +263,12 @@ function saveSession(firstTime) {
 	        		{	//première ligne pour test dans 5 min si pas mode test
         				timestampSession = Math.round(jour.getTime() / 1000)+300; //dans 5min
 	        			tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');
+	        			
 	        			if (isMobile)
         			    {   			
 		            		_timestampSessionNotif = new Date(timestampSession*1000);
         				    window.plugin.notification.local.add({
-        				                                         ///id:      lastID,
+        				    									 id:      '10'+i,
         				                                         title:   'Application de Suivi',
         				                                         message: 'Merci de répondre au questionnaire de l application de suivi.',
         				                                         date:    _timestampSessionNotif
@@ -277,7 +285,7 @@ function saveSession(firstTime) {
 	        			    {   
 			            		_timestampSessionNotif = new Date(timestampSession*1000);
 	        				    window.plugin.notification.local.add({
-	        				                                         ///id:      lastID,
+	        				                                         id:      '10'+i,
 	        				                                         title:   'Application de Suivi',
 	        				                                         message: 'test '+i+': Merci de répondre au questionnaire de l application de suivi.',
 	        				                                         date:    _timestampSessionNotif
@@ -311,7 +319,7 @@ function saveSession(firstTime) {
 				        			    {   	
 						            		_timestampSessionNotif = new Date(timestampSession*1000);
 				        				    window.plugin.notification.local.add({
-				        				                                         ///id:      lastID,
+				        				                                         id:      '10'+i,
 				        				                                         title:   'Application de Suivi',
 				        				                                         message: 'Merci de répondre au questionnaire de l application de suivi.',
 				        				                                         date:    _timestampSessionNotif
@@ -375,7 +383,24 @@ function saveSession(firstTime) {
 	        			{//fonctionnement test
 	        				dateSession = new Date((jour.getTime()+(ecarttest*i*1000)) );
 	        				timestampSession = Math.round(dateSession.getTime() / 1000);
-	        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');   
+	        				//tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);');   
+	        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[],function(tx, res) {
+	        					lastId = res.insertId;
+	        					tx.executeSql('SELECT * FROM "horaires" WHERE id = '+lastId+';',[],function(tx, resnotif) {
+	        						timestampNow = Math.round(new Date().getTime() / 1000);
+	        						if ((isMobile) && (timestampNow < resnotif.rows.item(0).tsdebut))
+	        						{
+		        						_timestampSessionNotif = new Date(resnotif.rows.item(0).tsdebut*1000);
+			        					 window.plugin.notification.local.add({
+		                                       id:      resnotif.rows.item(0).id,
+		                                       title:   'Application de Suivi',
+		                                       message: 'test '+resnotif.rows.item(0).id+': Merci de répondre au questionnaire de l application de suivi.',
+		                                       date:    _timestampSessionNotif
+		                                       });
+			        				}
+	        					});	 //Fin select        			
+	        				});  //Fin insert 
+	        				
 	        				/*tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[], function(tx, results){
 	        					//better way : lancer fonction avec idresult, select recup timestamp, faire notif
 	        					console.log('results', results);
@@ -395,7 +420,7 @@ function saveSession(firstTime) {
 	        	        				                                         });
 	        	        			    }
 	        			            });*/
-	        				if ((isMobile) && (i!=0))
+	        				/*if ((isMobile) && (i!=0))
 	        			    {   
 			            		_timestampSessionNotif = new Date(timestampSession*1000);
 	        				    window.plugin.notification.local.add({
@@ -404,7 +429,7 @@ function saveSession(firstTime) {
 	        				                                         message: 'test '+i+': Merci de répondre au questionnaire de l application de suivi.',
 	        				                                         date:    _timestampSessionNotif
 	        				                                         });
-	        			    }
+	        			    }*/
 	        				
 	        			}
 	        			else
@@ -495,7 +520,8 @@ function sendReponses()
 			var dataset = resHoraires.rows.length;
             if(dataset>0)
             {     	
-            	alert("session à  envoi");
+            	if (debug)
+            		alert("session à  envoi");
             	for(var i=0;i<dataset;i++)
                 {
             		aReponses["sid"] = resHoraires.rows.item(i).uidquestionnaire;
@@ -506,13 +532,15 @@ function sendReponses()
             			var dataset2 = res2.rows.length;
                         if(dataset2>0)
                         {
-                        	alert("reponse à  envoi");
+                        	if (debug)
+                        		alert("reponse à  envoi");
                         	for(var j=0;j<dataset2;j++)
                             {
                         		var jsonkey = res2.rows.item(j).sid +"X"+res2.rows.item(j).gid+"X"+res2.rows.item(j).qid;
                         		aReponses[jsonkey]=res2.rows.item(j).code;
                             }
-                        	alert("essai envoi");
+                        	if (debug)
+                        		alert("essai envoi");
                         	xhr_object = new XMLHttpRequest(); 
                         	xhr_object.open("GET", "http://mcp.ocd-dbs-france.org/test/testrpcpl.php?answer="+JSON.stringify(aReponses), false); 
                         	xhr_object.send(null); 
@@ -524,7 +552,8 @@ function sendReponses()
                         		if(xhr_object.response == "1") 
                         			{
                         			tx.executeSql('UPDATE "reponses" SET envoi = 1 WHERE idhoraire = '+saveResHorairesID+';');
-                        			alert('UPDATE "reponses" SET envoi = 1 WHERE idhoraire = '+saveResHorairesID+';');
+                        			if (debug)
+                        				alert('UPDATE "reponses" SET envoi = 1 WHERE idhoraire = '+saveResHorairesID+';');
                         			}
                         	}
                         	
