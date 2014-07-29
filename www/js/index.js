@@ -590,7 +590,39 @@ function RazSession()
 		tx.executeSql('DELETE FROM "horaires";');
 	});
 	if (isMobile)
-		window.plugin.notification.local.cancelAll();
+		window.plugin.notification.local.cancelAll(function () {
+		    // All notifications have been canceled
+			console.log('all cancel');
+		});
+}
+
+function RazOneSession(sid)
+{
+	var r = confirm("Confirmez-vous la suppression de "+sid+"?");
+	if (r == true) {
+		app.db.transaction(function(tx) {
+			timestampNow = Math.round(new Date().getTime() / 1000);
+			tx.executeSql('SELECT * FROM "horaires" WHERE uidquestionnaire="'+sid+'" AND tsdebut > '+timestampNow+';',[],function(tx, resnotif) {
+				var dataset = resnotif.rows.length;
+	            if(dataset>0)
+	            {     
+	            	for(var i=0;i<dataset;i++)
+	                {
+	            		//tx.executeSql('DELETE FROM "horaires" WHERE id="'+resnotif.rows.item(i).id+'";');
+	            		if (isMobile)
+	            			window.plugin.notification.local.cancel(resnotif.rows.item(i).id, function () {
+	            			    // The notification has been canceled
+	            				console.log('one cancel');
+	            			});
+	                }	
+	            }
+	            tx.executeSql('DELETE FROM "horaires" WHERE uidquestionnaire="'+sid+'";');
+	            go_home();
+	            app.reload();
+	            
+			});//fin select
+		});//fin transaction
+	}
 }
 
 function RazReponse()

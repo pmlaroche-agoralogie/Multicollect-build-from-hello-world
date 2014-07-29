@@ -12,7 +12,7 @@ function show_settings()
             {     	
             	for(var i=0;i<dataset;i++)
                 {
-            		strSuivi += "<br/>"+res.rows.item(i).uidquestionnaire;
+            		strSuivi += "<br/>"+res.rows.item(i).uidquestionnaire+'&nbsp;<input onClick="RazOneSession('+res.rows.item(i).uidquestionnaire+');" class="delete"/>';
                 }
             	$("#settings .question").html(strSuivi);
             }
