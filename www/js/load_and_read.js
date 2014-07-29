@@ -20,6 +20,12 @@ function show_settings()
 	});
 }
 
+function show_credits()
+{   
+    hide_div('home');
+    show_div('credits');
+}
+
 function begin_acquisition()
 {
     hide_div('home');
@@ -32,6 +38,7 @@ function go_home()
     //add an alert
     hide_div('acquisition');
     hide_div('settings');
+    hide_div('credits');
     show_div('home');
 }
 

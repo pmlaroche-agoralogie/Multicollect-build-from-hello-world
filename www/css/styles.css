@@ -94,7 +94,7 @@ div.titre_journal {
 	margin-left:5%;
 	margin-right:5%;*/
 }
-div.btn_reglages{text-align:right;width:98%;margin: 10px 0 0 0;position:absolute;top:50px;left:0;z-index:10;}
+div.btn_reglages{text-align:center;/*width:98%;*/margin: 10px 0 0 0;position:absolute;top:50px;right:0;z-index:10;}
 
 #radio_style{text-align:left;width:300px;margin:0 auto 0 auto;display: block;}
 #radio_style p{border-top:1px solid lightgrey;margin:0;padding: 5px 0;}
@@ -151,3 +151,5 @@ form.time {padding:0 10%;}
 .merci .fille{background:url('../img/fille1.png') top center no-repeat transparent;background-size:100%;position: absolute;top: 300px;left: 20px;}
 .none #home{background:url('../img/bgrien.png') bottom center no-repeat transparent;background-size:100%;padding-bottom:40%}
 .delete{background:url('../img/delete.png') center center no-repeat transparent; width:16px;height:16px;display: inline-block;cursor:pointer;border:none;}
+.btn_reglages{text-align:center}
+#credits .creditstext{font-size:16px;padding:40px 20px;}

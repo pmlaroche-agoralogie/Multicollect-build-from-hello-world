@@ -120,7 +120,7 @@
 		<!-- contenu de la page -->
         <div class="conteneur">
           <div class="contenu">
-            <div class="btn_reglages"><a href="javascript:;" onClick="isHomeActive = false;show_settings();"><img src="img/reglages.png" /></a></div>
+            <div class="btn_reglages"><a href="javascript:;" onClick="isHomeActive = false;show_settings();"><img src="img/reglages.png" /></a><br/><br/><a href="javascript:;" onClick="isHomeActive = false;show_credits();"><img src="img/question.png" /></a></div>
             <div class="titre_journal">Journal de bord</div>
             <div id='home'>
               <div class="question">Vous n'avez pas de questionnaire à remplir</div>
@@ -155,6 +155,16 @@
                <div class="raz_session home">
                 <input type="button" value="RAZ reponse" onClick="RazReponse();">
               </div>
+            </div>
+            <div id='credits' style='display: none;'>
+            	<div class="creditstext">
+            	Multicollect-Health is a mobile app for data collection, it is based on forms made on www.multicollect.net, where any scientist can create its own questionnaires, freely under some restrictions.
+please contact : <a href="mailto:contact@multicollect.net">contact@multicollect.net</a> if your are a physician interested in using it
+If you are a patient, please contact the physician who is following you.
+				</div>
+            	<div class="suite home">
+                	<input type="button" value="Retour Accueil" onClick="isHomeActive = true;app.reload();go_home();">
+              	</div>
             </div>
           </div>
         </div>
