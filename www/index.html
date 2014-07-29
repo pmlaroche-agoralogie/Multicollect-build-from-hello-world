@@ -24,7 +24,7 @@
 <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
 <!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />-->
 <!--<meta name="viewport" content="width=device-width">-->
-<meta name="viewport" content="width=350"/>
+<meta name="viewport" content="width=320,initial-scale=1"/>
 <meta name="msapplication-tap-highlight" content="no" />
 
 <title>Collecting</title>
@@ -116,6 +116,7 @@
         
 		<!--<a href="javascript:;" onClick="begin_acquisition();">Il y a un questionnaire disponible</a></br><a href="javascript:;" onClick="show_settings();">Reglage</a>-->
 
+		<div style="position:absolute;width:320px;height:480px;border:1px red solid"></div>
 		<!-- contenu de la page -->
         <div class="conteneur">
           <div class="contenu">
@@ -131,9 +132,7 @@
             	<span id='question1' font-size: 30pt></span> <span id='answer1' font-size: 25pt></span> <br>Suite
             </div>
             <div id='settings' style='display: none;'>
-              <div class="question">Aucun suivi<br />
-                <br />
-                Nouveau suivi : </div>
+              <div class="question">Aucun suivi<br />Nouveau suivi : </div>
               <form NAME="myform" ACTION="" METHOD="GET">
                 <INPUT TYPE="text" NAME="inputbox" VALUE=""><br/>
                 </br>
@@ -147,7 +146,7 @@
               <div class="suite home">
                 <input type="button" value="Retour Accueil" onClick="isHomeActive = true;setTimeout(function() {if (isHomeActive)app.reload();}, 10000);go_home();">
               </div>
-            <!--   <div class="raz_session home">
+              <div class="raz_session home">
                 <input type="button" value="save session" onClick="openFakeStudy(xmlquotidien, onLssLoaded,1);">
               </div>
               <div class="raz_session home">
@@ -155,7 +154,7 @@
               </div>
                <div class="raz_session home">
                 <input type="button" value="RAZ reponse" onClick="RazReponse();">
-              </div>-->
+              </div>
             </div>
           </div>
         </div>

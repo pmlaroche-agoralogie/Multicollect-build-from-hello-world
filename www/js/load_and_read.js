@@ -7,7 +7,7 @@ function show_settings()
     app.db.transaction(function(tx) {
     	tx.executeSql('SELECT uidquestionnaire FROM "horaires" WHERE fait = 0 GROUP BY uidquestionnaire;', [], function(tx, res) {
 			var dataset = res.rows.length;
-			var strSuivi = "Vous participez à : ";
+			var strSuivi = "Vous participez à ";
             if(dataset>0)
             {     	
             	for(var i=0;i<dataset;i++)
