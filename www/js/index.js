@@ -584,9 +584,7 @@ function RazSession()
 		tx.executeSql('DELETE FROM "horaires";');
 	});
 	if (isMobile)
-		window.plugin.notification.local.cancelAll(function () {
-		    // All notifications have been canceled
-		}, scope);
+		window.plugin.notification.local.cancelAll();
 }
 
 function RazReponse()
