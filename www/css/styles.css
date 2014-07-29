@@ -26,7 +26,7 @@ div.postit{
 background-position: center top, center bottom;
 background-repeat: no-repeat,no-repeat;
 background-size : 100%,100%;
-padding: 30px 0 45px;
+padding: 10% 0 15%;
 }
 div.question{
 	background-image:  url('../img/postit_02.png');
@@ -38,7 +38,7 @@ font-size:16px;
 padding: 0 14%;
 }
 div.question p{margin:0;padding:0;}
-div.fille{background:url('../img/fille1.png') top left no-repeat transparent;width:50px;background-size:100%;height:150px;position:absolute;z-index:10;top:40px;left:5px;}
+div.fille{background:url('../img/fille1.png') top left no-repeat transparent;width:12%;background-size:100%;height:150px;max-width:50px;position:absolute;z-index:10;top:40px;left:5px;}
 div.question.sans_bottom{margin-bottom:10px;}
 div.bulle_seule {background-image:url(../img/bulle_seule.png);background-repeat:no-repeat;width:282px;height:210px;text-align:center;font-size:25px;margin:auto;padding-top:80px;margin-top:10px;}
 
@@ -141,12 +141,12 @@ body.home #opensurvey {display:none;}
 
 /*OCD*/
 
-.spirale {background:url('../img/spirale.png') top left repeat-x lightgrey;padding: 40px 20px 4px;position:relative;z-index:1;margin-bottom:60px}
+.spirale {background:url('../img/spirale.png') top left repeat-x lightgrey;padding: 40px 20px 4px;position:relative;z-index:1;margin-bottom:40px}
 div.titre_journal{background:url('../img/spirale.png') top left repeat-x lightgrey;padding: 40px 20px 4px;position:relative;z-index:1;color:grey;height:40px;
 background-color:lightgrey;font-size:30px;padding-top:60px;position:relative;z-index:1;}
-body.home .question{background:url('../img/bulle_home.png') top center no-repeat transparent;background-size:65%;height:180px;margin-top:10px;padding:40px 80px;font-size:18px;}
+body.home .question{background:url('../img/bulle_home.png') top center no-repeat transparent;background-size:65%;height:180px;margin-top: 3%;padding:12% 24%;font-size:18px;}
 body.home  #settings .question{background:none;height:auto;padding: 10px 50px;}
 form.time {padding:0 10%;}
 .merci{background:url('../img/bgfin.png') top center no-repeat transparent;background-size:100%;padding-top: 120px;position:relative}
 .merci .fille{background:url('../img/fille1.png') top center no-repeat transparent;background-size:100%;position: absolute;top: 300px;left: 20px;}
-.none #home{background:url('../img/bgrien.png') bottom center no-repeat transparent;background-size:100%;padding-bottom:110px}
+.none #home{background:url('../img/bgrien.png') bottom center no-repeat transparent;background-size:100%;padding-bottom:40%}
