@@ -468,7 +468,9 @@ function saveSession(firstTime) {
         			    }*/
 	        		}
 	        		while (i < nb) {
-	        			if ((test) && (i<4))
+	        			if (test)
+	        			{
+	        			if (i < 4)
 	        			{//fonctionnement test
 	        				dateSession = new Date((jour.getTime()+(ecarttest*i*1000)) );
 	        				timestampSession = Math.round(dateSession.getTime() / 1000);
@@ -506,7 +508,7 @@ function saveSession(firstTime) {
 	        				                                         });
 	        			    }*/
 	        				
-	        			}
+	        			}}
 	        			else
 	        			{//fonctionnement normal
 	        				//test si max atteint ou non activé
