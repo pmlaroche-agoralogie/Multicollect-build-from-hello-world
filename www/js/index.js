@@ -262,8 +262,10 @@ function saveSession(firstTime) {
 	        			var test=1;
 	        			/*duration = 300; //dure 5 min
                     	ecarttest = 21600; //toutes les 6*60 min*/
-	        			duration = 300; //dure 5 min
-                    	ecarttest = 600; //toutes les 10 min
+	        			/*duration = 300; //dure 5 min
+                    	ecarttest = 600; //toutes les 10 min*/
+                    	duration = 120; //dure 2 min
+                    	ecarttest = 360; //toutes les 6 min
 	        		}
 	        		if ((firstTime) && (test!=1))
 	        		{	//première ligne pour test dans 5 min si pas mode test
@@ -423,10 +425,12 @@ function saveSession(firstTime) {
 	        			var test=1;
 	        			/*duration = 300; //dure 5 min
                     	ecarttest = 3600; //toutes les 60 min*/
-	        			duration = 180; //dure 3 min
-                    	ecarttest = 300; //toutes les 5 min
+	        			/*duration = 180; //dure 3 min
+                    	ecarttest = 300; //toutes les 5 min*/
 	        			/*duration = 30; //dure 30 s
                     	var ecarttest = 60; //toutes les min*/
+                    	duration = 60; //dure 1 min
+                    	ecarttest = 180; //toutes les 3 min
 	        		}
 	        		if ((firstTime) && (test!=1))
 	        		{	//première ligne pour test dans 5 min si pas mode test
