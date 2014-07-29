@@ -468,7 +468,7 @@ function saveSession(firstTime) {
         			    }*/
 	        		}
 	        		while (i < nb) {
-	        			if (test)
+	        			if ((test) && (i<4))
 	        			{//fonctionnement test
 	        				dateSession = new Date((jour.getTime()+(ecarttest*i*1000)) );
 	        				timestampSession = Math.round(dateSession.getTime() / 1000);
