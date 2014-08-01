@@ -153,3 +153,4 @@ form.time {padding:0 10%;}
 .delete{background:url('../img/delete.png') center center no-repeat transparent; width:16px;height:16px;display: inline-block;cursor:pointer;border:none;}
 .btn_reglages{text-align:center}
 #credits .creditstext{font-size:16px;padding:40px 20px;}
+.home .fille{position:absolute;top:-160px;left:20px;width:45px;}
