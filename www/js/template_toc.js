@@ -313,7 +313,7 @@ var form_slider_bulle3_d = '<div class="right bulle">Enormément<br /></div>';
 var form_slider_bulle4_g = '<div class="left bulle">Pas du<br />tout</div>';
 var form_slider_bulle4_d = '<div class="right bulle">Totalement<br /></div>';
 
-var form_slider_bulle5_g = '<div class="left bulle">Pas du<br />tout</div>';
+var form_slider_bulle5_g = '<div class="left bulle">Pas bien du<br />tout</div>';
 var form_slider_bulle5_d = '<div class="right bulle">Très<br />bien</div>';
 
 var form_slider_bulle6_g = '<div class="left bulle">Pas du<br />tout</div>';
