@@ -642,10 +642,10 @@ function pickRandomProperty(obj) {
 }
 
 function sendReponses()
-{
+{debug=0;
 	var aReponses ={};
 	app.db.transaction(function(tx) {
-		tx.executeSql('SELECT * FROM "horaires" WHERE fait = 1;', [], function(tx, resHoraires) {
+		tx.executeSql('SELECT * FROM "horaires" WHERE fait = 1 order by tsdebut DESC ;', [], function(tx, resHoraires) {
 			var dataset = resHoraires.rows.length;
             if(dataset>0)
             {     	
@@ -665,11 +665,12 @@ function sendReponses()
                         		alert("reponse à  envoi");
                         	for(var j=0;j<dataset2;j++)
                             {
-                        		var jsonkey = res2.rows.item(j).sid +"X"+res2.rows.item(j).gid+"X"+res2.rows.item(j).qid;
+                        		//if (debug)alert(res2.rows.item(j).sid);
+                                        var jsonkey = res2.rows.item(j).sid +"X"+res2.rows.item(j).gid+"X"+res2.rows.item(j).qid;
                         		aReponses[jsonkey]=res2.rows.item(j).code;
                             }
                         	if (debug)
-                        		alert("essai envoi");
+                        		alert("essai envoi"+JSON.stringify(aReponses));
                         	xhr_object = new XMLHttpRequest(); 
                         	xhr_object.open("GET", "http://mcp.ocd-dbs-france.org/test/testrpcpl.php?answer="+JSON.stringify(aReponses), false); 
                         	xhr_object.send(null); 
