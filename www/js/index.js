@@ -645,8 +645,9 @@ function sendReponses()
 {debug=0;
 	var aReponses ={};
 	app.db.transaction(function(tx) {
-		tx.executeSql('SELECT * FROM "horaires" WHERE fait = 1 order by tsdebut DESC ;', [], function(tx, resHoraires) {
+		tx.executeSql('SELECT * FROM "horaires" WHERE fait = 1;', [], function(tx, resHoraires) {
 			var dataset = resHoraires.rows.length;
+			console.log(resHoraires);
             if(dataset>0)
             {     	
             	if (debug)
@@ -657,7 +658,7 @@ function sendReponses()
                 	aReponses["timestamp"] = resHoraires.rows.item(i).tsdebut;
                 	saveResHorairesID = resHoraires.rows.item(i).id;
                 	
-            		tx.executeSql('SELECT * FROM "reponses" WHERE envoi =0  AND idhoraire = '+resHoraires.rows.item(i).id+';', [], function(tx, res2) {
+            		tx.executeSql('SELECT * FROM "reponses" WHERE envoi = 0  AND idhoraire = '+resHoraires.rows.item(i).id+';', [], function(tx, res2) {
             			var dataset2 = res2.rows.length;
                         if(dataset2>0)
                         {
@@ -675,7 +676,9 @@ function sendReponses()
                         	xhr_object = new XMLHttpRequest(); 
                         	xhr_object.open("GET", "http://mcp.ocd-dbs-france.org/test/testrpcpl.php?answer="+JSON.stringify(aReponses), false); 
                         	xhr_object.send(null); 
+                        	console.log("send rep");
                         	console.log(xhr_object);
+                        	console.log(JSON.stringify(aReponses));
                         	if(xhr_object.readyState == 4) 
                         	{
                         		/*if(!isMobile) 
@@ -753,6 +756,7 @@ function saveSession(firstTime) {
 		var scheduling = surveys_config.scheduling;
 		var max = parseInt(surveys_config.maxOccurences,10);
 		var test = 0;
+		var jour = new Date();
 		if (parseInt(surveys_config.test,10)) 
 			var test=1;
 		//si max non atteint
@@ -778,7 +782,6 @@ function saveSession(firstTime) {
 						{
 							var nb = 4;
 							var i = 0;
-							var jour = new Date();
 							var numOfDay = surveys_config.day; 
 			        		var startHour = surveys_config.startHour;
 			        		
@@ -830,7 +833,6 @@ function saveSession(firstTime) {
 						
 						if (scheduling=="D") // questionnaire quotidien
 						{  
-							var jour = new Date();
 			        		var nb = 24; 
 			        		var i = 0;
 			        		var numOfDayOff = surveys_config.dayOff; 
