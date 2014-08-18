@@ -236,7 +236,7 @@ function getQuestionConfig(question)
 }
 
 
-function saveSession(firstTime) {
+function saveSessionOld(firstTime) {
 	firstTime = typeof firstTime !== 'undefined' ? firstTime : 0;
 	app.db.transaction(function(tx) {
 		var timestamp = Math.round(new Date().getTime() / 1000);
@@ -665,8 +665,9 @@ function sendReponses()
                         		alert("reponse à  envoi");
                         	for(var j=0;j<dataset2;j++)
                             {
-                        		//if (debug)alert(res2.rows.item(j).sid);
-                                        var jsonkey = res2.rows.item(j).sid +"X"+res2.rows.item(j).gid+"X"+res2.rows.item(j).qid;
+                        		/*if (debug) 
+                        			alert(res2.rows.item(j).sid);*/
+                                var jsonkey = res2.rows.item(j).sid +"X"+res2.rows.item(j).gid+"X"+res2.rows.item(j).qid;
                         		aReponses[jsonkey]=res2.rows.item(j).code;
                             }
                         	if (debug)
@@ -697,3 +698,211 @@ function sendReponses()
 	});
 }
 
+
+function createNotifForLastId(lastId)
+{
+	app.db.transaction(function(tx) {
+		tx.executeSql('SELECT * FROM "horaires" WHERE id = '+lastId+';',[],function(tx, resnotif) {
+			timestampNow = Math.round(new Date().getTime() / 1000);
+			if (timestampNow < resnotif.rows.item(0).tsdebut)
+			{
+				console.log(resnotif.rows.item(0).id+'+'+resnotif.rows.item(0).tsdebut+'>'+timestampNow);
+				_timestampSessionNotif = new Date(resnotif.rows.item(0).tsdebut*1000);
+				var monId = parseInt(resnotif.rows.item(0).id,10);
+				if (isMobile)
+				 window.plugin.notification.local.add({
+	                   id:      monId,
+	                   title:   'Application de Suivi',
+	                   message: 'Merci de répondre au questionnaire de l application de suivi.',
+	                   date:    _timestampSessionNotif
+	                   });
+			}
+		});	 //Fin select        
+	});// Fin transaction
+}
+
+function createNotifTestForLastId(lastId)
+{
+	app.db.transaction(function(tx) {
+		tx.executeSql('SELECT * FROM "horaires" WHERE id = '+lastId+';',[],function(tx, resnotif) {
+			timestampNow = Math.round(new Date().getTime() / 1000);
+			if (timestampNow < resnotif.rows.item(0).tsdebut)
+			{
+				console.log(resnotif.rows.item(0).id+'+'+resnotif.rows.item(0).tsdebut+'>'+timestampNow);
+				_timestampSessionNotif = new Date(resnotif.rows.item(0).tsdebut*1000);
+				var monId = parseInt(resnotif.rows.item(0).id,10);
+				if (isMobile)
+				 window.plugin.notification.local.add({
+	                   id:      monId,
+	                   title:   'Application de Suivi',
+	                   message: 'test '+resnotif.rows.item(0).id+': Merci de répondre au questionnaire de l application de suivi.',     
+	                   date:    _timestampSessionNotif
+	                   });
+			}
+		});	 //Fin select        
+	});// Fin transaction
+}
+
+///new version
+function saveSession(firstTime) {
+	firstTime = typeof firstTime !== 'undefined' ? firstTime : 0;
+	app.db.transaction(function(tx) {
+		var timestamp = Math.round(new Date().getTime() / 1000);
+		var sid = surveys[0].sid;
+		var duration = surveys_config.duration;
+		var scheduling = surveys_config.scheduling;
+		var max = parseInt(surveys_config.maxOccurences,10);
+		var test = 0;
+		if (parseInt(surveys_config.test,10)) 
+			var test=1;
+		//si max non atteint
+		tx.executeSql('select count("id") as cnt from "horaires" WHERE uidquestionnaire = '+sid+';', [], function(tx, res) {
+			if (res.rows.item(0).cnt < max)
+			{			
+				var reste = max - res.rows.item(0).cnt;
+				//si pas d'enregistrement ou reste seulement un, j'en remet
+				tx.executeSql('select count("id") as cnt from "horaires" WHERE tsdebut > '+timestamp+' and uidquestionnaire = '+sid+';', [], function(tx, res) {
+					if (res.rows.item(0).cnt <= 1)//TODO : mettre en var nombre min)
+					{
+						var nbActiveLineBefore = res.rows.item(0).cnt;
+						//cas d'initialisation d'un questionnnaire en mode normal
+		        		if ((firstTime) && (test!=1))
+		        		{	//première ligne pour test dans 5 min si pas mode test
+	        				timestampSession = Math.round(jour.getTime() / 1000)+300; //dans 5min
+	        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[],function(tx, res) {
+	        					createNotifForLastId(res.insertId);     			
+	        				});  //Fin insert 
+		        		}//fin if ((firstTime) && (test!=1))
+		        		
+						if (scheduling=="W") // questionnaire hebdo
+						{
+							var nb = 4;
+							var i = 0;
+							var jour = new Date();
+							var numOfDay = surveys_config.day; 
+			        		var startHour = surveys_config.startHour;
+			        		
+							if (test==1)//mode test
+							{
+		                    	duration = 120; //dure 2 min
+		                    	ecarttest = 360; //toutes les 6 min
+							}
+							
+							if (reste < nb) // si il en reste moins pour atteindre max occurences
+								nb = reste;
+											
+							while (i < nb) 
+							{
+			        			if (test)
+			        			{//fonctionnement test
+			        				dateSession = new Date((jour.getTime()+(ecarttest*i*1000)) );
+			        				timestampSession = Math.round(dateSession.getTime() / 1000);
+			        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[],function(tx, res) {
+			        					createNotifTestForLastId(res.insertId);   			
+			        				});  //Fin insert 
+			        			}//fin if (test)
+			        			else
+			        			{//fonctionnement normal    		
+						        			var dayko = true;
+						        			while (dayko)
+						        			{
+						        				jour = new Date(jour.getTime() + (24*60*60*1000));
+						        				if (jour.getDay() == numOfDay)
+						        					dayko=false;
+						        			}
+						        			dateSession = new Date(jour.getFullYear(),jour.getMonth(),jour.getDate(),startHour);
+						        			timestampSession = Math.round(dateSession.getTime() / 1000);
+						        			if (nbActiveLineBefore)
+						        			{
+						        				nbActiveLineBefore--;
+						        			}
+						        			else
+						        			{
+						        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[],function(tx, res) {
+						        					createNotifForLastId(res.insertId);        			
+						        				});  //Fin insert 
+						        			}
+						        				;
+			        			}// fin else fonctionnement normal   
+			        			i++;
+			        		}// fin while (i < nb) 
+						}//fin if (scheduling=="W")
+						
+						if (scheduling=="D") // questionnaire quotidien
+						{  
+							var jour = new Date();
+			        		var nb = 24; 
+			        		var i = 0;
+			        		var numOfDayOff = surveys_config.dayOff; 
+			        		var startHour = surveys_config.startHour; 
+			        		//var randomTime = surveys_config.randomTime; 
+			        		//TODO : gestion multiple startHour, randomTime
+			        		var randomTime = 10800;
+			        		var randomTab={};
+			        		for (j=1;j<=nb;j++)
+			        			randomTab[j]=j;
+							
+							if( test==1) //mode test
+			        		{
+		                    	duration = 60; //dure 1 min
+		                    	ecarttest = 180; //toutes les 3 min
+			        		}
+							
+							if (reste < nb) // si il en reste moins pour atteindre max occurences
+								nb = reste;
+											
+							while (i < nb) 
+							{
+			        			if (test)
+			        			{//fonctionnement test
+			        				if (i < 4) // on limite pour test
+			        				{
+				        				dateSession = new Date((jour.getTime()+(ecarttest*i*1000)) );
+				        				timestampSession = Math.round(dateSession.getTime() / 1000);
+				        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[],function(tx, res) {
+				        					createNotifTestForLastId(res.insertId);
+				        					lastId = res.insertId;      			
+				        				});  //Fin insert 
+			        				} //fin if (i < 4)
+			        			}//fin if (test)
+			        			else
+			        			{//fonctionnement normal		
+			        				var dayko = true;
+				        			while (dayko)
+				        			{
+				        				jour = new Date(jour.getTime() + (24*60*60*1000));
+				        				if (jour.getDay() != numOfDayOff)
+				        					dayko=false;
+				        			}
+				        			partOfDay = pickRandomProperty(randomTab);
+				        			if (partOfDay%2 == 0)
+				        				dateSession = new Date(jour.getFullYear(),jour.getMonth(),jour.getDate(),10);
+				        			else
+				        				dateSession = new Date(jour.getFullYear(),jour.getMonth(),jour.getDate(),18);
+				        			delete randomTab[partOfDay];
+				        			console.log(randomTab);
+				        			timestampSession = Math.round(dateSession.getTime() / 1000) + Math.floor((Math.random() * randomTime));
+				        			if (nbActiveLineBefore)
+				        			{
+				        				nbActiveLineBefore--;
+				        			}
+				        			else
+			        				{
+				        				tx.executeSql('INSERT INTO "horaires" (uidquestionnaire, tsdebut, dureevalidite,notification, fait) VALUES("'+sid+'",'+timestampSession+','+duration+',0,0);',[],function(tx, res) {
+				        					createNotifForLastId(res.insertId);       			
+				        				});  //Fin insert 
+			        				}
+				        				
+	        		        	} //fin fonctionnement normal
+			        			i++;
+							}// fin while
+			        										
+						}//fin if (scheduling=="D")
+						if (firstTime)
+							alert("Questionnaire enregistré");					
+					}//fin if (res.rows.item(0).cnt <= 1) nb reste ligne
+				}); //fin select count("id") as cnt from "horaires" WHERE tsdebut > '+timestamp+' and uidquestionnaire = '+sid+';'
+			}// fin if (res.rows.item(0).cnt < max)
+		});// fin 'select count("id") as cnt from "horaires" WHERE uidquestionnaire = '+sid+';'	
+	});//fin transaction
+}
