@@ -656,12 +656,13 @@ function sendReponses()
                 {
             		aReponses["sid"] = resHoraires.rows.item(i).uidquestionnaire;
                 	aReponses["timestamp"] = resHoraires.rows.item(i).tsdebut;
-                	saveResHorairesID = resHoraires.rows.item(i).id;
+                	//saveResHorairesID = resHoraires.rows.item(i).id;
                 	
             		tx.executeSql('SELECT * FROM "reponses" WHERE envoi = 0  AND idhoraire = '+resHoraires.rows.item(i).id+';', [], function(tx, res2) {
             			var dataset2 = res2.rows.length;
                         if(dataset2>0)
                         {
+                        	saveResHorairesID = res2.rows.item(i).idhoraire;
                         	if (debug)
                         		alert("reponse à  envoi");
                         	for(var j=0;j<dataset2;j++)
