@@ -125,7 +125,7 @@ function getTemplate(selector,qkey)
 		app.db.transaction(function(tx) {
 			tx.executeSql('UPDATE "horaires" SET fait = 1 WHERE id ='+session_encours+';');
 			if (isMobile)
-    			window.plugin.notification.local.cancel(session_encours, function () {
+    			window.plugin.notification.local.cancel(session_encours+"00", function () {
     			    // The notification has been canceled
     				console.log('one cancel');
     			});

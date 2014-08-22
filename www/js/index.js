@@ -742,9 +742,18 @@ function createNotifForLastId(lastId)
 	                   id:      monId,
 	                   title:   'Application de Suivi',
 	                   message: 'Merci de répondre au questionnaire de l application de suivi.',
-	                   date:    _timestampSessionNotif,
-	                   repeat: 10,
-	                   autoCancel: true
+	                   date:    _timestampSessionNotif
+	                   });
+				
+				//10min plus tard
+				_timestampSessionNotif2 = new Date((resnotif.rows.item(0).tsdebut*1000+600*1000));
+				var monId2 = parseInt(resnotif.rows.item(0).id+"00",10);
+				if (isMobile)
+				 window.plugin.notification.local.add({
+	                   id:      monId2,
+	                   title:   'Application de Suivi',
+	                   message: 'Merci de répondre au questionnaire de l application de suivi.',
+	                   date:    _timestampSessionNotif2
 	                   });
 			}
 		});	 //Fin select        
@@ -766,9 +775,18 @@ function createNotifTestForLastId(lastId)
 	                   id:      monId,
 	                   title:   'Application de Suivi',
 	                   message: 'test '+resnotif.rows.item(0).id+': Merci de répondre au questionnaire de l application de suivi.',     
-	                   date:    _timestampSessionNotif,
-	                   repeat: 1,
-	                   autoCancel: true
+	                   date:    _timestampSessionNotif
+	                   });
+			
+				//1min plus tard
+				_timestampSessionNotif2 = new Date((resnotif.rows.item(0).tsdebut*1000+60*1000));
+				var monId2 = parseInt(resnotif.rows.item(0).id+"00",10);
+				if (isMobile)
+				 window.plugin.notification.local.add({
+	                   id:      monId2,
+	                   title:   'Application de Suivi',
+	                   message: 'test '+resnotif.rows.item(0).id+' bis: Merci de répondre au questionnaire de l application de suivi.', 
+	                   date:    _timestampSessionNotif2
 	                   });
 			}
 		});	 //Fin select        
