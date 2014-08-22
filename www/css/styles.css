@@ -52,7 +52,7 @@ div.bulle_seule {background-image:url(../img/bulle_seule.png);background-repeat:
 
 
 div.suite{bottom:10px;width:100%;position: absolute;left:0;}
-div.suite input{width:200px;height:75px;font-weight:bold;font-size:25px;}
+div.suite input{width:200px;height:65px;font-weight:bold;font-size:25px;}
 div.suite.retour_accueil input{font-size:20px;}
 div.suite.home input{font-size:16px;}
 
