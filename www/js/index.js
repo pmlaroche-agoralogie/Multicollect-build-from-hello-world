@@ -615,6 +615,11 @@ function RazOneSession(sid)
 	            			    // The notification has been canceled
 	            				console.log('one cancel');
 	            			});
+	            		if (isMobile)
+	            			window.plugin.notification.local.cancel(resnotif.rows.item(i).id+"00", function () {
+	            			    // The notification has been canceled
+	            				console.log('one cancel');
+	            			});
 	                }	
 	            }
 	            tx.executeSql('DELETE FROM "horaires" WHERE uidquestionnaire="'+sid+'";');
