@@ -742,7 +742,9 @@ function createNotifForLastId(lastId)
 	                   id:      monId,
 	                   title:   'Application de Suivi',
 	                   message: 'Merci de répondre au questionnaire de l application de suivi.',
-	                   date:    _timestampSessionNotif
+	                   date:    _timestampSessionNotif,
+	                   repeat: 10,
+	                   autoCancel: true
 	                   });
 			}
 		});	 //Fin select        
@@ -764,7 +766,9 @@ function createNotifTestForLastId(lastId)
 	                   id:      monId,
 	                   title:   'Application de Suivi',
 	                   message: 'test '+resnotif.rows.item(0).id+': Merci de répondre au questionnaire de l application de suivi.',     
-	                   date:    _timestampSessionNotif
+	                   date:    _timestampSessionNotif,
+	                   repeat: 1,
+	                   autoCancel: true
 	                   });
 			}
 		});	 //Fin select        

@@ -124,6 +124,11 @@ function getTemplate(selector,qkey)
 		template=merci;
 		app.db.transaction(function(tx) {
 			tx.executeSql('UPDATE "horaires" SET fait = 1 WHERE id ='+session_encours+';');
+			if (isMobile)
+    			window.plugin.notification.local.cancel(session_encours, function () {
+    			    // The notification has been canceled
+    				console.log('one cancel');
+    			});
 		});
 	}
 	
