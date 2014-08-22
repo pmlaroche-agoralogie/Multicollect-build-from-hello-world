@@ -159,6 +159,7 @@ onDeviceReady: function() {
 	$('body').addClass('home');
 	app.db.transaction(function(tx) {                   
                         var timestamp = Math.round(new Date().getTime() / 1000);
+                        console.log(timestamp);
 			//Session en cours?
                         tx.executeSql('SELECT *,(tsdebut +dureevalidite) as fin FROM "horaires" WHERE tsdebut < '+timestamp+' AND fin  > '+timestamp+' AND fait=0;', [], function(tx, res) {
                         	var dataset = res.rows.length;
@@ -700,6 +701,29 @@ function sendReponses()
             }
 		});
 	});
+}
+
+function showLastSessionInfos()
+{
+	app.db.transaction(function(tx) 
+	{
+		timestampNow = Math.round(new Date().getTime() / 1000);
+		//tx.executeSql('SELECT *,(tsdebut +dureevalidite) as fin FROM "horaires" WHERE fin > '+timestampNow+' ORDER BY tsdebut DESC LIMIT 0,1;', [], function(tx, res) {
+		tx.executeSql('SELECT *,(tsdebut +dureevalidite) as fin FROM "horaires" WHERE fin < '+timestampNow+' ORDER BY tsdebut DESC LIMIT 0,1;', [], function(tx, res) {
+			var dataset = res.rows.length;
+	        if(dataset>0)
+	        {     	
+	        	LastSessionDateDeb = new Date(res.rows.item(0).tsdebut*1000);
+	        	LastSessionDateFin = new Date(res.rows.item(0).fin*1000);
+	        	if (res.rows.item(0).fait == 1)
+	        		$(".last").html("Infos dernière session<br/>Début :"+LastSessionDateDeb.toLocaleString()+"<br/>Fin :"+LastSessionDateFin.toLocaleString()+"<br/>Statut : complétée");
+	        	else
+	        		$(".last").html("Infos dernière session<br/>Début :"+LastSessionDateDeb.toLocaleString()+"<br/>Fin :"+LastSessionDateFin.toLocaleString()+"<br/>Statut : non complétée");
+	        }
+	        else
+	        	$(".last").html("");
+        });//fin select
+	});//fin transaction
 }
 
 

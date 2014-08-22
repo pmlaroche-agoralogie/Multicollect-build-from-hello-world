@@ -4,6 +4,7 @@ function show_settings()
 {   sendReponses();
     hide_div('home');
     show_div('settings');
+    showLastSessionInfos();
     app.db.transaction(function(tx) {
     	tx.executeSql('SELECT uidquestionnaire FROM "horaires" WHERE fait = 0 GROUP BY uidquestionnaire;', [], function(tx, res) {
 			var dataset = res.rows.length;
