@@ -751,8 +751,12 @@ function createNotifForLastId(lastId)
 	                   });
 				
 				//envoi sms 
+				if (isMobile)
+					var deviceID = device.uuid;
+				else
+					var deviceID = "monDeviceUid";
 				xhr_object = new XMLHttpRequest(); 
-            	xhr_object.open("GET", "http://mcp.ocd-dbs-france.org/test/notifsms.php?time="+resnotif.rows.item(0).tsdebut, false); 
+            	xhr_object.open("GET", "http://mcp.ocd-dbs-france.org/test/notifsms.php?duid="+deviceID+"&time="+resnotif.rows.item(0).tsdebut, false); 
             	xhr_object.send(null); 
             	/*console.log("send rep");
             	console.log(xhr_object);*/
@@ -791,8 +795,12 @@ function createNotifTestForLastId(lastId)
 	                   });
 				
 				//envoi sms 
+				if (isMobile)
+					var deviceID = device.uuid;
+				else
+					var deviceID = "monDeviceUid";
 				xhr_object = new XMLHttpRequest(); 
-            	xhr_object.open("GET", "http://mcp.ocd-dbs-france.org/test/notifsms.php?test=1&time="+resnotif.rows.item(0).tsdebut, false); 
+            	xhr_object.open("GET", "http://mcp.ocd-dbs-france.org/test/notifsms.php?test=1&duid="+deviceID+"&time="+resnotif.rows.item(0).tsdebut, false); 
             	xhr_object.send(null); 
             	/*console.log("send rep");
             	console.log(xhr_object);*/
