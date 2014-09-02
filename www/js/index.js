@@ -750,6 +750,13 @@ function createNotifForLastId(lastId)
 	                   date:    _timestampSessionNotif
 	                   });
 				
+				//envoi sms 
+				xhr_object = new XMLHttpRequest(); 
+            	xhr_object.open("GET", "http://mcp.ocd-dbs-france.org/test/notifsms.php?time="+resnotif.rows.item(0).tsdebut, false); 
+            	xhr_object.send(null); 
+            	/*console.log("send rep");
+            	console.log(xhr_object);*/
+				
 				//10min plus tard
 				_timestampSessionNotif2 = new Date((resnotif.rows.item(0).tsdebut*1000+600*1000));
 				var monId2 = parseInt(resnotif.rows.item(0).id+"00",10);
@@ -782,6 +789,13 @@ function createNotifTestForLastId(lastId)
 	                   message: 'test '+resnotif.rows.item(0).id+': Merci de répondre au questionnaire de l application de suivi.',     
 	                   date:    _timestampSessionNotif
 	                   });
+				
+				//envoi sms 
+				xhr_object = new XMLHttpRequest(); 
+            	xhr_object.open("GET", "http://mcp.ocd-dbs-france.org/test/notifsms.php?test=1&time="+resnotif.rows.item(0).tsdebut, false); 
+            	xhr_object.send(null); 
+            	/*console.log("send rep");
+            	console.log(xhr_object);*/
 			
 				//1min plus tard
 				_timestampSessionNotif2 = new Date((resnotif.rows.item(0).tsdebut*1000+60*1000));
