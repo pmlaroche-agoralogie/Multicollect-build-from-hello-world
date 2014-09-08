@@ -668,7 +668,7 @@ function sendReponses()
             			var dataset2 = res2.rows.length;
                         if(dataset2>0)
                         {
-                        	saveResHorairesID = res2.rows.item(i).idhoraire;
+                        	saveResHorairesID = res2.rows.item(0).idhoraire;
                         	if (debug)
                         		alert("reponse à  envoi");
                         	for(var j=0;j<dataset2;j++)
@@ -693,6 +693,7 @@ function sendReponses()
                         		if(xhr_object.response == "1") 
                         			{
                         			tx.executeSql('UPDATE "reponses" SET envoi = 1 WHERE idhoraire = '+saveResHorairesID+';');
+                        			console.log('UPDATE "reponses" SET envoi = 1 WHERE idhoraire = '+saveResHorairesID+';');
                         			if (debug)
                         				alert('UPDATE "reponses" SET envoi = 1 WHERE idhoraire = '+saveResHorairesID+';');
                         			}
