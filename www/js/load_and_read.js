@@ -4,6 +4,7 @@ function show_settings()
 {   sendReponses();
     hide_div('home');
     hide_div('profil');
+    hide_div('credits');
     show_div('settings');
     showLastSessionInfos();
     app.db.transaction(function(tx) {
@@ -31,6 +32,7 @@ function show_profil()
 function show_credits()
 {   
     hide_div('home');
+    hide_div('settings');
     show_div('credits');
 }
 
@@ -48,6 +50,7 @@ function go_home()
     hide_div('settings');
     hide_div('credits');
     show_div('home');
+    hide_div('profil');
 }
 
 var LSSForm = function(xmlString) {
