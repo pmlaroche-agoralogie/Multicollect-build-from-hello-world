@@ -983,3 +983,30 @@ function saveSession(firstTime) {
 		});// fin 'select count("id") as cnt from "horaires" WHERE uidquestionnaire = '+sid+';'	
 	});//fin transaction
 }
+
+function saveUser(){
+	if ($('#userform #userid').val() != "")
+	{		
+		try 
+		{
+			xhr_object = new XMLHttpRequest(); 
+	    	xhr_object.open("GET", "http://mcp.ocd-dbs-france.org/test/save_user.php?id="+encodeURI($('#userform #userid').val()), false); 
+	    	xhr_object.send(); 
+	    	console.log("send user");
+	    	console.log(xhr_object);
+	    	console.log($('#userform #userid').val());
+	    	if(xhr_object.readyState == 4) 
+	    	{
+	    		if(xhr_object.response == "1") 
+	    			alert ('Votre identifiant a été enregistré.')
+	    		else
+	    			alert ('Veuillez réessayer ultérieurement.')
+	    	}
+	    	else
+				alert ('Veuillez réessayer ultérieurement.')
+        } catch(e) {
+            	alert ('Veuillez réessayer ultérieurement.');
+        }
+	}
+
+}

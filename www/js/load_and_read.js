@@ -3,6 +3,7 @@ window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFile
 function show_settings()
 {   sendReponses();
     hide_div('home');
+    hide_div('profil');
     show_div('settings');
     showLastSessionInfos();
     app.db.transaction(function(tx) {
@@ -19,6 +20,12 @@ function show_settings()
             }
     	});
 	});
+}
+
+function show_profil()
+{   
+    hide_div('settings');
+    show_div('profil');
 }
 
 function show_credits()

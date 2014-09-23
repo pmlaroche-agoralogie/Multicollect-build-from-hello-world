@@ -134,7 +134,9 @@ font-size: 20px;
 /*body.home .question {display:none;}*/
 body.home .questionnaire {display:none;}
 form[name="myform"] input[type="text"] {width: 200px;height:65px;font-size: 30px;font-weight:bold;text-align:center}
+#userform input[type="text"] {width: 200px;height:65px;font-size: 30px;font-weight:bold;text-align:center}
 form[name="myform"] input[type="button"] {width: 200px;height:65px;font-size: 16px;font-weight:bold}
+#userform input[type="button"] {width: 200px;height:65px;font-size: 16px;font-weight:bold}
 body.home .raz_session input{width: 200px;height:45px;}
 body.home .raz_session {display:none;}
 body.home #opensurvey {display:none;}
@@ -154,3 +156,6 @@ form.time {padding:0 10%;}
 .btn_reglages{text-align:center}
 #credits .creditstext{font-size:16px;padding:40px 20px;}
 .home .fille{position:absolute;top:-160px;left:20px;width:45px;}
+
+#settings .getuser {position:absolute; left:0;top:110px;margin-left:2px;}
+#profil .profiltext {margin:10px;}

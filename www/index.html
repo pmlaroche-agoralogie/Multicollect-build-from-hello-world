@@ -137,6 +137,7 @@
             	<span id='question1' font-size: 30pt></span> <span id='answer1' font-size: 25pt></span> <br>Suite
             </div>
             <div id='settings' style='display: none;'>
+            	<div class="getuser"><a href="javascript:;" onClick="isHomeActive = false;show_profil();"><img src="img/user.png" /></a></div>
             	<div class="last"></div>
               <div class="question">Aucun suivi<br />Nouveau suivi : </div>
               <form NAME="myform" ACTION="" METHOD="GET">
@@ -171,6 +172,19 @@ Si vous êtes utilisateur de l'outil et que vous avez des questions, contactez l
 				</div>
             	<div class="suite home">
                 	<input type="button" value="Retour Accueil" onClick="isHomeActive = true;app.reload();go_home();">
+              	</div>
+            </div>
+             <div id='profil' style='display: none;'>
+            	<div class="profiltext">
+            	Veuillez saisir votre idendifiant unique:
+				</div>
+				<form id="userform" name="userform" action="" method="get">
+                	<input id="userid" type="text" name="userid" value="">
+                	</br>
+               		<input type="button" name="button" value="Enregistrer" onClick="saveUser();">
+              	</form>
+            	<div class="suite home">
+                	<input type="button" value="Retour" onClick="show_settings();">
               	</div>
             </div>
           </div>
