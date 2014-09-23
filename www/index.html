@@ -35,12 +35,14 @@
 <script type='text/javascript' src='js/jquery-2.1.1.min.js'></script>
 <script type='text/javascript' src='js/jquery-ui-1.10.4.custom.min.js'></script>
 <script type='text/javascript' src='js/jquery.ui.touch-punch.min.js'></script>
+<script type="text/javascript" src="js/md5.js"></script>
 <script type="text/javascript" src="js/simulation.js"></script>
 <script type="text/javascript" src="js/load_and_read.js"></script>
 <script type="text/javascript" src="js/template_toc.js"></script>
 <script type='text/javascript' src='js/toc.js'></script>
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
+
 <script type="text/javascript">
 		$(document).ready(function(){
 			isHomeActive = true;
@@ -51,6 +53,7 @@
 				app.onDeviceReady();
 				$('body.home .raz_session').show();
 			}
+			//alert(md5('toto'));
 		});
         </script>
         <!-- code javascript -->
@@ -64,6 +67,7 @@
 					makeCorsRequest('http://mcp.ocd-dbs-france.org/lss/lss_934317'); 
 				});
 			});*/
+			
 			
 			var onLssLoaded = function(lss,firstTime) {
 			  firstTime = typeof firstTime !== 'undefined' ? firstTime : 0;

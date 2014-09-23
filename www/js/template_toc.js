@@ -60,7 +60,7 @@ function getTemplate(selector,qkey)
 			if (configString.tpl=="uid")
 			{
 				if (isMobile)
-					var deviceID = device.uuid;
+					var deviceID = md5(device.uuid);
 				else
 					var deviceID = "monDeviceUid";
 				app.db.transaction(function(tx) {
