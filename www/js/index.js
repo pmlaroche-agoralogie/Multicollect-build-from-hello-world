@@ -681,7 +681,7 @@ function sendReponses()
                         	if (debug)
                         		alert("essai envoi"+JSON.stringify(aReponses));
                         	xhr_object = new XMLHttpRequest(); 
-                        	xhr_object.open("GET", "http://mcp.ocd-dbs-france.org/test/testrpcpl.php?answer="+JSON.stringify(aReponses), false); 
+                        	xhr_object.open("GET", "http://mcp.ocd-dbs-france.org/mobile/mobilerpc.php?answer="+JSON.stringify(aReponses), false); 
                         	xhr_object.send(null); 
                         	console.log("send rep");
                         	console.log(xhr_object);
@@ -757,7 +757,7 @@ function createNotifForLastId(lastId)
 				else
 					var deviceID = "monDeviceUid";
 				xhr_object = new XMLHttpRequest(); 
-            	xhr_object.open("GET", "http://mcp.ocd-dbs-france.org/test/notifsms.php?qid="+resnotif.rows.item(0).uidquestionnaire+"&duid="+deviceID+"&time="+resnotif.rows.item(0).tsdebut, false); 
+            	xhr_object.open("GET", "http://mcp.ocd-dbs-france.org/mobile/notifsms.php?qid="+resnotif.rows.item(0).uidquestionnaire+"&duid="+deviceID+"&time="+resnotif.rows.item(0).tsdebut, false); 
             	xhr_object.send(null); 
             	/*console.log("send rep");
             	console.log(xhr_object);*/
@@ -801,7 +801,7 @@ function createNotifTestForLastId(lastId)
 				else
 					var deviceID = "monDeviceUid";
 				xhr_object = new XMLHttpRequest(); 
-            	xhr_object.open("GET", "http://mcp.ocd-dbs-france.org/test/notifsms.php?test=1&qid="+resnotif.rows.item(0).uidquestionnaire+"&duid="+deviceID+"&time="+resnotif.rows.item(0).tsdebut, false); 
+            	xhr_object.open("GET", "http://mcp.ocd-dbs-france.org/mobile/notifsms.php?test=1&qid="+resnotif.rows.item(0).uidquestionnaire+"&duid="+deviceID+"&time="+resnotif.rows.item(0).tsdebut, false); 
             	xhr_object.send(null); 
             	/*console.log("send rep");
             	console.log(xhr_object);*/
@@ -990,7 +990,7 @@ function saveUser(){
 		try 
 		{
 			xhr_object = new XMLHttpRequest(); 
-	    	xhr_object.open("GET", "http://mcp.ocd-dbs-france.org/test/save_user.php?id="+encodeURI($('#userform #userid').val()), false); 
+	    	xhr_object.open("GET", "http://mcp.ocd-dbs-france.org/mobile/save_user.php?id="+encodeURI($('#userform #userid').val()), false); 
 	    	xhr_object.send(); 
 	    	console.log("send user");
 	    	console.log(xhr_object);
