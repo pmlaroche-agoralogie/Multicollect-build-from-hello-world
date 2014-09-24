@@ -986,11 +986,15 @@ function saveSession(firstTime) {
 
 function saveUser(){
 	if ($('#userform #userid').val() != "")
-	{		
+	{	
 		try 
 		{
+			if (isMobile)
+				var deviceID = md5(device.uuid);
+			else
+				var deviceID = "monDeviceUid";
 			xhr_object = new XMLHttpRequest(); 
-	    	xhr_object.open("GET", "http://mcp.ocd-dbs-france.org/mobile/save_user.php?id="+encodeURI($('#userform #userid').val()), false); 
+	    	xhr_object.open("GET", "http://mcp.ocd-dbs-france.org/mobile/save_user.php?duid="+deviceID+"&id="+encodeURI($('#userform #userid').val()), false); 
 	    	xhr_object.send(); 
 	    	console.log("send user");
 	    	console.log(xhr_object);
