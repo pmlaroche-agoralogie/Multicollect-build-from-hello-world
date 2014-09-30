@@ -660,8 +660,8 @@ function sendReponses()
             		alert("session à  envoi");
             	for(var i=0;i<dataset;i++)
                 {
-            		aReponses["sid"] = resHoraires.rows.item(i).uidquestionnaire;
-                	aReponses["timestamp"] = resHoraires.rows.item(i).tsdebut;
+            		//aReponses["sid"] = resHoraires.rows.item(i).uidquestionnaire;
+                	//aReponses["timestamp"] = resHoraires.rows.item(i).tsdebut;
                 	//saveResHorairesID = resHoraires.rows.item(i).id;
                 	
             		tx.executeSql('SELECT * FROM "reponses" WHERE envoi = 0  AND idhoraire = '+resHoraires.rows.item(i).id+';', [], function(tx, res2) {
@@ -669,6 +669,8 @@ function sendReponses()
                         if(dataset2>0)
                         {
                         	saveResHorairesID = res2.rows.item(0).idhoraire;
+                        	aReponses["sid"] = res2.rows.item(0).sid;
+                        	aReponses["timestamp"] = res2.rows.item(0).tsreponse;
                         	if (debug)
                         		alert("reponse à  envoi");
                         	for(var j=0;j<dataset2;j++)
