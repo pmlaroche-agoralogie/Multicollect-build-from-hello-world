@@ -146,7 +146,6 @@ body.home #opensurvey {display:none;}
 .spirale {background:url('../img/spirale.png') top left repeat-x lightgrey;padding: 40px 20px 4px;position:relative;z-index:1;margin-bottom:40px}
 div.titre_journal{background:url('../img/spirale.png') top left repeat-x lightgrey;padding: 40px 20px 4px;position:relative;z-index:1;color:grey;height:40px;
 background-color:lightgrey;font-size:30px;padding-top:60px;position:relative;z-index:1;}
-body.home .question{background:url('../img/bulle_home.png') top center no-repeat transparent;background-size:65%;height:180px;margin-top: 3%;padding:12% 24%;font-size:18px;}
 body.home  #settings .question{background:none;height:auto;padding: 0px 50px;margin-top:5px;}
 form.time {padding:0 10%;}
 .merci{background:url('../img/bgfin.png') top center no-repeat transparent;background-size:100%;padding-top: 120px;position:relative}
@@ -159,3 +158,19 @@ form.time {padding:0 10%;}
 
 #settings .getuser {position:absolute; left:0;top:110px;margin-left:2px;}
 #profil .profiltext {margin:10px;}
+
+@media screen and (max-width: 639px) {
+  body.home .question{background:url('../img/bulle_home.png') top center no-repeat transparent;background-size:65%;height:180px;margin-top: 3%;padding:12% 24%;font-size:18px;width:auto;}
+}
+@media screen and (min-width: 640px) {
+  body.home .question{background:url('../img/bulle_home.png') top center no-repeat transparent;background-size:65%;height:180px;margin-top: 3%;padding:12% 24%;font-size:18px;}
+  body.home #home .question{background:url('../img/bulle_home.png') top left no-repeat transparent;background-size:400px;height:180px;margin-top: 3%;padding:12% 0% 12%;
+  font-size:18px;width:400px;margin-left: 100px;}
+  body.none #home .question{margin-left: 0px;}
+  .none #home {
+background: url('../img/bgrien.png') bottom center no-repeat transparent;
+background-size: 100% 100%;
+padding-bottom: 20%;
+}
+.home .fille{position:absolute;top:-350px;left:500px;width:100px;max-width:100px;height:300px}
+}
