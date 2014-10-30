@@ -1085,3 +1085,6 @@ function saveUser(){
 	}
 
 }
+function alertDismissed() {
+    // do something
+}
