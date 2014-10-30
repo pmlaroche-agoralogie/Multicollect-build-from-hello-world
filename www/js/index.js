@@ -582,7 +582,19 @@ function saveSessionOld(firstTime) {
 		
 	});
 	if (firstTime)
-		alert("Questionnaire enregistré");
+	{
+		if (isMobile)
+		{
+		navigator.notification.alert(
+	            'Questionnaire enregistré',  // message
+	            alertDismissed,         // callback
+	            'Multicollect',            // title
+	            'Ok'                  // buttonName
+	        );
+		}
+		else
+			{alert("Questionnaire enregistré");}
+	}
 }
 
 function RazSession()
