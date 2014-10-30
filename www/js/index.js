@@ -990,7 +990,17 @@ function saveSession(firstTime) {
 			        										
 						}//fin if (scheduling=="D")
 						if (firstTime)
-							alert("Questionnaire enregistré");					
+							if (isMobile)
+							{
+							navigator.notification.alert(
+						            'Questionnaire enregistré',  // message
+						            alertDismissed,         // callback
+						            'Multicollect',            // title
+						            'Ok'                  // buttonName
+						        );
+							}
+							else
+								{alert("Questionnaire enregistré");}			
 					}//fin if (res.rows.item(0).cnt <= 1) nb reste ligne
 				}); //fin select count("id") as cnt from "horaires" WHERE tsdebut > '+timestamp+' and uidquestionnaire = '+sid+';'
 			}// fin if (res.rows.item(0).cnt < max)
@@ -1016,14 +1026,59 @@ function saveUser(){
 	    	if(xhr_object.readyState == 4) 
 	    	{
 	    		if(xhr_object.response == "1") 
-	    			alert ('Votre identifiant a été enregistré.')
+	    			if (isMobile)
+	    			{
+	    			navigator.notification.alert(
+	    		            ''Votre identifiant a été enregistré.',  // message
+	    		            alertDismissed,         // callback
+	    		            'Multicollect',            // title
+	    		            'Ok'                  // buttonName
+	    		        );
+	    			}
+	    			else
+	    				{alert("'Votre identifiant a été enregistré.");}
 	    		else
-	    			alert ('Veuillez réessayer ultérieurement.')
+	    		{
+	    			if (isMobile)
+						{
+						navigator.notification.alert(
+					            'Veuillez réessayer ultérieurement.',  // message
+					            alertDismissed,         // callback
+					            'Multicollect',            // title
+					            'Ok'                  // buttonName
+					        );
+						}
+						else
+							{alert("Veuillez réessayer ultérieurement.");}
+	    		}
 	    	}
 	    	else
-				alert ('Veuillez réessayer ultérieurement.')
+	    	{
+	    		if (isMobile)
+				{
+				navigator.notification.alert(
+			            'Veuillez réessayer ultérieurement.',  // message
+			            alertDismissed,         // callback
+			            'Multicollect',            // title
+			            'Ok'                  // buttonName
+			        );
+				}
+				else
+					{alert("Veuillez réessayer ultérieurement.");}
+	    	}
+				
         } catch(e) {
-            	alert ('Veuillez réessayer ultérieurement.');
+        	if (isMobile)
+			{
+			navigator.notification.alert(
+		            'Veuillez réessayer ultérieurement.',  // message
+		            alertDismissed,         // callback
+		            'Multicollect',            // title
+		            'Ok'                  // buttonName
+		        );
+			}
+			else
+				{alert("Veuillez réessayer ultérieurement.");}
         }
 	}
 
