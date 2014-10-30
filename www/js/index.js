@@ -1026,17 +1026,19 @@ function saveUser(){
 	    	if(xhr_object.readyState == 4) 
 	    	{
 	    		if(xhr_object.response == "1") 
+	    		{
 	    			if (isMobile)
 	    			{
 	    			navigator.notification.alert(
-	    		            ''Votre identifiant a été enregistré.',  // message
+	    		            'Votre identifiant a été enregistré.',  // message
 	    		            alertDismissed,         // callback
 	    		            'Multicollect',            // title
 	    		            'Ok'                  // buttonName
 	    		        );
 	    			}
 	    			else
-	    				{alert("'Votre identifiant a été enregistré.");}
+	    				{alert("Votre identifiant a été enregistré.");}
+	    		}
 	    		else
 	    		{
 	    			if (isMobile)
