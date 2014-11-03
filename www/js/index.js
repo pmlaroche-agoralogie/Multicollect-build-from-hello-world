@@ -614,18 +614,20 @@ function onConfirm(sid){RazOneSession(sid,true)}
 function RazOneSession(sid,r)
 {
 	if( typeof(r) == 'undefined' )
-		var r =false;
-	if (isMobile)
 	{
-	 navigator.notification.confirm(
-			 	"Confirmez-vous la suppression de "+sid+"?", // message
-	             onConfirm(sid),            // callback to invoke with index of button pressed
-	            'Multicollect',           // title
-	            'Non,Oui'         // buttonLabels
-	        );
+		var r =false;
+		if (isMobile)
+		{
+		 navigator.notification.confirm(
+				 	"Confirmez-vous la suppression de "+sid+"?", // message
+		             onConfirm(sid),            // callback to invoke with index of button pressed
+		            'Multicollect',           // title
+		            'Non,Oui'         // buttonLabels
+		        );
+		}
+		else
+		{var r = confirm("Confirmez-vous la suppression de "+sid+"?");}
 	}
-	else
-	{var r = confirm("Confirmez-vous la suppression de "+sid+"?");}
 	if (r == true) {
 		app.db.transaction(function(tx) {
 			timestampNow = Math.round(new Date().getTime() / 1000);
