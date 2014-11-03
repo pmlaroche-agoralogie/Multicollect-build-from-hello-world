@@ -609,18 +609,19 @@ function RazSession()
 		});
 }
 
-function onConfirm(r){r=true;}
+function onConfirm(sid){RazOneSession(sid,true)}
 
-function RazOneSession(sid)
+function RazOneSession(sid,r)
 {
-	var r =false;
+	if( typeof(r) == 'undefined' )
+		var r =false;
 	if (isMobile)
 	{
 	 navigator.notification.confirm(
 			 	"Confirmez-vous la suppression de "+sid+"?", // message
-	             onConfirm(r),            // callback to invoke with index of button pressed
-	            'Game Over',           // title
-	            'Restart,Exit'         // buttonLabels
+	             onConfirm(sid),            // callback to invoke with index of button pressed
+	            'Multicollect',           // title
+	            'Non,Oui'         // buttonLabels
 	        );
 	}
 	else
