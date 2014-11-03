@@ -615,7 +615,6 @@ function RazOneSession(sid,r)
 {
 	if( typeof(r) == 'undefined' )
 	{
-		var r =false;
 		if (isMobile)
 		{
 		 navigator.notification.confirm(

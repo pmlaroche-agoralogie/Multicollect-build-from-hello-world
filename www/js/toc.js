@@ -16,27 +16,59 @@ function valide_un_radio(change_action){
 	document.multi_form.btn_submit.disabled=false;
 	
 }
-function valide_slider(valeur){
+function onConfirm2(valeur){valide_slider(valeur,true)}
+
+function valide_slider(valeur,r){
 
 	if( typeof(valeur) != 'undefined' ){
 		if (document.multi_form.slidervalue.value == 5 && document.multi_form.slidervalue2.value == 30){
-			var r = confirm("Confirmez-vous la valeur du slider ?");
-			if (r == true) {
+			if( typeof(r) == 'undefined' )
+			{
+				if (isMobile)
+				{
+				 navigator.notification.confirm(
+						 	"Confirmez-vous la valeur du slider ?", // message
+				             onConfirm2(valeur),            // callback to invoke with index of button pressed
+				            'Multicollect',           // title
+				            'Non,Oui'         // buttonLabels
+				        );
+				}
+				else
+				{var r = confirm("Confirmez-vous la valeur du slider ?");}
+			}
+			//var r = confirm("Confirmez-vous la valeur du slider ?");
+			/*if (r == true) {
 				return true;
 			 }else{
-				return false;
+				return false;*/
+			return r;
 			 }
 		}else{
 			return true;
 		}
 	}else{
 		if (document.multi_form.slidervalue.value == 50){
-			var r = confirm("Confirmez-vous la valeur du slider ?");
-			if (r == true) {
+			if( typeof(r) == 'undefined' )
+			{
+				if (isMobile)
+				{
+				 navigator.notification.confirm(
+						 	"Confirmez-vous la valeur du slider ?", // message
+						 	onConfirm2(valeur),            // callback to invoke with index of button pressed
+				            'Multicollect',           // title
+				            'Non,Oui'         // buttonLabels
+				        );
+				}
+				else
+				{var r = confirm("Confirmez-vous la valeur du slider ?");}
+			}
+			//var r = confirm("Confirmez-vous la valeur du slider ?");
+			/*if (r == true) {
 				return true;
 			 }else{
 				return false;
-			 }
+			 }*/
+			return r;
 		}else{
 			return true;
 		}
