@@ -609,9 +609,22 @@ function RazSession()
 		});
 }
 
+function onConfirm(r){r=true;}
+
 function RazOneSession(sid)
 {
-	var r = confirm("Confirmez-vous la suppression de "+sid+"?");
+	var r =false;
+	if (isMobile)
+	{
+	 navigator.notification.confirm(
+			 	"Confirmez-vous la suppression de "+sid+"?", // message
+	             onConfirm(r),            // callback to invoke with index of button pressed
+	            'Game Over',           // title
+	            'Restart,Exit'         // buttonLabels
+	        );
+	}
+	else
+	{var r = confirm("Confirmez-vous la suppression de "+sid+"?");}
 	if (r == true) {
 		app.db.transaction(function(tx) {
 			timestampNow = Math.round(new Date().getTime() / 1000);

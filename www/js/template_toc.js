@@ -153,7 +153,17 @@ function saveFormData(type)
 			form_reponse = $("#slidervalue").attr("value");
 		break; 
 		default: 
-			alert("pas de type");
+			if (isMobile)
+			{
+			navigator.notification.alert(
+		            'pas de type',  // message
+		            alertDismissed,         // callback
+		            'Multicollect',            // title
+		            'Ok'                  // buttonName
+		        );
+			}
+			else
+				{alert("pas de type");}
 		 	myreturn = false;
 		break; 
 	}
