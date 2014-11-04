@@ -28,7 +28,7 @@ function onConfirm2(buttonIndex) {
 			var line = strNext.split(",");
 			var selct = line[0].replace("'","").replace("'","");
 			alert(selct);alert(line[1]);
-			getTemplate(selct,line[1]);
+			getTemplate(selct,parseInt(line[1]));
 			}
 		
     }
