@@ -47,11 +47,13 @@ function getTemplate(selector,qkey)
 			
 			template = form_slider.replace('##bulles##',bulles)
 				.replace('##question##',question.question)
+				.replace('##next##',"'"+selector+"'," +(qkey + 1))
 				.replace('##next##',"'"+selector+"'," +(qkey + 1));
 			
 			if (configSlide.tpl=="sl4")
 			//heure,demi-heure
 			template = form_slider2.replace('##question##',question.question)
+			.replace('##next##',"'"+selector+"'," +(qkey + 1))
 			.replace('##next##',"'"+selector+"'," +(qkey + 1));;
 		break; 
 		case "S": 
