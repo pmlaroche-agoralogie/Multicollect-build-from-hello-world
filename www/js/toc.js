@@ -38,6 +38,7 @@ function valide_slider(valeur){
 				            'Multicollect',           // title
 				            'Non,Oui'         // buttonLabels
 				        );
+				 return false;
 				}
 				else
 				{
@@ -59,6 +60,7 @@ function valide_slider(valeur){
 				            'Multicollect',           // title
 				            'Non,Oui'         // buttonLabels
 				        );
+				 return false;
 				}
 				else
 				{var r = confirm("Confirmez-vous la valeur du slider ?");
