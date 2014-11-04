@@ -619,7 +619,9 @@ function RazOneSession(sid,r)
 		{
 		 navigator.notification.confirm(
 				 	"Confirmez-vous la suppression de "+sid+"?", // message
-		             onConfirm(sid),            // callback to invoke with index of button pressed
+				 	function(buttonIndex){
+			            onConfirm(sid, buttonIndex);
+			        },            // callback to invoke with index of button pressed
 		            'Multicollect',           // title
 		            'Non,Oui'         // buttonLabels
 		        );
