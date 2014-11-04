@@ -17,9 +17,9 @@ function valide_un_radio(change_action){
 	
 }
 function onConfirm2(buttonIndex) {
-	if (buttonIndex==1)
+	if (buttonIndex=="1")
 		return false;
-	if (buttonIndex==2)
+	if (buttonIndex=="2")
 		return true;
     }
 
