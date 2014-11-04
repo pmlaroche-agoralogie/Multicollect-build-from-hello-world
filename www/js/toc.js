@@ -18,7 +18,9 @@ function valide_un_radio(change_action){
 }
 function onConfirm2(buttonIndex) {
 	if (buttonIndex=="2")
-		document.multi_form.submit();
+		//document.multi_form.submit();
+		getTemplate($('#multi_form').attr('next'));
+		
     }
 
 function valide_slider(valeur){

@@ -287,7 +287,7 @@ var form_slider_script = '<script>$( "#slider-range" ).slider({' +
 
 var form_slider =  
 '<div class="spirale"><div class="fille"></div><div class="postit"><div class="question">##question##</div></div></div>' +  
-'<form method="post" action="" id="multi_form" name="multi_form" onSubmit="if(valide_slider()&&saveFormData(\'slider\')){getTemplate(##next##);}return false;">' +   
+'<form method="post" action="" id="multi_form" name="multi_form" onSubmit="if(valide_slider()&&saveFormData(\'slider\')){getTemplate(##next##);}return false;" next="##next##">' +   
 //'<form method="post" action="" id="multi_form" name="multi_form" onSubmit="return getTemplate(##next##)">' +   
 '  ##bulles##' +   
 '  <div class="clear"></div>' +   
