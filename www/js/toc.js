@@ -25,6 +25,7 @@ function onConfirm2(buttonIndex) {
 			var strNext = $('#multi_form').attr('next')
 			var line = strNext.split(",");
 			var selct = line[0].replace("'","").replace("'","");
+			alert(selct);alert(line[1]);
 			getTemplate(selct,line[1]);
 			}
 		
