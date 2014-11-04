@@ -21,7 +21,12 @@ function onConfirm2(buttonIndex) {
 		//document.multi_form.submit();
 		//alert(saveFormData('slider'));
 		if (saveFormData('slider'))
-			getTemplate($('#multi_form').attr('next'));
+			{
+			var strNext = $('#multi_form').attr('next')
+			var line = strNext.split(",");
+			var selct = line[0].replace("'","").replace("'","");
+			getTemplate(selct,line[1]);
+			}
 		
     }
 
