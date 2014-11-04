@@ -609,7 +609,7 @@ function RazSession()
 		});
 }
 
-function onConfirm(sid,buttonIndex){alert(sid);alert(buttonIndex);RazOneSession(sid,true)}
+function onConfirm(sid,buttonIndex){if (buttonIndex=="2")RazOneSession(sid,true);}
 
 function RazOneSession(sid,r)
 {
