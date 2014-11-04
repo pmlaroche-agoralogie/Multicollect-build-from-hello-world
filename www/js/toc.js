@@ -16,7 +16,8 @@ function valide_un_radio(change_action){
 	document.multi_form.btn_submit.disabled=false;
 	
 }
-function onConfirm2(){return true;}
+function onConfirm2(buttonIndex) {
+    alert('You selected button ' + buttonIndex);/*return true;*/}
 
 function valide_slider(valeur){
 
@@ -27,7 +28,7 @@ function valide_slider(valeur){
 				{
 				 navigator.notification.confirm(
 						 	"Confirmez-vous la valeur du slider ?", // message
-				             onConfirm2(valeur),            // callback to invoke with index of button pressed
+				             onConfirm2,            // callback to invoke with index of button pressed
 				            'Multicollect',           // title
 				            'Non,Oui'         // buttonLabels
 				        );
@@ -48,7 +49,7 @@ function valide_slider(valeur){
 				{
 				 navigator.notification.confirm(
 						 	"Confirmez-vous la valeur du slider ?", // message
-						 	onConfirm2(),            // callback to invoke with index of button pressed
+						 	onConfirm2,            // callback to invoke with index of button pressed
 				            'Multicollect',           // title
 				            'Non,Oui'         // buttonLabels
 				        );
