@@ -71,15 +71,15 @@ function valide_slider(valeur){
 						 	//onConfirm2,            // callback to invoke with index of button pressed
 						 	function(buttonIndex){
 						 		if (buttonIndex=="2")
-						 			 r = true;
+						 			 return true;
 						 		else
-						 			 r =false;
+						 			 return false;
 					        },
 				            'Multicollect',           // title
 				            'Non,Oui'         // buttonLabels
 				        );
 				 //return false;
-				 return r;
+				 //return r;
 				}
 				else
 				{var r = confirm("Confirmez-vous la valeur du slider ?");
