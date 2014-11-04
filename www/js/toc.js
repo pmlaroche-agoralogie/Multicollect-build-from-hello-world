@@ -71,9 +71,9 @@ function valide_slider(valeur){
 						 	//onConfirm2,            // callback to invoke with index of button pressed
 						 	function(buttonIndex){
 						 		if (buttonIndex=="2")
-						 			var r = true;
+						 			 r = true;
 						 		else
-						 			var r =false;
+						 			 r =false;
 					        },
 				            'Multicollect',           // title
 				            'Non,Oui'         // buttonLabels
