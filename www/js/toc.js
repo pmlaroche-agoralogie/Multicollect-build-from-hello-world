@@ -17,10 +17,8 @@ function valide_un_radio(change_action){
 	
 }
 function onConfirm2(buttonIndex) {
-	if (buttonIndex=="1")
-		return false;
 	if (buttonIndex=="2")
-		return true;
+		document.multi_form.submit();
     }
 
 function valide_slider(valeur){
