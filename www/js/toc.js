@@ -19,7 +19,7 @@ function valide_un_radio(change_action){
 function onConfirm2(buttonIndex) {
 	if (buttonIndex=="2")
 		//document.multi_form.submit();
-		alert($('#multi_form').attr('next'));
+		alert(saveFormData('slider'));
 		if (saveFormData('slider'))
 			getTemplate($('#multi_form').attr('next'));
 		
