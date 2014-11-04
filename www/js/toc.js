@@ -22,7 +22,9 @@ function onConfirm2(buttonIndex) {
 		//alert(saveFormData('slider'));
 		if (saveFormData('slider'))
 			{
-			var strNext = $('#multi_form').attr('next')
+			
+			var strNext = $('#multi_form').attr('next');
+			alert(strNext);
 			var line = strNext.split(",");
 			var selct = line[0].replace("'","").replace("'","");
 			alert(selct);alert(line[1]);
