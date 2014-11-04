@@ -357,7 +357,7 @@ var form_slider2_script = '<script>$( "#slider-range" ).slider({' +
 
 var form_slider2 =  
 '<div class="spirale"><div class="fille"></div><div class="postit"><div class="question">##question##</div></div></div>' + 
-'<form class="time" id="multi_form" name="multi_form" action="" onSubmit="if(valide_slider2()&&saveFormData(\'slider\')){getTemplate(##next##);}return false;">'  +
+'<form class="time" id="multi_form" name="multi_form" action="" onSubmit="if(valide_slider2()&&saveFormData(\'slider\')){getTemplate(##next##);}return false;" next="##next##">'  +
 '  <div class="clear"></div>'  +
 '  <input type="hidden" id="slidervalue" name="slidervalue"/> '  +
 '  <div id="slider-range" class="heure"></div>'  +
