@@ -24,10 +24,10 @@ function onConfirm2(buttonIndex) {
 			{
 			
 			var strNext = $('#multi_form').attr('next');
-			alert(strNext);
+			//alert(strNext);
 			var line = strNext.split(",");
 			var selct = line[0].replace("'","").replace("'","");
-			alert(selct);alert(line[1]);
+			//alert(selct);alert(line[1]);
 			getTemplate(selct,parseInt(line[1]));
 			}
 		
@@ -43,12 +43,6 @@ function valide_slider(valeur){
 				 navigator.notification.confirm(
 						 	"Confirmez-vous la valeur du slider ?", // message
 				             onConfirm2,            // callback to invoke with index of button pressed
-						 	/*function(buttonIndex){
-						 		if (buttonIndex=="2")
-						 			var r = true;
-						 		else
-						 			var r =false;
-					        },*/
 				            'Multicollect',           // title
 				            'Non,Oui'         // buttonLabels
 				        );
@@ -72,12 +66,6 @@ function valide_slider(valeur){
 				 navigator.notification.confirm(
 						 	"Confirmez-vous la valeur du slider ?", // message
 						 	onConfirm2,            // callback to invoke with index of button pressed
-						 	/*function(buttonIndex){
-						 		if (buttonIndex=="2")
-						 			alert('2');
-						 		else
-						 			 alert('1');
-					        },*/
 				            'Multicollect',           // title
 				            'Non,Oui'         // buttonLabels
 				        );
