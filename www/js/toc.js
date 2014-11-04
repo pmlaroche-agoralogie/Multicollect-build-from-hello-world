@@ -16,14 +16,13 @@ function valide_un_radio(change_action){
 	document.multi_form.btn_submit.disabled=false;
 	
 }
-function onConfirm2(valeur){valide_slider(valeur,true)}
+function onConfirm2(){return true;}
 
-function valide_slider(valeur,r){
+function valide_slider(valeur){
 
 	if( typeof(valeur) != 'undefined' ){
-		if (document.multi_form.slidervalue.value == 5 && document.multi_form.slidervalue2.value == 30){
-			if( typeof(r) == 'undefined' )
-			{
+		if (document.multi_form.slidervalue.value == 5 && document.multi_form.slidervalue2.value == 30)
+		{
 				if (isMobile)
 				{
 				 navigator.notification.confirm(
@@ -34,41 +33,30 @@ function valide_slider(valeur,r){
 				        );
 				}
 				else
-				{var r = confirm("Confirmez-vous la valeur du slider ?");}
-			}
-			//var r = confirm("Confirmez-vous la valeur du slider ?");
-			/*if (r == true) {
-				return true;
-			 }else{
-				return false;*/
-			return r;
-			 }
-		}else{
+				{
+					var r = confirm("Confirmez-vous la valeur du slider ?");
+					return r;
+				}
+		}
+		else
+		{
 			return true;
 		}
 	}else{
 		if (document.multi_form.slidervalue.value == 50){
-			if( typeof(r) == 'undefined' )
-			{
 				if (isMobile)
 				{
 				 navigator.notification.confirm(
 						 	"Confirmez-vous la valeur du slider ?", // message
-						 	onConfirm2(valeur),            // callback to invoke with index of button pressed
+						 	onConfirm2(),            // callback to invoke with index of button pressed
 				            'Multicollect',           // title
 				            'Non,Oui'         // buttonLabels
 				        );
 				}
 				else
-				{var r = confirm("Confirmez-vous la valeur du slider ?");}
-			}
-			//var r = confirm("Confirmez-vous la valeur du slider ?");
-			/*if (r == true) {
-				return true;
-			 }else{
-				return false;
-			 }*/
-			return r;
+				{var r = confirm("Confirmez-vous la valeur du slider ?");
+				return r;}
+			
 		}else{
 			return true;
 		}
