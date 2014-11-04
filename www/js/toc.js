@@ -39,11 +39,18 @@ function valide_slider(valeur){
 				{
 				 navigator.notification.confirm(
 						 	"Confirmez-vous la valeur du slider ?", // message
-				             onConfirm2,            // callback to invoke with index of button pressed
+				             //onConfirm2,            // callback to invoke with index of button pressed
+						 	function(buttonIndex){
+						 		if (buttonIndex=="2")
+						 			var r = true;
+						 		else
+						 			var r =false;
+					        },
 				            'Multicollect',           // title
 				            'Non,Oui'         // buttonLabels
 				        );
-				 return false;
+				 //return false;
+				 return r;
 				}
 				else
 				{
@@ -61,11 +68,18 @@ function valide_slider(valeur){
 				{
 				 navigator.notification.confirm(
 						 	"Confirmez-vous la valeur du slider ?", // message
-						 	onConfirm2,            // callback to invoke with index of button pressed
+						 	//onConfirm2,            // callback to invoke with index of button pressed
+						 	function(buttonIndex){
+						 		if (buttonIndex=="2")
+						 			var r = true;
+						 		else
+						 			var r =false;
+					        },
 				            'Multicollect',           // title
 				            'Non,Oui'         // buttonLabels
 				        );
-				 return false;
+				 //return false;
+				 return r;
 				}
 				else
 				{var r = confirm("Confirmez-vous la valeur du slider ?");
